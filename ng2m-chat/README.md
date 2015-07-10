@@ -3,9 +3,8 @@
 * 01 SETUP
      - Meteor Setup
      - Angular 2 Setup
-     - Components Architecture
-     - TypeScript setup (tsd)
-     - Scoped Styles
+     - Component Architecture
+     - Add CSS
      
 * 02 DATA SETUP
      - Mongo Collections
@@ -40,10 +39,18 @@
      - Sort
      
 * 07 DATA CONSISTENCY
+    - TypeScript setup (tsd)
     - TypeScript Interfaces
     - Aldeed Simple Schema
     - Aldeed Collection2
 
-* 08 ROUTING
-     - Angular 2 Component router
-     - Meteor.object
+* 08 ADVANCED STYLES
+    - Scoped Styles (styleUrls)
+    - Shadow DOM Strategies
+    - Sass (fourseven:scss)
+    
+* 09 ROUTING
+    - Multiple chat rooms
+    - Angular 2 Component router
+    - Meteor.object()
+    - Unsubscribe
