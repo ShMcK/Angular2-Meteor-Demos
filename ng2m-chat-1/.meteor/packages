@@ -6,15 +6,10 @@
 
 meteor-platform
 
+# Remove for security purposes
 #autopublish
 #insecure
 
 # Angular2
 angular:angular2
 netanelgilad:angular2-typescript
-
-# Accounts
-accounts-password
-accounts-facebook
-accounts-twitter
-accounts-ui
