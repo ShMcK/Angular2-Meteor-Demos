@@ -7,12 +7,11 @@
      - TypeScript setup
      - Scoped Styles
      
-* 02 DATA
+* 02 DATA SETUP
      - Mongo Collections
-     - Meteor.Startup() load
-     - Autopublish
-     - Meteor.Publish/Subscribe
-     - Angular 2 Lists (For)
+     - Meteor.Startup()
+     - Autopublish vs. Meteor.Publish/Subscribe
+     - Angular 2 Lists (NgFor)
      
 * 03 ACCOUNTS
      - User Accounts
@@ -40,6 +39,7 @@
      - Sort
      
 * 07 DATA CONSISTENCY
+    - TypeScript Interfaces
     - Aldeed Simple Schema
     - Aldeed Collection2
 
