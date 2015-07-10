@@ -3,6 +3,7 @@
 * 01 - Meteor Setup
      - Angular 2 Setup
      - Break into Components
+     - TypeScript setup
      - Styles
 * 02 - Mongo Collections
      - Angular 2 Lists
