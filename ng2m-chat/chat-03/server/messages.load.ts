@@ -6,25 +6,32 @@ Meteor.startup(function () {
   if (Messages.find().count() === 0) {
     var messages = [{
       authorId: testUserId,
-      content: 'So, your boy\'s name is what?'
+      content: 'So, your boy\'s name is what?',
+      sentAt: new Date()
     }, {
       authorId: '2',
-      content: 'Snot'
+      content: 'Snot',
+      sentAt: new Date()
     }, {
       authorId: testUserId,
-      content: 'You called the guy Snot?'
+      content: 'You called the guy Snot?',
+      sentAt: new Date()
     }, {
       authorId: '2',
-      content: 'Snotboogie, yeah.'
+      content: 'Snotboogie, yeah.',
+      sentAt: new Date()
     }, {
       authorId: testUserId,
-      content: 'Snotboogie. He like the name?'
+      content: 'Snotboogie. He like the name?',
+      sentAt: new Date()
     }, {
       authorId: '2',
-      content: 'What?'
+      content: 'What?',
+      sentAt: new Date()
     }, {
       authorId: testUserId,
-      content: 'Snotboogie.'
+      content: 'Snotboogie.',
+      sentAt: new Date()
     }];
 
     messages.forEach(function(message:IMessage) {

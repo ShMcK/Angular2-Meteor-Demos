@@ -28,6 +28,7 @@
   color: inherit; }
 
 .chat-input {
+  margin-left: 20px;
   outline: none;
   resize: none;
   overflow: hidden;

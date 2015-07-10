@@ -6,8 +6,6 @@
 
 # Core Meteor package
 meteor-platform
-#autopublish
-#insecure
 
 # Angular2
 angular:angular2
