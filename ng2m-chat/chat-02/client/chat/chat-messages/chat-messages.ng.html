@@ -3,8 +3,10 @@
 
     <!-- list of messages -->
     <li class="chat-message">
-      <div class="chat-message-bubble">
-        <!-- message content -->
+      <div *ng-for="#message of messages"
+           class="chat-message-bubble"
+           [class.chat-message-self]="isSelf(message.authorId)">
+        {{message.content}}
       </div>
     </li>
 

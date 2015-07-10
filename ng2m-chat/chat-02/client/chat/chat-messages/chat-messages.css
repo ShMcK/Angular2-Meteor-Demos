@@ -49,3 +49,7 @@
   background: #32a8e6;
   color: #fff;
   text-align: left; }
+
+.chat-message-self {
+  background-color: #DDE859;
+}

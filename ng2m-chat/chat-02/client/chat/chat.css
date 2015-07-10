@@ -1,6 +1,24 @@
 /* Chat.css from Codrops Gooey Effects
   http://tympanus.net/codrops/2015/03/10/creative-gooey-effects/
 */
+
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.cf:before,
+.cf:after {
+  content: '';
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
 .chat-window button:focus {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   -webkit-tap-highlight-color: transparent;
