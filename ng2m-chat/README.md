@@ -1,33 +1,48 @@
 # Angular2-Meteor Chat Demo
 
-* 01 - Meteor Setup
+* 01 SETUP
+     - Meteor Setup
      - Angular 2 Setup
      - Break into Components
      - TypeScript setup
      - Scoped Styles
      
-* 02 - Mongo Collections
+* 02 DATA
+     - Mongo Collections
      - Meteor.Startup() load
+     - Autopublish
      - Meteor.Publish/Subscribe
      - Angular 2 Lists (For)
      
-* 03 - User Accounts
+* 03 ACCOUNTS
+     - User Accounts
      - Accounts-ui
      - OAuth setup
      - Meteor.userId()
      - Meteor mongo
      - Reset DB
      
-* 04 - Angular 2 Local Variables #
+* 04 NG2 TEMPLATE SYNTAX
+     - Angular 2 Local Variables #
      - Angular 2 Events ()
      - Angular 2 Properties []
      - Angular 2-Way Binding [()]
 
-* 05 - Angular 2 FormDirectives, Controls, FormBuilder
+* 05 ANGULAR 2 FORMS
+    - Angular 2 FormDirectives
+    - ControlGroups, Control
+    - FormBuilder
 
-* 06 - Meteor Methods (unfinished)
+* 06 METEOR SECURITY
+     - Meteor Methods
      - Meteor Allow, Deny
      - Database Index
      - Sort
      
-* 07 - Data Consistency (Aldeed Packages)
+* 07 DATA CONSISTENCY
+    - Aldeed Simple Schema
+    - Aldeed Collection2
+
+* 08 ROUTING
+     - Angular 2 Component router
+     - Meteor.object
