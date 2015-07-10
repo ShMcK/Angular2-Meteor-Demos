@@ -1,6 +1,6 @@
 import {Component, View, bootstrap} from 'angular2/angular2';
-import {ChatInput} from 'client/chat-input/chat-input';
-import {ChatMessages} from 'client/chat-messages/chat-messages';
+import {ChatInput} from 'chat-input/chat-input';
+import {ChatMessages} from 'chat-messages/chat-messages';
 
 
 @Component({
