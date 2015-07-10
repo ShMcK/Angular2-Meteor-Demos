@@ -10,13 +10,11 @@ import {Component, View} from 'angular2/angular2';
 })
 export class ChatInput {
   send(message) {
-    console.log(message);
-
     // note: INSECURE version
-    //Messages.insert({
-    //  authorId: Meteor.userId(),
-    //  content: message,
-    //  createdAt: new Date()
-    //});
+    Messages.insert({
+      authorId: Meteor.userId(),
+      content: message,
+      createdAt: new Date()
+    });
   }
 }

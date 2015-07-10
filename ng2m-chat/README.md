@@ -3,8 +3,8 @@
 * 01 SETUP
      - Meteor Setup
      - Angular 2 Setup
-     - Break into Components
-     - TypeScript setup
+     - Components Architecture
+     - TypeScript setup (tsd)
      - Scoped Styles
      
 * 02 DATA SETUP
@@ -20,6 +20,7 @@
      - Meteor.userId()
      - Meteor mongo
      - Reset DB
+     - Meteor Avatar (?)
      
 * 04 NG2 TEMPLATE SYNTAX
      - Angular 2 Local Variables #
