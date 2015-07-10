@@ -4,13 +4,12 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
+# Core Meteor package
 meteor-platform
+
+# Remove for security purposes later
 autopublish
 insecure
-
-# Remove for security purposes
-#autopublish
-#insecure
 
 # Angular2
 angular:angular2

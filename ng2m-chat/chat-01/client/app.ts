@@ -1,13 +1,12 @@
 import {Component, View, bootstrap} from 'angular2/angular2';
-import {ChatInput} from 'chat-input/chat-input';
-import {ChatMessages} from 'chat-messages/chat-messages';
-
+import {ChatInput} from 'client/chat/chat-input/chat-input';
+import {ChatMessages} from 'client/chat/chat-messages/chat-messages';
 
 @Component({
   selector: 'chat-app'
 })
 @View({
-  templateUrl: 'client/chat.ng.html',
+  templateUrl: 'client/chat/chat.ng.html',
   directives: [ChatMessages, ChatInput]
 })
 class ChatApp {}

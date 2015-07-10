@@ -1,0 +1,53 @@
+/* Chat.css from Codrops Gooey Effects
+  http://tympanus.net/codrops/2015/03/10/creative-gooey-effects/
+*/
+.chat-window button:focus {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+  outline: none; }
+
+.chat-window {
+  width: 310px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 0px solid #36383a;
+  border-width: 50px 15px;
+  color: #474c57;
+  border-radius: 20px;
+  font-family: 'Avenir Next', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+@media screen and (max-width: 380px) {
+  .chat-window {
+    border: none;
+    border-radius: 0px; } }
+
+.chat-window a {
+  color: #eab1c6; }
+
+.chat-window a:hover, .chat-window a:focus {
+  color: #C7668A; }
+
+
+.chat-effect-container {
+  position: absolute;
+  top: -100px;
+  width: 100%; }
+
+.chat-effect-bar {
+  background: #32a8e6;
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  height: 40px;
+  -webkit-transform: rotateY(0);
+  transform: rotateY(0); }
+
+.chat-effect-dots {
+  position: absolute; }
+
+.chat-effect-dot {
+  background: #32a8e6;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%; }

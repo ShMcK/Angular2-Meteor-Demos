@@ -1,8 +1,9 @@
 # Angular2-Meteor Chat Demo
 
 * 01 - Meteor Setup
-     - Styles
      - Angular 2 Setup
+     - Break into Components
+     - Styles
 * 02 - Mongo Collections
      - Angular 2 Lists
 * 03 - User Accounts
