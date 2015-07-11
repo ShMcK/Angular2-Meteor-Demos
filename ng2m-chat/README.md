@@ -33,10 +33,11 @@
     - FormBuilder
 
 * 06 METEOR SECURITY
-     - Meteor Methods
-     - Meteor Allow, Deny
-     - Database Index
-     - Sort
+    - Sign in to post message
+    - Meteor Methods
+    - Meteor Allow, Deny
+    - Database Index
+    - Sort
      
 * 07 DATA CONSISTENCY
     - TypeScript setup (tsd)

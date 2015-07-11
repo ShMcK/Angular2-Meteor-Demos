@@ -12,4 +12,4 @@ import {ChatMessages} from 'client/chat/chat-messages/chat-messages';
 })
 class ChatApp {}
 
-bootstrap(ChatApp, []);
+bootstrap(ChatApp);

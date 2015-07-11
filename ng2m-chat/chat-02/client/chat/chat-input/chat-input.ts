@@ -5,7 +5,6 @@ import {Component, View} from 'angular2/angular2';
   selector: 'chat-input'
 })
 @View({
-  templateUrl: 'client/chat/chat-input/chat-input.ng.html',
-  styleUrls: ['client/chat/chat-input/chat-input.css']
+  templateUrl: 'client/chat/chat-input/chat-input.ng.html'
 })
 export class ChatInput {}

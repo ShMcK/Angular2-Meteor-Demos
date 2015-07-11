@@ -5,16 +5,26 @@ import {Component, View} from 'angular2/angular2';
   selector: 'chat-input'
 })
 @View({
-  templateUrl: 'client/chat/chat-input/chat-input.ng.html',
-  styleUrls: ['client/chat/chat-input/chat-input.css']
+  templateUrl: 'client/chat/chat-input/chat-input.ng.html'
 })
 export class ChatInput {
   send(message) {
     // note: INSECURE version
     Messages.insert({
-      authorId: Meteor.userId(),
+      authorId: Meteor.userId() || 'anonymous',
       content: message,
       createdAt: new Date()
     });
+  }
+  submitInput(event, message) {
+    alert(message);
+    // note: INSECURE version
+    if(event.keyCode == 13) {
+      Messages.insert({
+        authorId: Meteor.userId() || 'anonymous',
+        content: message,
+        createdAt: new Date()
+      });
+    }
   }
 }

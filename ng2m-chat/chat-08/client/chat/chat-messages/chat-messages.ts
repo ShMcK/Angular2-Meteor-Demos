@@ -6,6 +6,7 @@ import {Component, View, NgFor} from 'angular2/angular2';
 })
 @View({
   templateUrl: 'client/chat/chat-messages/chat-messages.ng.html',
+  styleUrls: ['client/chat/chat-messages/chat-messages.css'],
   directives: [NgFor]
 })
 export class ChatMessages {

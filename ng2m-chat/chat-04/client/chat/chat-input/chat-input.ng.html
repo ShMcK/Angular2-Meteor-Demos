@@ -2,11 +2,10 @@
   <div class="chat-input-wrapper">
     <div class="chat-input">
       <form>
-        <input type="text" #message autofocus/>
+        <input type="text" #message (keyup)="submitInput($event, message.value)" autofocus/>
       </form>
     </div>
 
     <button class="chat-send" (click)="send(message.value)">SEND</button>
   </div>
 </section>
-
