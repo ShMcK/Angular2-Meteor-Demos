@@ -1,0 +1,12 @@
+<section class="chat-input-bar">
+  <div class="chat-input-wrapper">
+    <div class="chat-input">
+      <form [control-group]="messageForm">
+        <input type="text" control="message" autofocus/>
+      </form>
+    </div>
+
+    <button class="chat-send" (click)="send()">SEND</button>
+  </div>
+</section>
+

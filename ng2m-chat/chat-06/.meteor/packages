@@ -7,10 +7,14 @@
 # Core Meteor package
 meteor-platform
 
-# Remove for security purposes later
-insecure
-
 # Angular2
 angular:angular2
 netanelgilad:angular2-typescript
-johnantoni:meteor-normalize
+
+# Accounts
+accounts-password
+accounts-facebook
+accounts-twitter
+accounts-ui
+
+

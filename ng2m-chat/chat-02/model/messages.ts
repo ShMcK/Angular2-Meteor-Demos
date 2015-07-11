@@ -1,5 +1,3 @@
-///<reference path="../typings/typings.d.ts" />
-
 // MongoDB Collection (shared by client/server)
 Messages = new Mongo.Collection('messages');
 

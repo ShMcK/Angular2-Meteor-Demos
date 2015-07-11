@@ -1,0 +1,19 @@
+<!-- meteor finds the file with <head> & <body> -->
+<!-- you can name the index.html file anything -->
+<head>
+  <title>Angular 2 Meteor Chat!</title>
+</head>
+<body>
+
+<div>
+  {{> loginButtons}}
+</div>
+
+<!-- app component -->
+<chat-app>
+  <span class="loading">Loading...</span>
+</chat-app>
+
+
+<script>System.import('client/chat/chat');</script>
+</body>

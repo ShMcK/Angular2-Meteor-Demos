@@ -39,7 +39,7 @@
     - Database Index
     - Sort
      
-* 07 DATA CONSISTENCY
+* 07 CATCHING ERRORS
     - TypeScript setup (tsd)
     - TypeScript Interfaces
     - Aldeed Simple Schema

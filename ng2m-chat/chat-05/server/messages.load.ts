@@ -1,30 +1,35 @@
-///<reference path="../typings/typings.d.ts" />
-
 var testUserId = '6NQSCTvkuFtgPEEqQ';
 
 Meteor.startup(function () {
   if (Messages.find().count() === 0) {
     var messages = [{
       authorId: testUserId,
-      content: 'So, your boy\'s name is what?'
+      content: 'So, your boy\'s name is what?',
+      createdAt: new Date()
     }, {
       authorId: '2',
-      content: 'Snot'
+      content: 'Snot',
+      createdAt: new Date()
     }, {
       authorId: testUserId,
-      content: 'You called the guy Snot?'
+      content: 'You called the guy Snot?',
+      createdAt: new Date()
     }, {
       authorId: '2',
-      content: 'Snotboogie, yeah.'
+      content: 'Snotboogie, yeah.',
+      createdAt: new Date()
     }, {
       authorId: testUserId,
-      content: 'Snotboogie. He like the name?'
+      content: 'Snotboogie. He like the name?',
+      createdAt: new Date()
     }, {
       authorId: '2',
-      content: 'What?'
+      content: 'What?',
+      createdAt: new Date()
     }, {
       authorId: testUserId,
-      content: 'Snotboogie.'
+      content: 'Snotboogie.',
+      createdAt: new Date()
     }];
 
     messages.forEach(function(message:IMessage) {
