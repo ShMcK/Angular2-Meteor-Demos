@@ -1,10 +1,10 @@
-# Angular2-Meteor Chat Demo
+#Angular2-Meteor Chat Demo
 
 * 01 SETUP
      - Meteor Setup
      - Angular 2 Setup
      - Component Architecture
-     - Add CSS
+     - Add Global CSS
      
 * 02 DATA SETUP
      - Mongo Collections
@@ -39,7 +39,7 @@
     - Database Index
     - Sort
      
-* 07 CATCHING ERRORS
+* 07 ERROR PREVENTION
     - TypeScript setup (tsd)
     - TypeScript Interfaces
     - Aldeed Simple Schema

@@ -4,6 +4,7 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
+# Core Meteor package
 meteor-platform
 
 # Angular2
@@ -15,3 +16,6 @@ accounts-password
 accounts-facebook
 accounts-twitter
 accounts-ui
+
+# Styles
+johnantoni:meteor-normalize

@@ -17,4 +17,5 @@ accounts-facebook
 accounts-twitter
 accounts-ui
 
-
+# Styles
+johnantoni:meteor-normalize
