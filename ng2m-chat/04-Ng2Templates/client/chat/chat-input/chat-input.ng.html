@@ -1,12 +1,15 @@
-<section class="chat-input-bar">
-  <div class="chat-input-wrapper">
-    <div class="chat-input">
-      <form>
-        <input type="text" autofocus #message
-               placeholder="Type a message..."
-               (keyup)="submitInput($event, message.value)"/>
-      </form>
-    </div>
-    <button class="chat-send" (click)="send(message.value)">SEND</button>
+<div class="panel-footer">
+  <div class="input-group">
+    <input id="btn-input" type="text"
+           class="form-control input-sm"
+           placeholder="Type your message here..."
+           autofocus
+           #message (keyup)="submitInput($event, message.value)"/>
+      <span class="input-group-btn">
+        <button class="btn btn-warning btn-sm"
+            (click)="send(message.value)">
+          Send
+        </button>
+      </span>
   </div>
-</section>
+</div>

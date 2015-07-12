@@ -6,4 +6,6 @@ import {Component, View} from 'angular2/angular2';
 @View({
   templateUrl: 'client/chat/chat-input/chat-input.ng.html'
 })
-export class ChatInput {}
+export class ChatInput {
+  // send messages
+}

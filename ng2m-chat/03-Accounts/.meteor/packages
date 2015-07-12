@@ -14,7 +14,10 @@ netanelgilad:angular2-typescript
 accounts-password
 accounts-facebook
 accounts-twitter
-accounts-ui
+ian:accounts-ui-bootstrap-3
 
 # Styles
 johnantoni:meteor-normalize
+
+# Tools
+momentjs:moment

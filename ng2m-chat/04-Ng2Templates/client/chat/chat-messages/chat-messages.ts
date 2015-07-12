@@ -9,15 +9,18 @@ import {Component, View, NgFor} from 'angular2/angular2';
 })
 export class ChatMessages {
   messages:IMessage;
-  authorId: string;
+  authorId:string;
+
   constructor() {
     var self = this;
     Meteor.subscribe('messages');
+    Meteor.subscribe('users');
+
     Tracker.autorun(zone.bind(() => {
       self.messages = Messages.find({}).fetch();
+      self.messages.forEach(function(message) {
+        message.username = Meteor.users.find(message.authorId).fetch()[0].username;
+      })
     }));
-  }
-  isSelf(authorId) {
-    return authorId === Meteor.userId();
   }
 }

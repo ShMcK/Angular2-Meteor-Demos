@@ -16,3 +16,6 @@ netanelgilad:angular2-typescript
 
 # Styles
 johnantoni:meteor-normalize
+
+# Tools
+momentjs:moment

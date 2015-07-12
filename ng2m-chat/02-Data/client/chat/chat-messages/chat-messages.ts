@@ -15,8 +15,16 @@ export class ChatMessages {
     Meteor.subscribe('messages');
     Tracker.autorun(zone.bind(() => {
       self.messages = Messages.find({}).fetch();
+
+      // manipulate data
+      self.messages.forEach(function (message) {
+        // get natural language date using moment.js
+        message.fromNow = moment(message.createdAt).fromNow();
+        // get username from userId
+        // Todo: Next
+      });
     }));
-    this.authorId = '1';
+
   }
   isSelf(authorId) {
     return this.authorId === authorId;
