@@ -16,8 +16,9 @@ export class ChatMessages {
     Tracker.autorun(zone.bind(() => {
       self.messages = Messages.find({}).fetch();
     }));
+    this.authorId = '1';
   }
   isSelf(authorId) {
-    return authorId === Meteor.userId();
+    return this.authorId === authorId;
   }
 }
