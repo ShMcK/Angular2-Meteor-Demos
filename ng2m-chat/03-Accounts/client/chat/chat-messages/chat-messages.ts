@@ -14,7 +14,7 @@ export class ChatMessages {
   constructor() {
     var self = this;
     Meteor.subscribe('messages');
-    Meteor.subscribe('users');
+    //Meteor.subscribe('users');
 
     Tracker.autorun(zone.bind(() => {
       self.messages = Messages.find({}).fetch();
@@ -22,7 +22,7 @@ export class ChatMessages {
         // get natural language date using moment.js
         message.fromNow = moment(message.createdAt).fromNow();
         // get username from userId
-        message.username = Meteor.users.find(message.authorId).fetch()[0].username;
+        //message.username = Meteor.users.find(message.authorId).fetch()[0].username;
       })
     }));
   }

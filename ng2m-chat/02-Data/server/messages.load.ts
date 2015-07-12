@@ -30,7 +30,7 @@ Meteor.startup(function () {
       createdAt: new Date()
     }];
 
-    messages.forEach(function(message:IMessage) {
+    messages.forEach(function(message) {
       Messages.insert(message);
     })
   }

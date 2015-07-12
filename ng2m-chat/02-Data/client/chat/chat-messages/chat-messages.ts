@@ -8,8 +8,6 @@ import {Component, View, NgFor} from 'angular2/angular2';
   directives: [NgFor]
 })
 export class ChatMessages {
-  messages:IMessage;
-  authorId: string;
   constructor() {
     var self = this;
     Meteor.subscribe('messages');
@@ -18,10 +16,7 @@ export class ChatMessages {
 
       // manipulate data
       self.messages.forEach(function (message) {
-        // get natural language date using moment.js
         message.fromNow = moment(message.createdAt).fromNow();
-        // get username from userId
-        // Todo: Next
       });
     }));
 
