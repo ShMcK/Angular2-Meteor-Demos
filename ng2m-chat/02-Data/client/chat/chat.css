@@ -146,6 +146,7 @@
 
 .chat-input {
   margin-left: 20px;
+  color: black;
   outline: none;
   resize: none;
   overflow: hidden;
@@ -155,13 +156,6 @@
   font-size: 14px;
   padding: 10px 0 7px;
   cursor: text; }
-
-.chat-input:empty::before {
-  content: "Write something...";
-  color: #2B8EC2; }
-
-.chat-input:focus::before {
-  content: ""; }
 
 .chat-send {
   background: transparent;

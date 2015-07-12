@@ -16,14 +16,8 @@ export class ChatInput {
     });
   }
   submitInput(event, message) {
-    alert(message);
-    // note: INSECURE version
-    if(event.keyCode == 13) {
-      Messages.insert({
-        authorId: Meteor.userId() || 'anonymous',
-        content: message,
-        createdAt: new Date()
-      });
+    if(event.keyCode == 13) { // user presses 'ENTER'
+      this.send(message);
     }
   }
 }
