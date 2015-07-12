@@ -75,3 +75,13 @@
   margin: 0;
   color: #777777;
 }
+
+.img-circle {
+  width: 50px;
+  height: 50px;
+  background-color: lightblue;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  /* Cleaner, but slightly less support: use "50%" as value */
+}

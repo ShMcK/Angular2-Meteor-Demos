@@ -9,11 +9,6 @@ import {ChatMessages} from 'client/chat/chat-messages/chat-messages';
   templateUrl: 'client/chat/chat.ng.html',
   directives: [ChatMessages, ChatInput]
 })
-class ChatApp {
-  user: any;
-  constructor() {
-    this.user = Meteor.user();
-  }
-}
+class ChatApp {}
 
 bootstrap(ChatApp);

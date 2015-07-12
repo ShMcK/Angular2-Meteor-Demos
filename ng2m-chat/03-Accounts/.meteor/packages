@@ -6,6 +6,8 @@
 
 meteor-platform
 
+insecure
+
 # Angular2
 angular:angular2
 netanelgilad:angular2-typescript
@@ -14,10 +16,12 @@ netanelgilad:angular2-typescript
 accounts-password
 accounts-facebook
 accounts-twitter
+#accounts-ui // disabled
 ian:accounts-ui-bootstrap-3
 
 # Styles
-johnantoni:meteor-normalize
+twbs:bootstrap
 
 # Tools
 momentjs:moment
+

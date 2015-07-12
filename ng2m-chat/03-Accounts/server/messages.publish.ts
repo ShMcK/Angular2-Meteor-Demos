@@ -1,19 +1,17 @@
 Meteor.publish('messages', function () {
-  return Messages.find({},
-    {
-      transform: transformMessage
-    });
-});
+  return Messages.find({}, {
+    transform: transformMessage
+  });
 
-Meteor.publish('users', function () {
-  return Meteor.users.find({});
-});
+  function transformMessage(message) {
 
-function transformMessage(message) {
-  var user = Meteor.users.findOne(message.authorId);
-  if (user) {
-    var username = user.username;
-    message.username = username;
+    console.log('Transform User: ', Meteor.users.findOne());
+    var user = Meteor.users.findOne(message.authorId);
+    //console.log(user);
+    if (user.username) {
+      message.username = user.username;
+      //console.log(message.username);
+    }
+    return message;
   }
-  return message;
-};
+});

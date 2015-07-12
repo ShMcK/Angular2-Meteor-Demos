@@ -35,6 +35,7 @@ Meteor.startup(function () {
         ids.push(doc);
       });
     });
+    console.log(Meteor.users);
   }
 
   if (Messages.find().count() === 0) {

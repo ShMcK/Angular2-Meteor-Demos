@@ -11,6 +11,7 @@ export class ChatMessages {
   constructor() {
     var self = this;
     Meteor.subscribe('messages');
+
     Tracker.autorun(zone.bind(() => {
       self.messages = Messages.find({}).fetch();
 
@@ -19,9 +20,5 @@ export class ChatMessages {
         message.fromNow = moment(message.createdAt).fromNow();
       });
     }));
-
-  }
-  isSelf(authorId) {
-    return this.authorId === authorId;
   }
 }
