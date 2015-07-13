@@ -1,0 +1,14 @@
+/* CSS declarations go here */
+
+
+header, main, nav {
+ padding: 10px 40px;
+}
+
+.title {
+  margin-left: 20px;
+}
+
+.btn-group button {
+  margin-left: 20px;
+}

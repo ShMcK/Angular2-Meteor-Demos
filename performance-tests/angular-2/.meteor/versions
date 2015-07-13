@@ -1,3 +1,5 @@
+angular:angular2@2.0.0-alpha.25
+anti:fake@0.4.1
 autoupdate@1.2.1
 base64@1.0.3
 binary-heap@1.0.3
@@ -26,6 +28,7 @@ minifiers@1.1.5
 minimongo@1.0.8
 mobile-status-bar@1.0.3
 mongo@1.1.0
+netanelgilad:angular2-typescript@0.0.3
 observe-sequence@1.0.6
 ordered-dict@1.0.3
 random@1.0.3
@@ -37,6 +40,7 @@ routepolicy@1.0.5
 session@1.1.0
 spacebars@1.0.6
 spacebars-compiler@1.0.6
+spectrum:material-design-lite@0.0.4
 templating@1.1.1
 tracker@1.0.7
 ui@1.0.6
