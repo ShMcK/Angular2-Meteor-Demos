@@ -5,6 +5,7 @@
 # but you can also edit it by hand.
 
 meteor-platform
-urigo:angular
-anti:fake
 spectrum:material-design-lite
+angular:angular2
+netanelgilad:angular2-typescript
+anti:fake

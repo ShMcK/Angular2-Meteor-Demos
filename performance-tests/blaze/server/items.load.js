@@ -9,7 +9,8 @@ Meteor.startup(function () {
         profile: Fake.user(['name', 'surname', 'username', 'email']),
         title: Fake.sentence(5),
         description: Fake.paragraph([3]),
-        color: Fake.color()
+        color: Fake.color(),
+        number: Math.floor((Math.random() * 10) + 1)
       };
     }
 
