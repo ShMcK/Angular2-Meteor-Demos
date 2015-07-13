@@ -1,33 +1,45 @@
+/* not quite working */
+
 Meteor.subscribe("items");
-Session.set('limit', 0);
+Session.setDefault('limit', 1);
 
 Template.rows.helpers({
   'rows': function () {
-    return Items.find({}, Session.get('limit'))
-      .fetch().map(function(item, index) {
-      item.index = index;
-      return item;
-    });
+    return Items.find({}, {limit: Session.get('limit')})
+      //.fetch()
+      .map(function (item, index) {
+        item.index = index;
+        return item;
+      });
   }
 });
 
+//Template.rows.rendered = function () {
+//  console.log('rendered');
+//  console.log(new Date.now())
+//};
+
+function selected(newLimit) {
+  Session.set('limit', newLimit);
+  console.log('limit: ', Session.get('limit'));
+  startTime = new Date();
+  console.log('start: ', startTime);
+}
+
 Template.count.events({
   'click #reset': function () {
-    Session.set('limit', 0);
+    selected(0);
   },
   'click #500': function () {
-    Session.set('limit', 500);
+    selected(500);
   },
   'click #1000': function () {
-    Session.set('limit', 1000);
+    selected(1000);
   },
   'click #2500': function () {
-    Session.set('limit', 2500);
+    selected(2500);
   },
   'click 5000': function () {
-    Session.set('limit', 5000);
-  },
-  'click #10000': function () {
-    Session.set('limit', 10000);
+    selected(5000);
   }
 });

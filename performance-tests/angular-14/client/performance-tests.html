@@ -9,15 +9,14 @@
   </section>
 </header>
 
-
 <main class="mdl-layout__content">
   <!-- select Framework -->
   <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--2-col">
       <div class="btn-group" role="group" aria-label="Blaze">
-        <h5 class="mdl-color-text--accent display-1">Blaze</h5>
+        <h5 class="title">Blaze</h5>
         <a href="/">
-          <button class="mdl-button mdl-js-button mdl-button--accent">
+          <button class="mdl-button mdl-js-button mdl-button--primary">
             2.1.12
           </button>
         </a>
@@ -26,9 +25,9 @@
 
     <div class="mdl-cell mdl-cell--2-col">
       <div class="btn-group" role="group" aria-label="AngularJS">
-        <h5 class="title">AngularJS</h5>
+        <h5 class="mdl-color-text--accent display-1">AngularJS</h5>
         <a href="/">
-          <button class="mdl-button mdl-js-button mdl-button--primary">
+          <button class="mdl-button mdl-js-button mdl-button--accent">
             1.4.0
           </button>
         </a>
@@ -46,9 +45,9 @@
       </div>
     </div>
   </div>
-  <!-- Select # of Docs 500 | 1000 | 2500 | 5000 | 10000 -->
+  <!-- Select # of Docs 500 | 1000 | 2500 | 5000 -->
 
-  {{> count }}
+  <item-count></item-count>
 
   <!-- table -->
   <section>
@@ -69,52 +68,10 @@
       </tr>
       </thead>
 
-      {{> rows}}
+      <item-rows></item-rows>
 
     </table>
   </section>
 </main>
 
 </body>
-
-<template name="rows">
-  <tbody>
-  {{#each rows}}
-    <tr>
-      <td>{{index}}</td>
-      <td style="color: {{color}}">&#9679;</td>
-      <td>{{profile.name}}</td>
-      <td>{{profile.surname}}</td>
-      <td>{{profile.name}} {{profile.surname}}</td>
-      <td>{{profile.username}}</td>
-      <td>{{profile.email}}</td>
-      <td>{{number}}</td>
-      <td>{{title}}</td>
-      <td>{{description}}</td>
-    </tr>
-  {{/each}}
-  </tbody>
-</template>
-
-<template name="count">
-  <section class="mdl-grid">
-    <div class="mdl-cell mdl-cell--6-col">
-      <p>Number of Items:</p>
-      <button id="reset" class="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-        Reset
-      </button>
-      <button id="500" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">500</button>
-      <button id="1000" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">1000</button>
-      <button id="2500" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">2500</button>
-      <button id="5000" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">5000</button>
-    </div>
-
-    <div class="mdl-cell mdl-cell--4-col">
-      <p>Average: ##ms</p>
-
-      <p>Duration: ##ms</p>
-
-      <p>Reload: ##ms</p>
-    </div>
-  </section>
-</template>
