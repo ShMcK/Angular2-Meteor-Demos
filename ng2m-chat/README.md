@@ -1,6 +1,7 @@
 #Angular2-Meteor Chat Demo
 
 * 01 SETUP
+     - Why Angular2 + Meteor
      - Meteor Setup
      - Angular 2 Setup
      - Component Architecture
@@ -9,6 +10,7 @@
 * 02 DATA SETUP
      - Mongo Collections
      - Meteor.Startup()
+     - DDP
      - Autopublish vs. Meteor.Publish/Subscribe
      - Angular 2 Lists (NgFor)
      
@@ -55,3 +57,12 @@
     - Angular 2 Component router
     - Meteor.object()
     - Unsubscribe
+    
+Notes (Todo/Mention)
+    - environment, production
+    - testing (Meteor, Angular2)
+    - i18n
+    - speed comparison (Blaze, Angular2)
+    - Meteor build (.meteor)
+    - Meteor version solver
+    - Meteor Packages

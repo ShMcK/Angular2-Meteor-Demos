@@ -1,0 +1,8 @@
+/* CSS declarations go here */
+.btn-group {
+  margin-right: 30px;
+}
+
+header, main, nav {
+ padding: 10px 40px;
+}
