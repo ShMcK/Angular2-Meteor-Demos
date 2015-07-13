@@ -1,8 +1,9 @@
-import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
+import {Component, View, NgFor, bootstrap, Inject, Injector} from 'angular2/angular2';
 
 class Limit {
-  count: number;
-  constructor () {
+  count:number;
+
+  constructor() {
     this.count = 1;
   }
 }
@@ -14,13 +15,18 @@ class Limit {
   templateUrl: 'client/views/count.ng.html'
 })
 class ItemCount {
-  constructor(public limit:Limit) {
+  limit:any;
+
+  constructor() {
+
   }
 
   changeCount(newCount) {
-    this.limit.count = newCount;
+    //this.limit.count = newCount;
   }
 }
+
+declare var Items:any;
 
 @Component({
   selector: 'item-rows'
@@ -32,9 +38,12 @@ class ItemCount {
 class ItemRows {
   items:any;
 
-  constructor(public limit:Limit) {
-    Meteor.subscribe('items', 5000);
-    this.items = Items.find()
+  constructor() { //public limit:Limit
+    var self = this;
+    Meteor.subscribe('items', 10);
+    Tracker.autorun(zone.bind(() => {
+      self.items = Items.find().fetch();
+    }));
   }
 }
 
@@ -45,6 +54,9 @@ class ItemRows {
   templateUrl: 'client/views/performance-tests.ng.html',
   directives: [ItemRows, ItemCount]
 })
-class PerformanceTests{}
+class PerformanceTests {
+}
 
-bootstrap(PerformanceTests);
+bootstrap(PerformanceTests, [
+  Limit
+]);

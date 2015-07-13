@@ -1,14 +1,14 @@
 <tbody>
-  <tr *for="#item of items; #i = index + 1">
-    <td>{{i}}</td>
-    <td [style.color]="item.color">&#9679;</td>
-    <td>{{item.profile.name}}</td>
-    <td>{{item.profile.surname}}</td>
-    <td>{{item.profile.name}} {{item.profile.surname}}</td>
-    <td>{{item.profile.username}}</td>
-    <td>{{item.profile.email}}</td>
-    <td>{{item.number}}</td>
-    <td>{{item.title}}</td>
-    <td>{{item.description}}</td>
-  </tr>
+<tr *ng-for="#item of items; #i = index">
+  <td>{{i + 1}}</td>
+  <td [style.color]="item.color">&#9679;</td>
+  <td>{{item.profile.name}}</td>
+  <td>{{item.profile.surname}}</td>
+  <td>{{item.profile.name}} {{item.profile.surname}}</td>
+  <td>{{item.profile.username}}</td>
+  <td>{{item.profile.email}}</td>
+  <td>{{item.number}}</td>
+  <td>{{item.title}}</td>
+  <td>{{item.description}}</td>
+</tr>
 </tbody>
