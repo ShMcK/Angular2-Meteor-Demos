@@ -10,7 +10,7 @@
 * 02 DATA SETUP
      - Mongo Collections
      - Meteor.Startup()
-     - DDP
+     - DDP Basics
      - Autopublish vs. Meteor.Publish/Subscribe
      - Angular 2 Lists (NgFor)
      
@@ -21,7 +21,6 @@
      - Meteor.userId()
      - Meteor mongo
      - Reset DB
-     - Meteor Avatar (?)
      
 * 04 NG2 TEMPLATE SYNTAX
      - Angular 2 Local Variables #
@@ -58,11 +57,16 @@
     - Meteor.object()
     - Unsubscribe
     
-Notes (Todo/Mention)
-    - environment, production
-    - testing (Meteor, Angular2)
+    
+* 10 ENVIRONMENTS
+    - Development / Production
+    
+* 11 TESTING
+    - Meteor
+    - Angular2
+
+* 12 INTERNATIONALIZATION
     - i18n
-    - speed comparison (Blaze, Angular2)
-    - Meteor build (.meteor)
-    - Meteor version solver
-    - Meteor Packages
+
+* 13 PACKAGES
+    - Additional Packages
