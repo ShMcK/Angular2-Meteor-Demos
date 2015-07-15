@@ -3,16 +3,19 @@ Session.setDefault('running', true);
 
 Template.rows.helpers({
   'rows': function () {
-    if (Session.get('running')) {
-      // NOT WORKING
-      return Items.find({}, {limit: Session.get('limit')}).fetch()
-        .map(function (item, index) {
-          item.index = index;
-          return item;
-        });
-    } else {
-      return null;
-    }
+    Tracker.autorun(function () {
+      if (Session.get('running')) {
+
+        return Items.find({}, {limit: Session.get('limit')}).fetch()
+          .map(function (item, index) {
+            item.index = index;
+            return item;
+          });
+      } else {
+        return null;
+      }
+    });
+
   }
 });
 

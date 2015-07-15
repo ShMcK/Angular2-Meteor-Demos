@@ -1,0 +1,15 @@
+{
+  "name": "performance-tests",
+  "version": "1.0.0",
+  "description": "Performance test comparisons using Meteor",
+  "main": "benchmark.spec.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shawn McKay <me@shmck.com>",
+  "license": "ISC",
+  "dependencies": {
+    "benchmark": "^1.0.0",
+    "microtime": "^1.4.2"
+  }
+}
