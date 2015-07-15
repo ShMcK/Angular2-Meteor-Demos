@@ -46,7 +46,7 @@ Test your expectations and rank the three in your mind. You might be surprised b
 
 ### 1. Blaze
 
-**Version**: Blaze 2.12.1
+**Version**: Blaze 2.1.2
 
 ##### Setup
 
@@ -123,7 +123,7 @@ SUMMARY
 
 ### 2. Angular-Meteor
 
-**Version**: Angular 1.4.1
+**Version**: Angular 1.4.2
 
 ##### Setup
 

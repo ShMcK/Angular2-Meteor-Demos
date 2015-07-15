@@ -6,7 +6,7 @@ Template.rows.helpers({
     Tracker.autorun(function () {
       if (Session.get('running')) {
 
-        return Items.find({}, {limit: Session.get('limit')}).fetch()
+        return Items.find({}, {limit: Session.get('limit')})
           .map(function (item, index) {
             item.index = index;
             return item;
@@ -15,7 +15,6 @@ Template.rows.helpers({
         return null;
       }
     });
-
   }
 });
 
