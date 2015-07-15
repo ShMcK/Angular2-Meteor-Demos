@@ -8,7 +8,13 @@ function AppCtrl($meteor) {
   self.selected = 10;
 
   self.runTest = function () {
-    self.rows = $meteor.collection(Items).subscribe({}, {limit: this.selectedCount});
+    console.log('running...');
+    console.log(self.selected);
+    self.rows = $meteor.collection(function () {
+      return Items.find({}, {
+        limit: self.selected
+      });
+    });
   };
   self.reset = function () {
     self.rows = null;
