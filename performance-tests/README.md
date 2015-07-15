@@ -1,4 +1,4 @@
-#WIP
+#WIP (COMING SOON)
 
 #Comparing Meteor FrontEnds
 
@@ -56,66 +56,64 @@ Test your expectations and rank the three in your mind. You might be surprised b
 	
 ##### Template Sample
 
-```
-   <button id="run">Run</button>
 
-{{#each rows}}
-    <tr>
-      <td>{{index}}</td>
-      <td style="color: {{color}}">&#9679;</td>
-      <td>{{profile.name}}</td>
-      ...
-    </tr>
-  {{/each}}
-```
+    <button id="run">Run</button>
+
+    {{#each rows}}
+        <tr>
+          <td>{{index}}</td>
+          <td style="color: {{color}}">&#9679;</td>
+          <td>{{profile.name}}</td>
+          ...
+        </tr>
+      {{/each}}
+
 
 Like [Ember](http://emberjs.com/), Blaze uses [Handlebars](http://handlebarsjs.com/) syntax. Events, such as clicks, are targetted using selectors (ids, classes, etc.).
 
 
 ##### Code Sample
 
-```
-Session.setDefault('limit', 1);
-Session.setDefault('running', true);
 
-Template.rows.helpers({
-  'rows': function () {
-    Tracker.autorun(function () {
-      if (Session.get('running')) {
+    Session.setDefault('limit', 1);
+    Session.setDefault('running', true);
 
-        return Items.find({}, {limit: Session.get('limit')}).fetch()
-          .map(function (item, index) {
-            item.index = index;
-            return item;
-          });
-      } else {
-        return null;
+    Template.rows.helpers({
+      'rows': function () {
+        Tracker.autorun(function () {
+          if (Session.get('running')) {
+
+            return Items.find({}, {limit: Session.get('limit')}).fetch()
+               .map(function (item, index) {
+                item.index = index;
+                return item;
+              });
+          } else {
+            return null;
+          }
+        });
       }
     });
 
-  }
-});
+    Template.count.helpers({
+      'counts': function () {
+        return [10, 100, 500, 1000, 2500, 5000];
+      }
+    });
 
-Template.count.helpers({
-  'counts': function () {
-    return [10, 100, 500, 1000, 2500, 5000];
-  }
-});
-
-Template.count.events({
-  'click .mdl-radio__button': function (e) {
-    var value = $(e.currentTarget).val();
-    Session.set('limit', value);
-  },
-  'click #reset': function () {
-    Session.set('limit', 0);
-    Session.set('running', false);
-  },
-  'click #run': function () {
-    Session.set('running', true);
-  }
-});
-```
+    Template.count.events({
+      'click .mdl-radio__button': function (e) {
+        var value = $(e.currentTarget).val();
+        Session.set('limit', value);
+      },
+      'click #reset': function () {
+        Session.set('limit', 0);
+        Session.set('running', false);
+      },
+      'click #run': function () {
+        Session.set('running', true);
+      }
+    });
 
 Blaze makes use of global variables called `Sessions` to communicate between templates and events. `Helpers` supply the data to a template, and `Events` handle... well, the events. 
 
@@ -136,42 +134,39 @@ SUMMARY
 
 ##### Template
 
-```
-  <button ng-click="app.run()"></button>
 
-  <tr ng-repeat="item in app.rows track by $index">
-    <td>{{$index + 1}}</td>
-    <td ng-style="{color: item.color}">&#9679;</td>
-    <td>{{item.profile.name}}</td>
-  </tr>
-```
+    <button ng-click="app.run()"></button>
+
+      <tr ng-repeat="item in app.rows track by $index">
+        <td>{{$index + 1}}</td>
+        <td ng-style="{color: item.color}">&#9679;</td>
+        <td>{{item.profile.name}}</td>
+      </tr>
 
 
 ##### Code
 
-```
-function AppCtrl($meteor) {
-
-  $meteor.subscribe('items');
+    function AppCtrl($meteor) {
+    
+      $meteor.subscribe('items');
   
-  var self = this;
-  self.counts = [10, 100, 500, 1000, 2500, 5000];
-  self.selected = 10;
+      var self = this;
+      self.counts = [10, 100, 500, 1000, 2500, 5000];
+      self.selected = 10;
 
-  self.run = function () {
-      self.rows = $meteor.collection(function () {
-      return Items.find({}, {
-        limit: self.selected
-      });
-    });
-  };
+      self.run = function () {
+          self.rows = $meteor.collection(function () {
+          return Items.find({}, {
+            limit: self.selected
+          });
+        });
+      };
   
-  self.reset = function () {
-    self.rows = null;
-    self.selected = 0;
-  };
-}
-```
+      self.reset = function () {
+        self.rows = null;
+        self.selected = 0;
+      };
+    }
 
 ##### Performance
 
@@ -179,7 +174,6 @@ A few optimizations were made to speed things up. These include:
 
 * `track by` with `ng-repeat`
 * `$compileProvider.debugInfoEnabled(false);` offers a speed increase by disabling console debugging
-* strict Dependency Injection mode ([read more](https://docs.angularjs.org/guide/production))
 
 For further performance gains, consider [running angular on a web worker](http://glebbahmutov.com/blog/run-angular-in-web-worker/).
 
@@ -199,43 +193,39 @@ Now that's a quickstart.
 
 ##### Template
 
-```
- <button (click)="run()">Run</button>
+    <button (click)="run()">Run</button>
  
-<tr *ng-for="#item of items; #i = index">
-      <td>{{i + 1}}</td>
-      <td [style.color]="item.color">&#9679;</td>
-      <td>{{item.profile.name}}</td>
-</tr>
-```
+    <tr *ng-for="#item of items; #i = index">
+        <td>{{i + 1}}</td>
+        <td [style.color]="item.color">&#9679;</td>
+        <td>{{item.profile.name}}</td>
+    </tr>
 
 Angular 2 also uses the `{{ }}` binding syntax. `(event)`'s are wrapped in round brackets & `[properties]` in square brackets.
 
 ##### Code (ES2015 / TypeScript)
 
-```
-class PerformanceTests {
-  constructor() {
-    Meteor.subscribe('items');
-    this.counts = [10, 100, 500, 1000, 2500, 5000];
-    this.selectedCount = 1;
-    this.run();
-  }
+    class PerformanceTests {
+      constructor() {
+        Meteor.subscribe('items');
+        this.counts = [10, 100, 500, 1000, 2500, 5000];
+        this.selectedCount = 1;
+        this.run();
+      }
 
-  run() {
-    this.items = Items.find({}, {limit: this.selectedCount}).fetch();
-  }
+      run() {
+        this.items = Items.find({}, {limit: this.selectedCount}).fetch();
+      }
 
-  reset() {
-    this.selectedCount = 0;
-    this.items = null;
-  }
+      reset() {
+        this.selectedCount = 0;
+        this.items = null;
+      }
 
-  setCountValue(value) {
-    this.selectedCount = value;
-  }
-}
-```
+      setCountValue(value) {
+        this.selectedCount = value;
+      }
+    }
 
 If this looks strange to you, it's just the new ES2015 `class` syntax. The `constructor` creates the initial properties, and functions can be attached as `methods` of the class.
 
@@ -249,8 +239,13 @@ Angular 2 is still in an early alpha, but it has been built with performance in 
 
 RESULTS HERE
 
+RESULT IMAGE
+
 ## Conclusion
 
 CONCLUSION HERE
 
 
+
+
+TODO: REACT-METEOR ?
