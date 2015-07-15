@@ -1,6 +1,6 @@
 Meteor.startup(function () {
   if (Items.find().count() === 0) {
-    var max = 20000;
+    var max = 5000;
     var items = [];
 
     // meteor-fake: https://github.com/anticoders/meteor-fake/

@@ -7,14 +7,11 @@ function AppCtrl($meteor) {
   self.counts = [10, 100, 500, 1000, 2500, 5000];
   self.selected = 10;
 
-  self.run = function () {
-    console.log('number of rows: ', self.selected);
-    // NOT WORKING
-    self.rows = $meteor.collection(Items, {limit: self.selected}).fetch();
+  self.runTest = function () {
+    self.rows = $meteor.collection(Items).subscribe({}, {limit: this.selectedCount});
   };
   self.reset = function () {
     self.rows = null;
     self.selected = 0;
-    console.log('reset (null, 0): ', self.rows, self.selected);
   };
 }
