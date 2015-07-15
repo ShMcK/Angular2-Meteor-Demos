@@ -3,7 +3,7 @@ angular.module('app')
 
 function AppCtrl($meteor, $scope) {
   var self = this;
-  self.counts = [10, 500, 1000, 2500, 5000];
+  self.counts = [10, 100, 500, 1000, 2500, 5000];
   self.selected = 10;
 
   self.run = function () {

@@ -98,23 +98,23 @@
 
 <template name="count">
   <section class="mdl-grid">
-    <div class="mdl-cell mdl-cell--6-col">
-      <p>Number of Items:</p>
-      <button id="reset" class="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-        Reset
+    <div class="mdl-cell mdl-cell--10-col counts">
+      <span class="title">Item Count:&nbsp;</span>
+
+        {{#each counts}}
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="{{this}}">
+            <input type="radio" id="{{this}}" class="mdl-radio__button" name="options" value="{{this}}"/>
+            <span class="mdl-radio__label">{{this}}</span>
+          </label>
+        {{/each}}
+
+      <button id="run"
+              class="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">Run
       </button>
-      <button id="500" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">500</button>
-      <button id="1000" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">1000</button>
-      <button id="2500" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">2500</button>
-      <button id="5000" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">5000</button>
+      <button id="reset"
+              class="mdl-button mdl-button--accent mdl-js-button mdl-button--raised mdl-js-ripple-effect">Reset
+      </button>
     </div>
 
-    <div class="mdl-cell mdl-cell--4-col">
-      <p>Average: ##ms</p>
-
-      <p>Duration: ##ms</p>
-
-      <p>Reload: ##ms</p>
-    </div>
   </section>
 </template>

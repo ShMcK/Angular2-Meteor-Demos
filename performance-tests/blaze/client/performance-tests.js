@@ -1,5 +1,4 @@
-Meteor.subscribe("items");
-Session.setDefault('limit', 5000);
+Session.setDefault('limit', 1);
 
 Template.rows.helpers({
   'rows': function () {
@@ -12,27 +11,23 @@ Template.rows.helpers({
   }
 });
 
-function selected(newLimit) {
-  Session.set('limit', newLimit);
-  console.log('limit: ', Session.get('limit'));
-  startTime = new Date();
-  console.log('start: ', startTime);
-}
+Template.count.helpers({
+  'counts': function () {
+    return [10, 100, 500, 1000, 2500, 5000];
+  }
+});
 
 Template.count.events({
+  'click .mdl-radio__button': function (e) {
+    var value = $(e.currentTarget).val();
+    console.log(value);
+    Session.set('limit', value);
+  },
   'click #reset': function () {
-    selected(0);
+    Session.set('limit', 0);
   },
-  'click #500': function () {
-    selected(500);
-  },
-  'click #1000': function () {
-    selected(1000);
-  },
-  'click #2500': function () {
-    selected(2500);
-  },
-  'click 5000': function () {
-    selected(5000);
+  'click #run': function () {
+    console.log(Session.get('limit'));
+    //Meteor.subscribe("items", Session.get('limit'));
   }
 });
