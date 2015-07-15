@@ -2,9 +2,9 @@
 
 #Comparing Meteor FrontEnds
 
-Meteor is getting a bit more promiscuious on the frontend. But before you start flirting with an alternative to Blaze, you probably want to see a performance comparison. Each frontend has it's own style, so we'll take a brief overview of how they look & work, you can draw your own conclusions about the most elegant approach.
+Meteor is getting a bit more promiscuious on the frontend. But before you start flirting with an alternative to Blaze, you probably want to see a performance comparison. Each frontend has it's own style, so we'll also take a brief overview of each framework's coding style. You can draw your own conclusions about the most elegant approach.
 
-## 1. Performance
+## Performance Setup
 
 ##### Measure
 
@@ -16,6 +16,8 @@ Performance was measured using the [cpu profile](https://developer.chrome.com/de
 * viewed the event in the profile, and noted the run time
 
 Times were recorded three times each & averaged. 
+
+*Note: [Angular's Benchpress](https://github.com/angular/angular/blob/master/modules/benchpress/docs/index.md) would have been a great candidate over manual labor here. Unfortunately, it's still in development without docs or samples.* 
 
 ##### Method
 
@@ -32,17 +34,17 @@ On the client, only a cursor of these are sent when needed.
 	
 	Items.find({}, { limit: selected });
 
+Each rendered item has 9 keys & an index value.
 
 ##### Results
 
-I'll put a graph of the speed results at the bottom. Can you feel the suspense?
+I'll put a graph of the speed results at the bottom, with performance summaries along the way. Can you feel the suspense?
 
-Test your expectations and rank the three in your mind. You might be surprised.
+Test your expectations and rank the three in your mind. You might be surprised by the results.
 
 
-## 2. Elegance
 
-### Blaze
+### 1. Blaze
 
 **Version**: Blaze 2.12.1
 
@@ -117,8 +119,11 @@ Template.count.events({
 
 Blaze makes use of global variables called `Sessions` to communicate between templates and events. `Helpers` supply the data to a template, and `Events` handle... well, the events. 
 
+##### Performance
 
-### Angular-Meteor
+SUMMARY
+
+### 2. Angular-Meteor
 
 **Version**: Angular 1.4.1
 
@@ -168,9 +173,17 @@ function AppCtrl($meteor) {
 }
 ```
 
+##### Performance
 
+A few optimizations were made to speed things up. These include:
 
-### Angular 2 + Meteor
+* `track by` with `ng-repeat`
+* `$compileProvider.debugInfoEnabled(false);` offers a speed increase by disabling console debugging
+* strict Dependency Injection mode ([read more](https://docs.angularjs.org/guide/production))
+
+For further performance gains, consider [running angular on a web worker](http://glebbahmutov.com/blog/run-angular-in-web-worker/).
+
+### 3. Angular 2 + Meteor
 
 **Version**: Angular 2.0.0.alpha.25
 
@@ -228,11 +241,16 @@ If this looks strange to you, it's just the new ES2015 `class` syntax. The `cons
 
 Angular 2 plays nice with other frameworks, so Meteor just works inside it. No special services. Just JavaScript. 
 
-## 1. Performance Results.
+## 3. Performance Comparison
 
-RESULTS
+Angular 2 is still in an early alpha, but it has been built with performance in mind. The Angular team has promised even greater performance improvements including built in web-worker support.
+
+## Results
+
+RESULTS HERE
 
 ## Conclusion
 
-Draw your own conclusions. 
+CONCLUSION HERE
+
 

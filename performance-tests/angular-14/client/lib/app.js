@@ -3,7 +3,9 @@ angular.module('app', [
 ]);
 
 function onReady() {
-  angular.bootstrap(document, ['app']);
+  angular.bootstrap(document, ['app'], {
+    strictDi: true
+  });
 }
 
 if (Meteor.isCordova)
