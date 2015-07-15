@@ -1,13 +1,17 @@
 Session.setDefault('limit', 1);
+Session.setDefault('running', true);
 
 Template.rows.helpers({
   'rows': function () {
-    return Items.find({})
-      //.fetch()
-      .map(function (item, index) {
-        item.index = index;
-        return item;
-      });
+    if (Session.get('running')) {
+      return Items.find({}, {limit: Session.get('limit')}).fetch()
+        .map(function (item, index) {
+          item.index = index;
+          return item;
+        });
+    } else {
+      return null;
+    }
   }
 });
 
@@ -20,14 +24,16 @@ Template.count.helpers({
 Template.count.events({
   'click .mdl-radio__button': function (e) {
     var value = $(e.currentTarget).val();
-    console.log(value);
     Session.set('limit', value);
+    console.log('value: ', value);
   },
   'click #reset': function () {
     Session.set('limit', 0);
+    Session.set('running', false);
+    console.log('reset', Session.get('limit'), Session.get('running'));
   },
   'click #run': function () {
-    console.log(Session.get('limit'));
-    //Meteor.subscribe("items", Session.get('limit'));
+    Session.set('running', true);
+    console.log('running: ', Session.get('running'));
   }
 });

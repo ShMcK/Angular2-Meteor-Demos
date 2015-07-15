@@ -4,7 +4,7 @@
     <span class="title">Item Count:&nbsp;
 
       <button *ng-for="#count of counts"
-              (click)="setCountValue(count)" class="mdl-button">{{count}}</button>
+              (click)="setCountValue(count)" class="mdl-button" id="{{count}}">{{count}}</button>
 
 
     <button (click)="run()"

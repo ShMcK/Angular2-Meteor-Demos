@@ -2,7 +2,6 @@ import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
 
 declare var Items:any;
 
-
 @Component({
   selector: 'performance-tests'
 })
@@ -24,7 +23,7 @@ class PerformanceTests {
 
   run() {
     console.log('running...');
-    this.items = Items.find({}, {limit: this.selectedCount}).fetch();
+    this.items = Items.find();
   }
 
   reset() {

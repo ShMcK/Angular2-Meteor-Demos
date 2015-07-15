@@ -101,12 +101,12 @@
     <div class="mdl-cell mdl-cell--10-col counts">
       <span class="title">Item Count:&nbsp;</span>
 
-        {{#each counts}}
-          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="{{this}}">
-            <input type="radio" id="{{this}}" class="mdl-radio__button" name="options" value="{{this}}"/>
-            <span class="mdl-radio__label">{{this}}</span>
-          </label>
-        {{/each}}
+      {{#each counts}}
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="{{this}}">
+          <input type="radio" id="{{this}}" class="mdl-radio__button" name="options" value="{{this}}"/>
+          <span class="mdl-radio__label">{{this}}</span>
+        </label>
+      {{/each}}
 
       <button id="run"
               class="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">Run
