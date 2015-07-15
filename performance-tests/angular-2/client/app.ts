@@ -1,60 +1,42 @@
 import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
 
-//class Limit {
-//  count:number;
-//
-//  constructor() {
-//    this.count = 1;
-//  }
-//}
-
-//@Component({
-//  selector: 'item-count'
-//})
-//@View({
-//  templateUrl: 'client/views/count.ng.html'
-//})
-//class ItemCount {
-//  limit:any;
-//
-//  constructor() {
-//
-//  }
-//
-//  changeCount(newCount) {
-//    //this.limit.count = newCount;
-//  }
-//}
-
 declare var Items:any;
 
-@Component({
-  selector: 'item-rows'
-})
-@View({
-  templateUrl: 'client/views/rows.ng.html',
-  directives: [NgFor]
-})
-class ItemRows {
-  items:any;
-
-  constructor() { //public limit:Limit
-    var self = this;
-    Meteor.subscribe('items', 10);
-    Tracker.autorun(zone.bind(() => {
-      self.items = Items.find().fetch();
-    }));
-  }
-}
 
 @Component({
   selector: 'performance-tests'
 })
 @View({
-  templateUrl: 'client/views/performance-tests.ng.html',
-  directives: [ItemRows]
+  templateUrl: 'client/performance-tests.ng.html',
+  directives: [NgFor]
 })
 class PerformanceTests {
+  items:any;
+  counts:number[];
+  selectedCount: number;
+
+  constructor() {
+    Meteor.subscribe('items');
+    this.counts = [10, 100, 500, 1000, 2500, 5000];
+    this.selectedCount = 1;
+    this.run();
+  }
+
+  run() {
+    console.log('running...');
+    this.items = Items.find({}, {limit: this.selectedCount}).fetch();
+  }
+
+  reset() {
+    this.selectedCount = 0;
+    this.items = null;
+    console.log(this.selectedCount);
+  }
+
+  setCountValue(value) {
+    this.selectedCount = value;
+    console.log(this.selectedCount);
+  }
 }
 
 bootstrap(PerformanceTests);
