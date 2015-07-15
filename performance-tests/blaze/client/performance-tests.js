@@ -5,7 +5,6 @@ var runTracker = new Tracker.Dependency;
 
 Template.rows.helpers({
   'rows': function () {
-
     // Not working, why???
     runTracker.depend();
     if (Session.get('running')) {

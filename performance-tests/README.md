@@ -2,7 +2,9 @@
 
 #Comparing Meteor FrontEnds
 
-Meteor is getting a bit more promiscuious on the frontend. But before you start flirting with an alternative to Blaze, you probably want to see a performance comparison. Each frontend has it's own style, so we'll also take a brief overview of each framework's coding style. You can draw your own conclusions about the most elegant approach.
+Meteor began as an opinionated fullstack framework, but the community has expanded its flexibility. Don't want Mongo? Consider using [PostgreSQL](https://github.com/numtel/meteor-pg) or [Redis](https://github.com/meteor/redis-livedata). Now the frontend is flexing as well. Community built alternatives to Mongo's native Blaze are starting to gain some weight, notably [Angular-Meteor](hhttp://angular-meteor.com/) & [React-Meteor](https://github.com/reactjs/react-meteor). 
+
+But before you start flirting with an alternative to Blaze, you probably want to see a comparison; we'll take into account both **performance** & **coding style**. You can draw your own conclusions about the most elegant or powerful approach. I'll even throw in Angular2-Meteor as a bonus: it's not really a thing yet, but somehow it already works.
 
 ## Performance Setup
 
@@ -14,10 +16,9 @@ Performance was measured using the [cpu profile](https://developer.chrome.com/de
 * chrome dev tools -> profile -> cpu profile: *record*
 * selected a number of items on the page & pressed run
 * viewed the event in the profile, and noted the run time
+* repeat 3 times & take the average 
 
-Times were recorded three times each & averaged. 
-
-*Note: [Angular's Benchpress](https://github.com/angular/angular/blob/master/modules/benchpress/docs/index.md) would have been a great candidate over manual labor here. Unfortunately, it's still in development without docs or samples.* 
+*Note: Angular's framework agnostic [Benchpress](https://github.com/angular/angular/blob/master/modules/benchpress/docs/index.md) would have been a great candidate over manual labor here. Unfortunately, Benchpress is still in development and could use some docs or samples.* 
 
 ##### Method
 
@@ -28,21 +29,19 @@ Each framework has the same Meteor backend. They each subscribe to 5,000 items, 
 	});
 	
 	
-On the client, only a cursor of these are sent when needed.
+On the client, only a cursor of these are supplied when needed.
 
 	Meteor.subscribe('items');
 	
 	Items.find({}, { limit: selected });
 
-Each rendered item has 9 keys & an index value.
+Each rendered item has 8 keys of different sizes, and the framework must do a bit of work to make the data fit.
 
 ##### Results
 
-I'll put a graph of the speed results at the bottom, with performance summaries along the way. Can you feel the suspense?
+I'll put a graph of the speed results at the bottom, with performance summaries along the way. I'd give you the goods now, but then there'd be no suspense. Make an educated guess of how they turned out, and we'll see if you're right.
 
-Test your expectations and rank the three in your mind. You might be surprised by the results.
-
-
+Let's go through the front-end framework's, starting with Blaze.
 
 ### 1. Blaze
 
@@ -69,7 +68,7 @@ Test your expectations and rank the three in your mind. You might be surprised b
       {{/each}}
 
 
-Like [Ember](http://emberjs.com/), Blaze uses [Handlebars](http://handlebarsjs.com/) syntax. Events, such as clicks, are targetted using selectors (ids, classes, etc.).
+Like [Ember](http://emberjs.com/), Blaze uses [Handlebars](http://handlebarsjs.com/) syntax. Events, such as clicks, are targeted using selectors (ids, classes, etc.). 
 
 
 ##### Code Sample
@@ -115,11 +114,13 @@ Like [Ember](http://emberjs.com/), Blaze uses [Handlebars](http://handlebarsjs.c
       }
     });
 
-Blaze makes use of global variables called `Sessions` to communicate between templates and events. `Helpers` supply the data to a template, and `Events` handle... well, the events. 
+Blaze cleanly separates the code by separating `events` such as a click, with the supplied data from `helpers`. Unfortunately, there's no direct way to move from an `event` to a `helper` so you have to use a messy global variable called a `Session`.
+
+A triggers called a `Tracker` tells data to re-run when a change is made. 
 
 ##### Performance
 
-SUMMARY
+  SUMMARY
 
 ### 2. Angular-Meteor
 
@@ -170,12 +171,10 @@ SUMMARY
 
 ##### Performance
 
-A few optimizations were made to speed things up. These include:
+You may have heard Angular is slow, but [that's not really true](http://blog.500tech.com/is-reactjs-fast/).
 
-* `track by` with `ng-repeat`
-* `$compileProvider.debugInfoEnabled(false);` offers a speed increase by disabling console debugging
+A few super basic optimizations such as `track by` & `debugInfoEnabled(false)` here speed things up. 
 
-For further performance gains, consider [running angular on a web worker](http://glebbahmutov.com/blog/run-angular-in-web-worker/).
 
 ### 3. Angular 2 + Meteor
 
@@ -189,7 +188,7 @@ For further performance gains, consider [running angular on a web worker](http:/
 	meteor add netanelgilad:angular2-typescript
 	meteor
 
-Now that's a quickstart.
+Now that's a quickstart you could memorize.
 
 ##### Template
 
@@ -227,13 +226,15 @@ Angular 2 also uses the `{{ }}` binding syntax. `(event)`'s are wrapped in round
       }
     }
 
-If this looks strange to you, it's just the new ES2015 `class` syntax. The `constructor` creates the initial properties, and functions can be attached as `methods` of the class.
+If this looks strange to you, it's just the new ES2015 `class` syntax. The `constructor` creates the initial properties, and functions can be attached as methods on the class.
 
-Angular 2 plays nice with other frameworks, so Meteor just works inside it. No special services. Just JavaScript. 
+Angular 2 plays nice with other frameworks, so Meteor just works inside of it. No special $services. Just JavaScript.
+ 
+Except Blaze components. They currently don't work inside of the bootstrapped Angular 2 app.
 
 ## 3. Performance Comparison
 
-Angular 2 is still in an early alpha, but it has been built with performance in mind. The Angular team has promised even greater performance improvements including built in web-worker support.
+COMPARISON
 
 ## Results
 
