@@ -22,19 +22,16 @@ class PerformanceTests {
   }
 
   run() {
-    console.log('running...');
-    this.items = Items.find();
+    this.items = Items.find({}, {limit: this.selectedCount}).fetch();
   }
 
   reset() {
     this.selectedCount = 0;
     this.items = null;
-    console.log(this.selectedCount);
   }
 
   setCountValue(value) {
     this.selectedCount = value;
-    console.log(this.selectedCount);
   }
 }
 
