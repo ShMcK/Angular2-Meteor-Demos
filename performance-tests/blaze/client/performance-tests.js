@@ -1,11 +1,9 @@
-/* not quite working */
-
 Meteor.subscribe("items");
-Session.setDefault('limit', 1);
+Session.setDefault('limit', 5000);
 
 Template.rows.helpers({
   'rows': function () {
-    return Items.find({}, {limit: Session.get('limit')})
+    return Items.find({})
       //.fetch()
       .map(function (item, index) {
         item.index = index;
@@ -13,11 +11,6 @@ Template.rows.helpers({
       });
   }
 });
-
-//Template.rows.rendered = function () {
-//  console.log('rendered');
-//  console.log(new Date.now())
-//};
 
 function selected(newLimit) {
   Session.set('limit', newLimit);

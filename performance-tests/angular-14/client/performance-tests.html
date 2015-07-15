@@ -12,7 +12,7 @@
 <main class="mdl-layout__content">
   <!-- select Framework -->
   <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-cell mdl-cell--3-col">
       <div class="btn-group" role="group" aria-label="Blaze">
         <h5 class="title">Blaze</h5>
         <a href="/">
@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-cell mdl-cell--3-col">
       <div class="btn-group" role="group" aria-label="AngularJS">
         <h5 class="mdl-color-text--accent display-1">AngularJS</h5>
         <a href="/">
@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <div class="mdl-cell mdl-cell--2-col">
+    <div class="mdl-cell mdl-cell--3-col">
       <div class="btn-group" role="group" aria-label="Angular 2">
         <h5 class="title">Angular2</h5>
         <a href="/">
@@ -45,33 +45,9 @@
       </div>
     </div>
   </div>
-  <!-- Select # of Docs 500 | 1000 | 2500 | 5000 -->
-
-  <item-count></item-count>
-
-  <!-- table -->
-  <section>
-
-    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-      <thead>
-      <tr>
-        <th>Index</th>
-        <th class="mdl-data-table__cell--non-numeric">Color</th>
-        <th class="mdl-data-table__cell--non-numeric">Name</th>
-        <th class="mdl-data-table__cell--non-numeric">Surname</th>
-        <th class="mdl-data-table__cell--non-numeric">Full Name</th>
-        <th class="mdl-data-table__cell--non-numeric">Username</th>
-        <th class="mdl-data-table__cell--non-numeric">Email</th>
-        <th>Number</th>
-        <th class="mdl-data-table__cell--non-numeric">Title</th>
-        <th class="mdl-data-table__cell--non-numeric">Paragraph</th>
-      </tr>
-      </thead>
-
-      <item-rows></item-rows>
-
-    </table>
-  </section>
 </main>
+
+<!-- APP -->
+<div ng-include="'client/app.ng.html'"></div>
 
 </body>

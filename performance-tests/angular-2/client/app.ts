@@ -1,30 +1,30 @@
-import {Component, View, NgFor, bootstrap, Inject, Injector} from 'angular2/angular2';
+import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
 
-class Limit {
-  count:number;
+//class Limit {
+//  count:number;
+//
+//  constructor() {
+//    this.count = 1;
+//  }
+//}
 
-  constructor() {
-    this.count = 1;
-  }
-}
-
-@Component({
-  selector: 'item-count'
-})
-@View({
-  templateUrl: 'client/views/count.ng.html'
-})
-class ItemCount {
-  limit:any;
-
-  constructor() {
-
-  }
-
-  changeCount(newCount) {
-    //this.limit.count = newCount;
-  }
-}
+//@Component({
+//  selector: 'item-count'
+//})
+//@View({
+//  templateUrl: 'client/views/count.ng.html'
+//})
+//class ItemCount {
+//  limit:any;
+//
+//  constructor() {
+//
+//  }
+//
+//  changeCount(newCount) {
+//    //this.limit.count = newCount;
+//  }
+//}
 
 declare var Items:any;
 
@@ -52,11 +52,9 @@ class ItemRows {
 })
 @View({
   templateUrl: 'client/views/performance-tests.ng.html',
-  directives: [ItemRows, ItemCount]
+  directives: [ItemRows]
 })
 class PerformanceTests {
 }
 
-bootstrap(PerformanceTests, [
-  Limit
-]);
+bootstrap(PerformanceTests);

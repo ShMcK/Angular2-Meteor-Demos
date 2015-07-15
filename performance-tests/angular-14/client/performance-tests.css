@@ -12,3 +12,7 @@ header, main, nav {
 .btn-group button {
   margin-left: 20px;
 }
+
+.counts label {
+  margin-right: 12px;
+}
