@@ -1,20 +1,23 @@
 Session.setDefault('limit', 1);
-Session.setDefault('running', true);
+Session.setDefault('running', false);
+
+var runTracker = new Tracker.Dependency;
 
 Template.rows.helpers({
   'rows': function () {
-    Tracker.autorun(function () {
-      if (Session.get('running')) {
 
-        return Items.find({}, {limit: Session.get('limit')})
-          .map(function (item, index) {
-            item.index = index;
-            return item;
-          });
-      } else {
-        return null;
-      }
-    });
+    // Not working, why???
+    runTracker.depend();
+    if (Session.get('running')) {
+      return Items.find({}, {limit: Session.get('limit')})
+        // add index
+        .map(function (item, index) {
+          item.index = index;
+          return item;
+        });
+    } else {
+      return null;
+    }
   }
 });
 
@@ -33,10 +36,12 @@ Template.count.events({
   'click #reset': function () {
     Session.set('limit', 0);
     Session.set('running', false);
+    runTracker.changed();
     console.log('reset', Session.get('limit'), Session.get('running'));
   },
   'click #run': function () {
     Session.set('running', true);
+    runTracker.changed();
     console.log('running: ', Session.get('running'));
   }
 });
