@@ -1,19 +1,21 @@
-Meteor.subscribe('items');
-Session.setDefault('limit', 1);
-Session.setDefault('rows', getItems());
-
 function getItems() {
   return Items.find({}, {limit: Session.get('limit')}).fetch()
-  // add index
-  .map(function (item, index) {
-    item.index = index;
-    return item;
-  });
+    .map(function (item, index) {
+      item.index = index + 1;
+      return item;
+    });
 }
+
+Template.rows.onCreated(function () {
+  Meteor.subscribe('items');
+  Session.setDefault('limit', 1);
+  Session.set('rows', getItems());
+});
 
 Template.rows.helpers({
   'rows': function () {
-    return Session.get('rows');
+    //return Session.get('rows');
+    return getItems();
   }
 });
 
@@ -36,5 +38,6 @@ Template.count.events({
   },
   'click #run': function () {
     Session.set('rows', getItems());
+    console.log('rows', Session.get('rows'));
   }
 });
