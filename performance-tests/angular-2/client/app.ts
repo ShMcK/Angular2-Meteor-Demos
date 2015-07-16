@@ -35,4 +35,6 @@ class PerformanceTests {
   }
 }
 
-bootstrap(PerformanceTests);
+bootstrap(PerformanceTests, [
+  // jitInjectables // performance increase
+]);

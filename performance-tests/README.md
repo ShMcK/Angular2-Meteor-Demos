@@ -68,7 +68,7 @@ Let's go through the front-end framework's, starting with Blaze.
       {{/each}}
 
 
-Like [Ember](http://emberjs.com/), Blaze uses [Handlebars](http://handlebarsjs.com/) syntax. Events, such as clicks, are targeted using selectors (ids, classes, etc.). 
+Like [Ember](http://emberjs.com/), Blaze uses a [Handlebars](http://handlebarsjs.com/)-like syntax. Events, such as clicks, are targeted using selectors (ids, classes, etc.). 
 
 
 ##### Code Sample

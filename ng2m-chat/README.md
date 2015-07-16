@@ -21,6 +21,7 @@
      - Meteor.userId()
      - Meteor mongo
      - Reset DB
+     - Roles (alanning:roles)
      
 * 04 NG2 TEMPLATE SYNTAX
      - Angular 2 Local Variables #

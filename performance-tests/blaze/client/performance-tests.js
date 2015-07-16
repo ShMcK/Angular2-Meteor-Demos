@@ -1,22 +1,19 @@
+Meteor.subscribe('items');
 Session.setDefault('limit', 1);
-Session.setDefault('running', false);
+Session.setDefault('rows', getItems());
 
-var runTracker = new Tracker.Dependency;
+function getItems() {
+  return Items.find({}, {limit: Session.get('limit')}).fetch()
+  // add index
+  .map(function (item, index) {
+    item.index = index;
+    return item;
+  });
+}
 
 Template.rows.helpers({
   'rows': function () {
-    // Not working, why???
-    runTracker.depend();
-    if (Session.get('running')) {
-      return Items.find({}, {limit: Session.get('limit')})
-        // add index
-        .map(function (item, index) {
-          item.index = index;
-          return item;
-        });
-    } else {
-      return null;
-    }
+    return Session.get('rows');
   }
 });
 
@@ -34,13 +31,10 @@ Template.count.events({
   },
   'click #reset': function () {
     Session.set('limit', 0);
-    Session.set('running', false);
-    runTracker.changed();
-    console.log('reset', Session.get('limit'), Session.get('running'));
+    Session.set('rows', null);
+    console.log('reset', Session.get('limit'));
   },
   'click #run': function () {
-    Session.set('running', true);
-    runTracker.changed();
-    console.log('running: ', Session.get('running'));
+    Session.set('rows', getItems());
   }
 });
