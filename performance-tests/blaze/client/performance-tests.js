@@ -1,21 +1,33 @@
-function getItems() {
-  return Items.find({}, {limit: Session.get('limit')}).fetch()
-    .map(function (item, index) {
-      item.index = index + 1;
-      return item;
-    });
-}
+
+
+//Tracker.autorun(getItems);
+
+getItems = function () {
+  if (Session.get('limit') > 0) {
+    return Items.find({}, {limit: Session.get('limit')})
+      .fetch()
+      .map(function (item, index) {
+        item.index = index + 1;
+        return item;
+      });
+  } else {
+    return null;
+  }
+};
+
 
 Template.rows.onCreated(function () {
-  Meteor.subscribe('items');
   Session.setDefault('limit', 1);
-  Session.set('rows', getItems());
+  Session.setDefault('rows', null);
+  Meteor.subscribe('items');
+  currentItems = Tracker.autorun(getItems);
+
 });
 
 Template.rows.helpers({
   'rows': function () {
     //return Session.get('rows');
-    return getItems();
+    return Session.get('rows');
   }
 });
 
@@ -37,7 +49,7 @@ Template.count.events({
     console.log('reset', Session.get('limit'));
   },
   'click #run': function () {
-    Session.set('rows', getItems());
+    Session.set('rows', currentItems);
     console.log('rows', Session.get('rows'));
   }
 });

@@ -58,15 +58,20 @@
     - Meteor.object()
     - Unsubscribe
     
-* 10 ENVIRONMENTS
+* 10 PERFORMANCE
+    - Indexes
+    - Subscription Caching
+    - Loading
+
+* 11 ENVIRONMENTS
     - Development / Production
     
-* 11 TESTING
-    - Meteor
-    - Angular2
+* 12 TESTING
+    - Velocity (Meteor)
+    - Karma, Protractor (Angular2)
 
-* 12 INTERNATIONALIZATION
+* 13 INTERNATIONALIZATION
     - i18n
 
-* 13 PACKAGES
+* 14 CUSTOM PACKAGES
     - Additional Packages
