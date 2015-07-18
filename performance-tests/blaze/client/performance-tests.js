@@ -1,26 +1,28 @@
-Template.rows.onCreated(function () {
-  Session.setDefault('limit', 1);
-  Meteor.subscribe('items');
-});
+Session.setDefault('limit', 1);
+Session.setDefault('running', true);
+Meteor.subscribe('items');
 
 Template.rows.helpers({
   'rows': function () {
-    list = Tracker.autorun(function () {
-      Items.find({}, {limit: Session.get('limit')});
-    });
-    return list;
+    if (Session.get('running')) {
+      return Items.find({}, {limit: parseInt(Session.get('limit'))});
+    } else {
+      return null;
+    }
+
   }
 });
 
 Template.count.helpers({
   'counts': function () {
-    return [10, 100, 500, 1000, 2500, 5000];
+    return [1, 10, 100, 500, 1000, 2500, 5000];
   }
 });
 
 Template.count.events({
   'click .mdl-radio__button': function (e) {
     var value = $(e.currentTarget).val();
+    Sesion.set('running', false);
     Session.set('limit', value);
     console.log('value: ', value);
   },
@@ -29,6 +31,6 @@ Template.count.events({
     console.log('reset', Session.get('limit'));
   },
   'click #run': function () {
-    // run
+    Session.set('running', true);
   }
 });

@@ -1,0 +1,28 @@
+<form (ng-submit)="addParty()" #f="form">
+  <label>Name</label>
+  <input type="text" control="name" [(ng-model)]="model.name" required>
+  <label>Description</label>
+  <input type="text" control="description" [(ng-model)]="model.description" required>
+  <button type="submit">Add</button>
+</form>
+
+<!-- Test -->
+<!--<p>Name: {{model.name}}</p>-->
+<!--<p>Description: {{model.description}}</p>-->
+
+<ul>
+  <li>
+    <span>Dubstep-Free Zone</span>
+
+    <p>
+      Can we please just for an evening not listen to dubstep.
+    </p>
+  </li>
+  <li>
+    <span>All dubstep all the time</span>
+
+    <p>
+      Get it on!
+    </p>
+  </li>
+</ul>

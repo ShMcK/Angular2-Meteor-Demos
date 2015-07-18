@@ -1,4 +1,4 @@
-app.ts: add NgFor
+appModel.ts: add NgFor
 
     import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
    
@@ -25,7 +25,7 @@ index.ng.html
     </div>
    
 
-app.ts: constructor
+appModel.ts: constructor
 
     class Socially {
       constructor() {
@@ -46,7 +46,7 @@ app.ts: constructor
       }
     }
 
-app.ts: interface
+appModel.ts: interface
     
     interface IParty {
       party: string;

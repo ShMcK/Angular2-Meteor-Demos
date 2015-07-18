@@ -1,5 +1,9 @@
+/**
+ * Model driven form
+ */
+
 import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
-import {FormBuilder, formDirectives, ControlGroup, Validators} from 'angular2/angular2';
+import {formDirectives, NgControl, Validators, NgFormModel, FormBuilder} from 'angular2/angular2';
 
 interface IParty {
   party: string;
@@ -11,13 +15,12 @@ interface IParty {
   viewInjector: [FormBuilder]
 })
 @View({
-  //template: "<p>Nothing here {{'yet' + '!'}}</p>"
-  templateUrl: "client/index.ng.html",
+  templateUrl: "client/index-model.ng.html",
   directives: [NgFor, formDirectives]
 })
 class Socially {
   parties:IParty[];
-  partyForm:ControlGroup;
+  partyForm;
 
   constructor(fb:FormBuilder) {
     this.parties = Parties.find().fetch();
@@ -29,11 +32,11 @@ class Socially {
   }
 
   addParty() {
-    console.log(this.partyForm.value);
-    //Parties.insert({
-    //  name: form.name,
-    //  description: form.description
-    //});
+
+    if (this.partyForm.valid) {
+      console.log(this.partyForm.value);
+      //Parties.insert({});
+    }
   }
 }
 
