@@ -1,4 +1,3 @@
-Meteor.publish('items', function () {
-  var dl = 5000;
-  return Items.find({}, {limit: dl});
+Meteor.publish('items', function (limit) {
+  return Items.find({}, {limit: limit | 5000});
 });

@@ -1,28 +1,14 @@
-//Tracker.autorun(getItems);
-
-
-getItems = function () {
-  console.log('getItems');
-  /* The line below is not working */
-  currentItems = Items.find({}, {limit: Session.get('limit')})
-    .fetch()
-    .map(function (item, index) {
-      item.index = index + 1;
-      return item;
-    });
-};
-
-
 Template.rows.onCreated(function () {
   Session.setDefault('limit', 1);
-  Session.setDefault('rows', null);
   Meteor.subscribe('items');
 });
 
 Template.rows.helpers({
   'rows': function () {
-    //return Session.get('rows');
-    return Session.get('rows');
+    list = Tracker.autorun(function () {
+      Items.find({}, {limit: Session.get('limit')});
+    });
+    return list;
   }
 });
 
@@ -40,13 +26,9 @@ Template.count.events({
   },
   'click #reset': function () {
     Session.set('limit', 0);
-    Session.set('rows', null);
     console.log('reset', Session.get('limit'));
   },
   'click #run': function () {
-    getItems();
-    console.log(currentItems);
-    Session.set('rows', currentItems);
-    console.log('rows', Session.get('rows'));
+    // run
   }
 });
