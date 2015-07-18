@@ -10,5 +10,5 @@ autopublish
 insecure
 
 # Angular 2
-angular:angular2
+shmck:angular2
 netanelgilad:angular2-typescript

@@ -4,8 +4,8 @@ import {Component, View, bootstrap} from 'angular2/angular2';
   selector: 'socially'
 })
 @View({
-  template: "test"
-  //templateUrl: "client/index.ng.html"
+  //template: "<p>Nothing here {{'yet' + '!'}}</p>"
+  templateUrl: "client/index.ng.html"
 })
 class Socially {}
 
