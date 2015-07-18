@@ -16,7 +16,7 @@ interface IParty {
 class Socially {
   parties:IParty[];
   constructor() {
-
+    this.parties = Parties.find().fetch();
   }
 }
 
