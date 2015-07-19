@@ -22,13 +22,13 @@ Template.count.helpers({
 Template.count.events({
   'click .mdl-radio__button': function (e) {
     var value = $(e.currentTarget).val();
-    Sesion.set('running', false);
+    Session.set('running', false);
     Session.set('limit', value);
     console.log('value: ', value);
   },
   'click #reset': function () {
     Session.set('limit', 0);
-    console.log('reset', Session.get('limit'));
+    Session.set('running', false);
   },
   'click #run': function () {
     Session.set('running', true);
