@@ -18,6 +18,9 @@ class Socially {
   constructor() {
     this.parties = Parties.find().fetch();
   }
+  remove(party) {
+    Parties.remove(party._id);
+  }
 }
 
 bootstrap(Socially);

@@ -1,18 +1,9 @@
 <party-form></party-form>
 
 <ul>
-  <li>
-    <span>Dubstep-Free Zone</span>
-
-    <p>
-      Can we please just for an evening not listen to dubstep.
-    </p>
-  </li>
-  <li>
-    <span>All dubstep all the time</span>
-
-    <p>
-      Get it on!
-    </p>
+  <li *ng-for="#party of parties">
+    <span>{{party.name}}</span>
+    <p>{{party.description}}</p>
+    <button (click)="remove(party)">Remove</button>
   </li>
 </ul>

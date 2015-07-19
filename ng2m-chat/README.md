@@ -56,7 +56,7 @@
 
 * 08 ADVANCED STYLES
     - Scoped Styles (styleUrls)
-    - Shadow DOM Strategies
+    - Shadow DOM Strategies (3)
     - Sass (fourseven:scss)
     - PostCSS
     
@@ -67,7 +67,8 @@
     - Unsubscribe
 
 * 10 DIRECTIVES
-    - 
+    - ng-if
+    - custom directives (tooltip)
 
 * 11 PIPES
     - observables
@@ -82,6 +83,8 @@
     - Indexes
     - Subscription Caching
     - Loading
+    - JIT
+    - Immutable data
 
 * 14 ENVIRONMENTS
     - Development / Production
@@ -89,7 +92,9 @@
     
 * 15 TESTING
     - Velocity (Meteor)
-    - Karma, Protractor (Angular2)
+    - Karma
+    - Protractor (E2E)
+    - Perforamnce (Benchpress)
 
 * 16 INTERNATIONALIZATION
     - i18n (Angular)
@@ -99,3 +104,5 @@
     
 Notes
     debugging
+    HTTP
+    Web Components
