@@ -73,36 +73,30 @@ Like [Ember](http://emberjs.com/), Blaze uses a [Handlebars](http://handlebarsjs
 
 ##### Code Sample
 
-
     Session.setDefault('limit', 1);
     Session.setDefault('running', true);
-
+    Meteor.subscribe('items');
+    
     Template.rows.helpers({
       'rows': function () {
-        Tracker.autorun(function () {
-          if (Session.get('running')) {
-
-            return Items.find({}, {limit: Session.get('limit')}).fetch()
-               .map(function (item, index) {
-                item.index = index;
-                return item;
-              });
-          } else {
-            return null;
-          }
-        });
+        if (Session.get('running')) {
+          return Items.find({}, {limit: parseInt(Session.get('limit'))});
+        } else {
+          return null;
+        }
       }
     });
-
+    
     Template.count.helpers({
       'counts': function () {
-        return [10, 100, 500, 1000, 2500, 5000];
+        return [1, 10, 100, 500, 1000, 2500, 5000];
       }
     });
-
+    
     Template.count.events({
       'click .mdl-radio__button': function (e) {
         var value = $(e.currentTarget).val();
+        Session.set('running', false);
         Session.set('limit', value);
       },
       'click #reset': function () {
@@ -114,13 +108,11 @@ Like [Ember](http://emberjs.com/), Blaze uses a [Handlebars](http://handlebarsjs
       }
     });
 
-Blaze cleanly separates the code by separating `events` such as a click, with the supplied data from `helpers`. Unfortunately, there's no direct way to move from an `event` to a `helper` so you have to use a messy global variable called a `Session`.
-
-A triggers called a `Tracker` tells data to re-run when a change is made. 
+Blaze cleanly separates the code by separating `events` such as a click, with the supplied data from `helpers`. Unfortunately, there's no direct way to move from an `event` to a `helper` so you have to use a global variable called a `Session` to communicate. 
 
 ##### Performance
 
-  SUMMARY
+Blaze's performs quite consistently well. Rendering time increases proportionally based on the number of items.
 
 ### 2. Angular-Meteor
 
@@ -171,14 +163,15 @@ A triggers called a `Tracker` tells data to re-run when a change is made.
 
 ##### Performance
 
-You may have heard Angular is slow, but [that's not really true](http://blog.500tech.com/is-reactjs-fast/).
-
 A few super basic optimizations such as `track by` & `debugInfoEnabled(false)` here speed things up. 
+
+No clear winner here. Angular 1.4 outperforms Blaze up until about 2000 rows (approximately 20,000 watchers); after which, Angular's 1.4's performance drops off considerably and Blaze is the better performer.
+
 
 
 ### 3. Angular 2 + Meteor
 
-**Version**: Angular 2.0.0.alpha.25
+**Version**: Angular 2.0.0.alpha.31
 
 ##### Setup: 
 
@@ -234,7 +227,7 @@ Except Blaze components. They currently don't work inside of the bootstrapped An
 
 ## 3. Performance Comparison
 
-COMPARISON
+Angular 2 is much, much faster. How fast? See the results below. 
 
 ## Results
 

@@ -6,7 +6,7 @@
 
 meteor-platform
 spectrum:material-design-lite
-angular:angular2
+shmck:angular2
 netanelgilad:angular2-typescript
 anti:fake
 dburles:factory
