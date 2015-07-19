@@ -10,7 +10,7 @@ interface IParty {
 })
 @View({
   //template: "<p>Nothing here {{'yet' + '!'}}</p>"
-  templateUrl: "client/index.ng.html",
+  templateUrl: "client/socially.ng.html",
   directives: [NgFor]
 })
 class Socially {

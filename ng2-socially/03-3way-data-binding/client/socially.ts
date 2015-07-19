@@ -5,7 +5,7 @@ import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
   selector: 'socially'
 })
 @View({
-  templateUrl: "client/index.ng.html",
+  templateUrl: "client/socially.ng.html",
   directives: [NgFor]
 })
 class Socially {

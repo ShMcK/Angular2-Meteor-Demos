@@ -1,10 +1,9 @@
 ///<reference path="../../typings/typings.d.ts"/>
 import {Component, View} from 'angular2/angular2';
-import {formDirectives, Validators, FormBuilder} from 'angular2/angular2';
+import {formDirectives, Control, ControlGroup, Validators} from 'angular2/angular2';
 
 @Component({
-  selector: 'party-form',
-  viewInjector: [FormBuilder]
+  selector: 'party-form'
 })
 @View({
   templateUrl: "client/party-form/party-form.ng.html",
@@ -12,31 +11,36 @@ import {formDirectives, Validators, FormBuilder} from 'angular2/angular2';
 })
 // Model-driven form
 export class PartyForm {
-  partyForm;
-  input;
+  partyForm:ControlGroup;
+  party;
 
-  constructor(public fb:FormBuilder) {
+  constructor() {
 
-    this.partyForm = fb.group({
-      'name': ['', Validators.required],
-      'description': ['', Validators.required]
+    this.partyForm = new ControlGroup({
+      name: new Control('', Validators.required),
+      description: new Control('', Validators.required)
     });
-    //this.input = this.partyForm.controls;
   }
 
   addParty(event) {
     // stop page reload
     event.preventDefault();
 
+    var party:IParty = this.partyForm.value;
+
     // validate
+    if (this.partyForm.valid) {
+      // add to Parties
+      Parties.insert({
+        name: party.name,
+        description: party.description
+      });
 
-    //Parties.insert({
-    //  name: this.input.name,
-    //  description: this.input.description
-    //});
-
-    //reset values to empty strings
-    this.input.name = '';
-    this.input.description = '';
+      //reset values to empty strings
+      this.party.value = {
+        name: '',
+        description: ''
+      }
+    }
   }
 }

@@ -1,7 +1,7 @@
 ///<reference path="typings.d.ts"/>
 
 interface IParty {
-  party: string;
+  name: string;
   description: string;
 }
 

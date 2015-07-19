@@ -4,11 +4,6 @@ import {Component, View, NgFor} from 'angular2/angular2';
 import {formDirectives, NgControl, Validators, NgForm} from 'angular2/angular2';
 import {routerDirectives, RouteParams} from 'angular2/router';
 
-class PartyModel {
-  name:string;
-  description:string;
-}
-
 @Component({
   selector: 'party'
 })
@@ -23,7 +18,10 @@ export class PartyCmp {
     // get RouteParams
     // in loading hook, load selected Party based on params
 
-    this.model = new PartyModel();
+    this.model = {
+      name: '',
+      description: ''
+    };
   }
 
   save() {

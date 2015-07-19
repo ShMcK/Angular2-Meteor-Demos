@@ -5,7 +5,7 @@ import {Component, View, bootstrap} from 'angular2/angular2';
 })
 @View({
   //template: "<p>Nothing here {{'yet' + '!'}}</p>"
-  templateUrl: "client/index.ng.html"
+  templateUrl: "client/socially.ng.html"
 })
 class Socially {}
 

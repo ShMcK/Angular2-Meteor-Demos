@@ -1,6 +1,6 @@
 ///<reference path="../typings/typings.d.ts"/>
 import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
-import {formInjectables} from 'angular2/angular2';
+//import {formInjectables} from 'angular2/angular2';
 
 // Components
 import {PartyForm} from 'client/party-form/party-form';
@@ -9,7 +9,7 @@ import {PartyForm} from 'client/party-form/party-form';
   selector: 'socially'
 })
 @View({
-  templateUrl: "client/index-model.ng.html",
+  templateUrl: "client/socially.ng.html",
   directives: [NgFor, PartyForm]
 })
 class Socially {
@@ -20,6 +20,5 @@ class Socially {
   }
 }
 
-bootstrap(Socially, [
-  formInjectables
-]);
+bootstrap(Socially);
+  // form injectables
