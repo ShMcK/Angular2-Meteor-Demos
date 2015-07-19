@@ -7,23 +7,16 @@ client/index.ng.html
       <input type="text">
       <button>Add</button>
     </form>
-    
-
-## Template Driven Forms
-
-client/appModel.ts
-    
+   
     
     
 client/index.ng.html
    
- 
- 
-MODEL DRIVEN FORMS NOT WORKING
+   MODEL DRIVEN FORMS NOT WORKING
 
 ## Model Driven Forms
 
-client/appModel.ts
+client/socially.ts
 
     import {FormBuilder, formDirectives, ControlGroup, Validators} from 'angular2/angular2';
     

@@ -1,9 +1,9 @@
+///<reference path="../typings/typings.d.ts"/>
 import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
 import {formInjectables} from 'angular2/angular2';
+
+// Components
 import {PartyForm} from 'client/party-form/party-form';
-/**
- * Model driven form
- */
 
 @Component({
   selector: 'socially'

@@ -1,9 +1,5 @@
+///<reference path="../typings/typings.d.ts"/>
 import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
-
-interface IParty {
-  party: string;
-  description: string;
-}
 
 @Component({
   selector: 'socially'

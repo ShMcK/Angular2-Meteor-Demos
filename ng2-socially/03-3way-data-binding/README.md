@@ -2,7 +2,7 @@ both/parties.collection.ts
 
     Parties = new Mongo.Collection('parties');
 
-client/appModel.ts
+client/socially.ts
    
     this.parties = Parties.find().fetch();
 
