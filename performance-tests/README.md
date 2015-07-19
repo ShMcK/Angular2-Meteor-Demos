@@ -18,7 +18,7 @@ Performance was measured using the [cpu profile](https://developer.chrome.com/de
 * viewed the event in the profile, and noted the run time
 * repeat 3 times & take the average 
 
-*Note: Angular's framework agnostic [Benchpress](https://github.com/angular/angular/blob/master/modules/benchpress/docs/index.md) would have been a great candidate over manual labor here. Unfortunately, Benchpress is still in development and could use some docs or samples.* 
+*Note: Angular's [Benchpress](https://github.com/angular/angular/blob/master/modules/benchpress/docs/index.md) would have been a great candidate over manual labor here. Unfortunately, Benchpress is still in development and could use some docs or samples.* 
 
 ##### Method
 

@@ -25,3 +25,21 @@ server/parties.load.ts
       }
     });
     
+    
+client/socially.ts
+
+    import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
+    
+    @View({
+      templateUrl: "client/index.ng.html",
+      directives: [NgFor]
+    })
+    
+client/index.ng.html
+
+    <ul>
+      <li *ng-for="#party of parties">
+        <span>{{party.name}}</span>
+        <p>{{party.description}}</p>
+      </li>
+    </ul>
