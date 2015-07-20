@@ -11,4 +11,5 @@ insecure
 
 # Angular 2
 shmck:angular2
+shmck:angular2-router
 netanelgilad:angular2-typescript

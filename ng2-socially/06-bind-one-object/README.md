@@ -11,3 +11,16 @@ LifeCycle Hooks
     onReuse,
     onDeactivate
     
+
+client/party/party.ts TODO: load data onActivate, save data on canDeactivate
+
+    class PartyCmp {
+          onActivate() {
+            // load data
+            console.log('canActivate hook');
+          }
+          canDeactivate() {
+            // if changes, ask for save / cancel
+            console.log('canDeactivate hook');
+          }
+    }

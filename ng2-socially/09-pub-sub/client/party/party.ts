@@ -34,10 +34,16 @@ export class PartyCmp {
     };
   }
 
+  canActivate() {
+    return Meteor.user(); // null if none
+  }
+
   onActivate() {
+    // load data
     console.log('canActivate hook');
   }
   canDeactivate() {
+    // if changes, ask for save / cancel
     console.log('canDeactivate hook');
   }
 }
