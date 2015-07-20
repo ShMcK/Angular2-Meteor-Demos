@@ -43,3 +43,20 @@ client/index.ng.html
         <p>{{party.description}}</p>
       </li>
     </ul>
+
+
+Console
+
+    Parties.insert({name: 'Some Title', description: 'Some description'});
+    "cqyF3X7MMrPDt2AAG" // id of created party
+    
+Auto-update
+
+Tracker.autorun(function () {});
+Zone.bind()
+=>
+
+      Tracker.autorun(zone.bind(() => {
+          this.parties = Parties.find().fetch();
+        }));
+        

@@ -10,8 +10,11 @@ import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
 })
 class Socially {
   parties:IParty[];
+
   constructor() {
-    this.parties = Parties.find().fetch();
+    Tracker.autorun(zone.bind(() => {
+      this.parties = Parties.find().fetch();
+    }));
   }
 }
 

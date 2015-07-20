@@ -22,6 +22,8 @@ export class PartyCmp {
       name: '',
       description: ''
     };
+
+    //this.party = Parties.findOne(partyId);
   }
 
   save() {
@@ -30,5 +32,12 @@ export class PartyCmp {
 
   reset() {
     this.model = new PartyModel();
+  }
+
+  CanActivate() {
+    console.log('canActivate');
+  }
+  CanDeactivate() {
+    console.log('canDeactivate');
   }
 }

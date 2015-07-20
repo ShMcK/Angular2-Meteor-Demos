@@ -16,12 +16,15 @@ class Socially {
   parties:IParty[];
 
   constructor() {
-    this.parties = Parties.find().fetch();
+    Tracker.autorun(zone.bind(() => {
+      this.parties = Parties.find().fetch();
+    }));
   }
+
   remove(party) {
     Parties.remove(party._id);
   }
 }
 
 bootstrap(Socially);
-  // form injectables
+// form injectables

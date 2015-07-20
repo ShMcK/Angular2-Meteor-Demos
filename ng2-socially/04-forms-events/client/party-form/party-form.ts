@@ -26,6 +26,8 @@ export class PartyForm {
     // stop page reload
     event.preventDefault();
 
+    // resolve to PartyService later
+
     // shorthand to party object
     var party:IParty = this.partyForm.value;
 

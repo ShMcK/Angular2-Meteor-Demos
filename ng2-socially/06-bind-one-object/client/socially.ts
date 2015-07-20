@@ -3,6 +3,7 @@ import {Component, View, bootstrap} from 'angular2/angular2';
 import {routerInjectables, routerDirectives, RouteConfig} from 'angular2/router';
 
 // Components
+import {PartyForm} from 'client/party-form/party-form';
 import {PartiesCmp} from 'client/parties/parties';
 import {PartyCmp} from 'client/party/party';
 
@@ -11,7 +12,7 @@ import {PartyCmp} from 'client/party/party';
 })
 @View({
   templateUrl: 'client/socially.ng.html',
-  directives: [routerDirectives, PartiesCmp]
+  directives: [routerDirectives, PartyForm]
 })
 @RouteConfig([
   {path: '/', as: 'parties', component: PartiesCmp},

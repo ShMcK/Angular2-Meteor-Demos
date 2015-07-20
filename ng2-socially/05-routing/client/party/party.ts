@@ -1,6 +1,6 @@
 ///<reference path="../../typings/typings.d.ts"/>
 
-import {Component, View, NgFor} from 'angular2/angular2';
+import {Component, View, Attribute, NgFor} from 'angular2/angular2';
 import {routerDirectives, RouteParams} from 'angular2/router';
 
 @Component({
@@ -13,6 +13,8 @@ import {routerDirectives, RouteParams} from 'angular2/router';
 export class PartyCmp {
 
   constructor() {
+
+
     // get RouteParams
     // in loading hook, load selected Party based on params
   }

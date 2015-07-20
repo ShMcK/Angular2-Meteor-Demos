@@ -3,4 +3,11 @@ Template Driven Forms
     - 2 way binding
     
     
-LifeCycle Hook on exit => (are you sure?)
+LifeCycle Hooks
+
+    canReuse,
+    canDeactivate, // leaving, are you sure?
+    onActivate, // load route
+    onReuse,
+    onDeactivate
+    

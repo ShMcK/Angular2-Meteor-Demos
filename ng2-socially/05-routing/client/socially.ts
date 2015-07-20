@@ -3,6 +3,7 @@ import {Component, View, bind, bootstrap} from 'angular2/angular2';
 import {routerInjectables, routerDirectives, Router, RouteConfig} from 'angular2/router';
 import {LocationStrategy, Location, HashLocationStrategy } from 'angular2/router';
 // Components
+import {PartyForm} from 'client/party-form/party-form';
 import {PartiesCmp} from 'client/parties/parties';
 import {PartyCmp} from 'client/party/party';
 
@@ -11,16 +12,15 @@ import {PartyCmp} from 'client/party/party';
 })
 @View({
   templateUrl: 'client/socially.ng.html',
-  directives: [routerDirectives, PartiesCmp]
+  directives: [routerDirectives, PartyForm]
 })
 @RouteConfig([
   {path: '/', as: 'parties', component: PartiesCmp},
   {path: '/party/:partyId', as: 'party', component: PartyCmp}
 ])
-class Socially {
-}
+class Socially {}
 
 bootstrap(Socially, [
   routerInjectables,
-  bind(LocationStrategy).toClass(HashLocationStrategy) // /#/ routes
+  bind(LocationStrategy).toClass(HashLocationStrategy) // for hashbang routes (/#/)
 ]);

@@ -78,7 +78,11 @@
     - event emitters
     - parent, child
 
-* 13 PERFORMANCE
+* 13 ANIMATIONS
+    - loading
+    - route change
+
+* 14 PERFORMANCE
     - Limit publications
     - Indexes
     - Subscription Caching
@@ -86,20 +90,24 @@
     - JIT
     - Immutable data
 
-* 14 ENVIRONMENTS
+* 15 ENVIRONMENTS
     - Development / Production
     - Meteor.settings
+  
+* 16 MOBILE
+    - Gestures
+    - Rendering
     
-* 15 TESTING
+* 17 TESTING
     - Velocity (Meteor)
     - Karma
     - Protractor (E2E)
     - Perforamnce (Benchpress)
 
-* 16 INTERNATIONALIZATION
+* 18 INTERNATIONALIZATION
     - i18n (Angular)
 
-* 17 CUSTOM PACKAGES
+* 19 CUSTOM PACKAGES
     - meteor create --package name
     
 Notes
