@@ -1,0 +1,17 @@
+<form (ng-submit)="save()" #f="form">
+  <label for="name">Name</label>
+  <input type="text" ng-control="name" [(ng-model)]="party.name">
+  <label for="description">Description</label>
+  <input type="text" ng-control="description" [(ng-model)]="party.description">
+
+  <button type="submit" [disabled]="!f.form.valid">Save</button>
+  <button (click)="reset()">Reset form</button>
+  <button [router-link]="['/parties']">Cancel</button>
+</form>
+
+<ul>
+  Users:
+  <li *ng-for="#user of users">
+    <div>{{ user.emails[0].address }}</div>
+  </li>
+</ul>

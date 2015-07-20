@@ -27,7 +27,7 @@ model/parties.collection.ts
     
 Router Lifecycle Hooks
 
-client/party/party.ts (if user logged in)
+client/party/party-details.ts (if user logged in)
 
     class PartyCmp {    
         canActivate() {

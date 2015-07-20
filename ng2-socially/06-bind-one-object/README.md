@@ -12,7 +12,7 @@ LifeCycle Hooks
     onDeactivate
     
 
-client/party/party.ts TODO: load data onActivate, save data on canDeactivate
+client/party/party-details.ts TODO: load data onActivate, save data on canDeactivate
 
     class PartyCmp {
           onActivate() {

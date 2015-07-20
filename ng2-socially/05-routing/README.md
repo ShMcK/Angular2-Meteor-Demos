@@ -55,7 +55,7 @@ client/parties/parties.ng.html
 DISCUSS LIFECYCLE EVENTS
     - use loading hook to load data with Meteor.object
     
-client/party/party.ts
+client/party/party-details.ts
 
     import {routerDirectives, RouteParams} from 'angular2/router';
     

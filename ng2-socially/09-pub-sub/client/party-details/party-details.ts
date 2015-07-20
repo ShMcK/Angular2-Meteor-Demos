@@ -4,18 +4,22 @@ import {formDirectives, NgControl, Validators, NgForm} from 'angular2/angular2';
 import {routerDirectives, RouteParams} from 'angular2/router';
 
 @Component({
-  selector: 'party'
+  selector: 'party-details'
 })
 @View({
   templateUrl: 'client/party/party.ng.html',
   directives: [NgFor, routerDirectives, formDirectives]
 })
-export class PartyCmp {
+export class PartyDetailsCmp {
   party;
 
   constructor() {
     // get RouteParams
     // in loading hook, load selected Party based on params
+    Meteor.subscribe('party');
+    Meteor.subscribe('users');
+
+    // INCOMPLETE
 
     this.party = {name: '', description: ''};
 

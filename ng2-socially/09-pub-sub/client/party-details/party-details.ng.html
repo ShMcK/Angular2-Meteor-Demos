@@ -8,3 +8,10 @@
   <button (click)="reset()">Reset form</button>
   <button [router-link]="['/parties']">Cancel</button>
 </form>
+
+<ul>
+  Users:
+  <li *ng-for="#user of users">
+    <div>{{ user.emails[0].address }}</div>
+  </li>
+</ul>

@@ -1,4 +1,4 @@
-Meteor.publish('parties', function () {
+Meteor.publish('parties', function (options) {
   return Parties.find({
     $or: [
       {
@@ -14,7 +14,7 @@ Meteor.publish('parties', function () {
         ]
       }
     ]
-  });
+  }, options);
 });
 
 Meteor.publish('party', function (partyId) {
