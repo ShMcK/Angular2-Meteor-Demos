@@ -16,6 +16,9 @@ export class PartiesCmp {
   parties:IParty[];
 
   constructor() {
-    this.parties = Parties.find().fetch();
+    Meteor.subscribe('parties');
+    Tracker.autorun(zone.bind(() => {
+      this.parties = Parties.find().fetch();
+    }));
   }
 }

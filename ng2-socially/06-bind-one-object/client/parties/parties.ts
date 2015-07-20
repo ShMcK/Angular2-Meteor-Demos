@@ -16,6 +16,8 @@ export class PartiesCmp {
   parties:IParty[];
 
   constructor() {
-    this.parties = Parties.find().fetch();
+    Tracker.autorun(zone.bind(() => {
+      this.parties = Parties.find().fetch();
+    }));
   }
 }
