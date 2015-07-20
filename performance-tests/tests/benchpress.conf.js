@@ -1,3 +1,5 @@
+// referenced from https://github.com/dfbaskin/render-large-datasets-angularjs-reactjs/blob/master/tests/angular-1-mount-grid.conf.js
+
 exports.config = {
 
   directConnect: true,

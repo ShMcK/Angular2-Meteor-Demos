@@ -1,4 +1,5 @@
 import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
+import {jitInjectables} from 'angular2/angular2';
 
 declare var Items:any;
 
@@ -36,5 +37,5 @@ class PerformanceTests {
 }
 
 bootstrap(PerformanceTests, [
-  // jitInjectables // performance increase
+ // jitInjectables // performance increase
 ]);
