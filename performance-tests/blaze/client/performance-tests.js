@@ -1,4 +1,4 @@
-Session.setDefault('limit', 1);
+Session.setDefault('limit', 0);
 Session.setDefault('running', true);
 Meteor.subscribe('items');
 
@@ -25,7 +25,7 @@ Template.count.helpers({
 });
 
 Template.count.events({
-  'click #setCount': function (e) {
+  'click .mdl-button': function (e) {
     var value = $(e.currentTarget).val();
     Session.set('running', false);
     Session.set('limit', value);

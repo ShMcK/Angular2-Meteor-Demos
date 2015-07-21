@@ -3,14 +3,18 @@ var benchpress = require('benchpress');
 var TEST = {
   // what you want to call the test
   id: 'test',
-  isAngular2: false,
+  isAngular1: false,
   // number of times the test runs
-  sampleSize: 10,
+  sampleSize: 4,
   address: 'http://localhost:3000/',
-  tableTargetId: '#rows',
   // 10, 100, 500, 1000, 2000, 3000, 4000, 5000
-  count: 10
+  count: 100
 };
+
+// increase async time limit to 20 seconds
+if (TEST.count > 100) {
+  jasmine.getEnv().defaultTimeoutInterval = 60000;
+}
 
 var runner = new benchpress.Runner([
   benchpress.SeleniumWebDriverAdapter.PROTRACTOR_BINDINGS,
@@ -24,10 +28,10 @@ describe('Perf', function () {
 
   it('generates rows', function (done) {
 
-    if (TEST.isAngular2) {
-      browser.ignoreSynchronization = true;
-    } else {
+    if (TEST.isAngular1) {
       browser.ignoreSynchronization = false;
+    } else {
+      browser.ignoreSynchronization = true;
     }
 
     browser.get(TEST.address);
@@ -41,10 +45,8 @@ describe('Perf', function () {
       execute: function () {
         // select number to test
         $('#count-' + TEST.count).click();
-        setTimeout(function () {
-          // run test
-          return $('#run').click();
-        }, 500);
+        // run test
+        return $('#run').click();
       }
     }).then(done, done.fail);
   });
