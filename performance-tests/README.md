@@ -140,25 +140,25 @@ Blaze's performs quite consistently well. Rendering time increases proportionall
 ##### Code
 
     function AppCtrl($meteor) {
-    
-      $meteor.subscribe('items');
-  
-      var self = this;
-      self.counts = [10, 100, 500, 1000, 2500, 5000];
-      self.selected = 10;
-
-      self.run = function () {
-          self.rows = $meteor.collection(function () {
-          return Items.find({}, {
-            limit: self.selected
-          });
+        $meteor.subscribe('items');
+        var self = this;
+        self.counts = [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
+        self.count = 0;
+   
+        self.runTest = function () {
+        self.rows = $meteor.collection(function () {
+             return Items.find({}, {
+            limit: self.count
+            });
         });
-      };
-  
-      self.reset = function () {
-        self.rows = null;
-        self.selected = 0;
-      };
+        };
+        self.setCount = function (selectedCount) {
+            self.count(selectedCount)
+        };
+        self.reset = function () {
+            self.rows = null;
+            self.count = 0;
+        };
     }
 
 ##### Performance
@@ -200,7 +200,7 @@ Angular 2 also uses the `{{ }}` binding syntax. `(event)`'s are wrapped in round
     class PerformanceTests {
       constructor() {
         Meteor.subscribe('items');
-        this.counts = [10, 100, 500, 1000, 2500, 5000];
+        this.counts = [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
         this.selectedCount = 1;
         this.run();
       }

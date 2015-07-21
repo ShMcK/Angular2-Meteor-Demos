@@ -4,11 +4,9 @@
   <section class="mdl-grid">
     <div class="mdl-cell mdl-cell--10-col counts">
       <span class="title">Item Count:&nbsp;</span>
-      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="{{select}}" ng-repeat="select in app.counts">
-        <input type="radio" id="{{'count-' + select}}" class="mdl-radio__button" name="options" ng-value="{{select}}"
-               ng-model="app.selected"/>
-        <span class="mdl-radio__label">{{select}}</span>
-      </label>
+
+      <button ng-repeat="count in app.counts"
+              ng-click="app.setCountValue(count)" class="mdl-button" id="{{'count-' + count}}">{{count}}</button>
 
       <button ng-click="app.runTest()" id="run"
               class="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">Run

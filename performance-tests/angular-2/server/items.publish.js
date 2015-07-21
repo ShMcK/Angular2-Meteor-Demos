@@ -1,3 +1,3 @@
-Meteor.publish('items', function (limit) {
-  return Items.find({}, {limit: limit | 5000});
+Meteor.publish('items', function (options) {
+  return Items.find({}, options);
 });

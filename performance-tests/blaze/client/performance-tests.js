@@ -5,7 +5,12 @@ Meteor.subscribe('items');
 Template.rows.helpers({
   'rows': function () {
     if (Session.get('running')) {
-      return Items.find({}, {limit: parseInt(Session.get('limit'))});
+      return Items.find({}, {limit: parseInt(Session.get('limit'))})
+        // add index value
+      .map(function (item, index) {
+          item.index = index + 1;
+          return item;
+        });
     } else {
       // not running, empty list
       return null;
@@ -20,7 +25,7 @@ Template.count.helpers({
 });
 
 Template.count.events({
-  'click .mdl-radio__button': function (e) {
+  'click #setCount': function (e) {
     var value = $(e.currentTarget).val();
     Session.set('running', false);
     Session.set('limit', value);
