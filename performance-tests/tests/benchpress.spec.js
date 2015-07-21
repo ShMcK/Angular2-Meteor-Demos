@@ -1,12 +1,15 @@
 var benchpress = require('benchpress');
 
 var TEST = {
+  // what you want to call the test
   id: 'angular2',
-  sampleSize: 20,
+  // number of times the test runs
+  sampleSize: 10,
   address: 'http://localhost:3000/',
-  tableTargetId: '#unmount-grid',
+  tableTargetId: '#rows',
   runTargetId: '#run',
   resetTargetId: '#reset',
+  // 10, 100, 500, 1000, 2000, 3000, 4000, 5000
   count: 10
 };
 
@@ -18,7 +21,7 @@ var runner = new benchpress.Runner([
   benchpress.bind(benchpress.Options.FORCE_GC).toValue(true)
 ]);
 
-describe('table', function () {
+describe('Perf', function () {
 
   it('generates rows', function (done) {
 
@@ -28,14 +31,15 @@ describe('table', function () {
     runner.sample({
       id: TEST.id,
       prepare: function () {
-          return $(TEST.resetTargetId).click();
-        },
-        execute: function() {
-          setTimeout(function () {
-            $('#' + TEST.count).click();
-          }, 300);
-          return $(TEST.runTargetId).click();
-        }
+        return $(TEST.resetTargetId).click();
+      },
+      execute: function () {
+        setTimeout(function () {
+          // select number to test
+          $('#count-' + TEST.count).click();
+        }, 300);
+        return $(TEST.runTargetId).click();
+      }
     }).then(done, done.fail);
   });
 });

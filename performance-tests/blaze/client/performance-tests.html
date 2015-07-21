@@ -40,7 +40,7 @@
 </body>
 
 <template name="rows">
-  <tbody>
+  <tbody id="rows">
   {{#each rows}}
     <tr>
       <td>{{index}}</td>
@@ -65,7 +65,7 @@
 
       {{#each counts}}
         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="{{this}}">
-          <input type="radio" id="{{this}}" class="mdl-radio__button" name="options" value="{{this}}"/>
+          <input type="radio" id="{{'count-' + this}}" class="mdl-radio__button" name="options" value="{{this}}"/>
           <span class="mdl-radio__label">{{this}}</span>
         </label>
       {{/each}}

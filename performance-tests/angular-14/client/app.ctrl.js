@@ -4,7 +4,7 @@ angular.module('app')
 function AppCtrl($meteor) {
   $meteor.subscribe('items');
   var self = this;
-  self.counts = [10, 100, 500, 1000, 2500, 5000];
+  self.counts = [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
   self.selected = 10;
 
   self.runTest = function () {

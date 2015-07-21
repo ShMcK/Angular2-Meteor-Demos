@@ -4,14 +4,14 @@
     <span class="title">Item Count:&nbsp;
 
       <button *ng-for="#count of counts"
-              (click)="setCountValue(count)" class="mdl-button" id="{{count}}">{{count}}</button>
+              (click)="setCountValue(count)" class="mdl-button" id="{{'count-' + count}}">{{count}}</button>
 
 
-    <button (click)="run()"
+    <button (click)="run()" id="run"
             class="mdl-button mdl-button--primary mdl-button--raised">Run
     </button>
 
-        <button (click)="reset()"
+        <button (click)="reset()" id="reset"
                 class="mdl-button mdl-button--accent mdl-button--raised">Reset
         </button>
       </span>
@@ -39,7 +39,7 @@
     </tr>
     </thead>
 
-    <tbody>
+    <tbody id="rows">
     <tr *ng-for="#item of items; #i = index">
       <td>{{i + 1}}</td>
       <td [style.color]="item.color">&#9679;</td>

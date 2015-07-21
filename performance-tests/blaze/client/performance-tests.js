@@ -7,15 +7,15 @@ Template.rows.helpers({
     if (Session.get('running')) {
       return Items.find({}, {limit: parseInt(Session.get('limit'))});
     } else {
+      // not running, empty list
       return null;
     }
-
   }
 });
 
 Template.count.helpers({
   'counts': function () {
-    return [1, 10, 100, 500, 1000, 2500, 5000];
+    return [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
   }
 });
 
@@ -24,7 +24,6 @@ Template.count.events({
     var value = $(e.currentTarget).val();
     Session.set('running', false);
     Session.set('limit', value);
-    console.log('value: ', value);
   },
   'click #reset': function () {
     Session.set('limit', 0);

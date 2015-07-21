@@ -1,5 +1,5 @@
 /**
-* Performance Test Page Objects
+* Performance Test Page Objects (UNUSED)
 */
 
 var Page = function () {

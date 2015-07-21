@@ -5,15 +5,15 @@
     <div class="mdl-cell mdl-cell--10-col counts">
       <span class="title">Item Count:&nbsp;</span>
       <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="{{select}}" ng-repeat="select in app.counts">
-        <input type="radio" id="{{select}}" class="mdl-radio__button" name="options" ng-value="{{select}}"
+        <input type="radio" id="{{'count-' + select}}" class="mdl-radio__button" name="options" ng-value="{{select}}"
                ng-model="app.selected"/>
         <span class="mdl-radio__label">{{select}}</span>
       </label>
 
-      <button ng-click="app.runTest()"
+      <button ng-click="app.runTest()" id="run"
               class="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">Run
       </button>
-      <button ng-click="app.reset()"
+      <button ng-click="app.reset()" id="reset"
               class="mdl-button mdl-button--accent mdl-js-button mdl-button--raised mdl-js-ripple-effect">Reset
       </button>
     </div>
@@ -38,7 +38,7 @@
         <th class="mdl-data-table__cell--non-numeric">Paragraph</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody id="rows">
       <tr ng-repeat="item in app.rows track by $index">
         <td>{{$index + 1}}</td>
         <td ng-style="{color: item.color}">&#9679;</td>

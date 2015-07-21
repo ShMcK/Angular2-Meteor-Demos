@@ -17,7 +17,7 @@ class PerformanceTests {
 
   constructor() {
     Meteor.subscribe('items');
-    this.counts = [10, 100, 500, 1000, 2500, 5000];
+    this.counts = [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
     this.selectedCount = 1;
     this.run();
   }

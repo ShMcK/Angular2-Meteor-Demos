@@ -19,9 +19,7 @@ exports.config = {
   },
 
   specs: [
-    './specs/angular-14.spec.js'
-    //'./specs/angular-2.spec.js',
-    //'./specs/blaze.spec.js'
+    './benchpress.spec.js'
   ],
   framework: 'jasmine2',
 
