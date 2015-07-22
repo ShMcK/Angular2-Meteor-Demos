@@ -635,6 +635,11 @@ declare module ng {
   }
 
 
+  class Validators {
+    static required: any;
+    static compose(validators: List<Function>): Function;
+  }
+
   /**
    * Binds an existing control group to a DOM element.
    *
@@ -6129,7 +6134,6 @@ declare module ng {
   var Key: InjectableReference;
 
 }
-
 
 
 declare module "angular2/angular2" {

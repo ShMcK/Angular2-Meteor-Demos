@@ -1,31 +1,33 @@
 <section class="accounts-ui">
   ACCOUNTS
   <!-- https://github.com/ShMcK/Angular-Meteor-Boilerplate/blob/master/client/components/accounts/accounts.ng.html -->
-
+  <h3 class="title">{{title}}</h3>
 
   <!-- accounts social -->
 
+  <div class="social"></div>
 
   <!-- accounts error -->
+  <div class="error"></div>
 
   <!-- accounts form -->
-  <form (submit)="submit($event, accountsForm.value)" [ng-form-model]="accountsForm" novalidate>
+  <form (submit)="submit($event, accountsForm.value)"
+        [ng-form-model]="accountsForm" novalidate>
 
-    <label for="username">Username</label>
-    <input type="text" id="username" ng-control="username">
+    <div class="input" *ng-for="#f of accountFields">
+      <label>{{f.name}}</label>
+      <input type="{{f.type}}" id="{{f.name}}" [ng-control]="f.name">
+    </div>
 
-    <label for="email">Email</label>
-    <input type="email" id="email" ng-control="email">
-
-    <label for="password">Password</label>
-    <input type="password" id="password" ng-control="password">
-
+    <!-- accounts submit -->
     <button type="submit">Add</button>
   </form>
 
-  <!-- accounts submit -->
-
-
   <!-- accounts redirect -->
+  <button class="redirect" (click)="redirect('login')" *ng-if="current.target !== 'login'">Login</button>
+  <button class="redirect" (click)="redirect('register')" *ng-if="current.target !== 'register'">Sign up</button>
+  <button class="redirect" (click)="redirect('passwordReset')" *ng-if="current.target !== 'forgotPassword'">Forgot
+    Password
+  </button>
 
 </section>
