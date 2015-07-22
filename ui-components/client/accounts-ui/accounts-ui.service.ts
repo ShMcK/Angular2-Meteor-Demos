@@ -6,16 +6,10 @@
 
 export class AccountsUiService {
   options:IAccountOptions;
-  credentials:IAccountCredentials;
   error:string;
   routeTo: string;
 
   constructor() {
-    this.credentials = {
-      username: '',
-      email: '',
-      password: ''
-    };
     this.error = '';
 
     this.options = {
@@ -34,8 +28,8 @@ export class AccountsUiService {
    * @param user {username, email, id}
    * @param password
    */
-  login() {
-    Meteor.loginWithPassword(this.credentials.email, this.credentials.password)
+  login(credentials:IAccountCredentials) {
+    Meteor.loginWithPassword(credentials.email, credentials.password)
       .then((e) => {
         this.handler(e);
       });
@@ -46,9 +40,9 @@ export class AccountsUiService {
    * http://docs.meteor.com/#/full/accounts_createuser
    * @params options {username, email, password, profile}
    */
-  register() {
+  register(credentials:IAccountCredentials) {
     //var validEmail = this.verifyEmail(this.credentials.email); // todo
-    Accounts.createUser(this.credentials)
+    Accounts.createUser(credentials)
       .then((e) => {
         this.handler(e);
       });

@@ -4,7 +4,8 @@ import {formDirectives, Control, ControlGroup, Validators, NgFormControl} from '
 import {AccountsUiService} from 'client/accounts-ui/accounts-ui.service';
 
 @Component({
-  selector: 'accounts-register'
+  selector: 'accounts-register',
+  viewInjector: [AccountsUiService]
 })
 @View({
   templateUrl: 'client/accounts-ui/components/register.ng.html',
@@ -15,7 +16,6 @@ export class AccountsRegister {
   accountsForm:ControlGroup;
 
   constructor() {
-
     this.accountsForm = new ControlGroup({
       username: new Control(''),
       email: new Control('', Validators.required),
@@ -25,27 +25,25 @@ export class AccountsRegister {
 
   /**
    * Submit: Login: Create User
-   * @param event {browser $event}
-   * @param form {username, email, password}
+   * @param event {browser.$event}
    */
-  submit(event, form:IAccountCredentials) {
+  submit(event) {
     // prevent page reload on enter
     event.preventDefault();
 
-    console.log(form);
+    var form = this.accountsForm.value;
 
     // Form is valid ?
     if (this.accountsForm.valid) {
 
       // Submit using Accounts-ui-service.ts
-      AccountsUiService['register'](form);
-
-      console.log(form);
+      AccountsUiService.register(form);
 
       // reset fields to empty strings
-      for (var key in form) {
+      for (var key in this.accountsForm.value) {
         form[key] = '';
       }
+      console.log(form);
     }
   }
 }

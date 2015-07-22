@@ -1,0 +1,122 @@
+/* accounts-ui.ng.html */
+.accounts-ui {
+  @extend .container;
+  @extend .text-center;
+  background: #efefef;
+}
+
+.accounts-ui {
+  .error {
+
+  }
+  .redirects {
+    color: #919191;
+    padding: 10px 20px;
+
+    a {
+      color: #aaaaaa;
+      transition: all ease-in-out 200ms;
+      cursor: pointer;
+    }
+    a:hover {
+      color: #333333;
+      text-decoration: none;
+    }
+  }
+}
+
+/* form */
+.accounts-ui {
+
+  .outer-form {
+    max-width: 300px;
+    border-radius: 5px;
+    display: inline-block;
+  }
+
+  .outer-form--group {
+    background: #ffffff;
+    color: #999999;
+    border-radius: 8px;
+    padding: 10px 20px;
+  }
+
+  form {
+    @extend .text-left;
+    position: relative;
+
+    .logo {
+      padding: 15px 0;
+      font-size: 25px;
+      color: #aaaaaa;
+      font-weight: bold;
+    }
+
+    .social-icons {
+      display: inline-block;
+      .social-icon {
+        label {
+          @extend .sr-only;
+        }
+      }
+    }
+
+    .form-group {
+      margin-bottom: 0;
+      border-bottom: 2px solid #efefef;
+      padding-right: 20px;
+      position: relative;
+
+      .form-group:last-child {
+        border-bottom: 0;
+      }
+
+      label {
+        @extend .sr-only;
+      }
+      input {
+        @extend .form-control;
+        border: 0;
+        box-shadow: 0 0 0;
+        border-radius: 0;
+        background: transparent;
+        color: #555555;
+        padding: 7px 0;
+        font-weight: bold;
+        height: auto;
+      }
+    }
+
+    /* submit */
+    button {
+      position: absolute;
+      right: -25px;
+      top: 50%;
+      background: #ffffff;
+      color: #999999;
+      padding: 11px 0;
+      width: 50px;
+      height: 50px;
+      margin-top: -25px;
+      border: 5px solid #efefef;
+      border-radius: 50%;
+      transition: all ease-in-out 500ms;
+      &:hover {
+        color: #555555;
+        transform: rotate(450deg);
+      }
+      .clicked {
+        color: #555555;
+        &:hover {
+          transform: none;
+        }
+      }
+      .clicked.success {
+        color: #2ecc71;
+      }
+      .clicked.error {
+        color: #e74c3c;
+      }
+    }
+  }
+}

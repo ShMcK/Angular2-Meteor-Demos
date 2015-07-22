@@ -32,15 +32,13 @@ export class AccountsLogin {
     // prevent page reload on enter
     event.preventDefault();
 
-    console.log(form);
+    console.log(form.value);
 
     // Form is valid ?
     if (this.accountsForm.valid) {
 
       // Submit using Accounts-ui-service.ts
-      AccountsUiService['login'](form);
-
-      console.log(form);
+      //AccountsUiService['login'](form.value);
 
       // reset fields to empty strings
       for (var key in form) {

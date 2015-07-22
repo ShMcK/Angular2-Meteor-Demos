@@ -1,5 +1,4 @@
 <!-- login | register | forgot-password -->
-
 <section [ng-switch]="page" class="accounts-ui">
 
   <div class="error" *ng-if="error">
@@ -18,9 +17,12 @@
     <accounts-forgot-password></accounts-forgot-password>
   </template>
 
-  <button class="redirect" (click)="redirect('login')" *ng-if="page !== 'login'">Login</button>
-  <button class="redirect" (click)="redirect('register')" *ng-if="page !== 'register'">Sign up</button>
-  <button class="redirect" (click)="redirect('passwordReset')" *ng-if="page !== 'passwordReset'">Forgot Password
-  </button>
+  <div class="redirects">
+    <p *ng-if="page !== 'login'">Already have an account? <a (click)="redirect('login')">Login here</a></p>
+
+    <p *ng-if="page !== 'register'">New user? <a (click)="redirect('register')">Create new account</a></p>
+
+    <p *ng-if="page !== 'passwordReset'">Forgot your password? <a (click)="redirect('passwordReset')">Send reset</a></p>
+  </div>
 
 </section>

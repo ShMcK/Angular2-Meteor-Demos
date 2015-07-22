@@ -1,30 +1,36 @@
-<h3 class="title">Login</h3>
+<section class="outer-form">
+  <!-- accounts form -->
+  <form (submit)="submit($event, accountsForm.value)"
+        [ng-form-model]="accountsForm" novalidate>
 
-<!-- accounts social -->
+    <h3 class="logo">Login</h3>
 
-<div class="social">
+    <div class="outer-form--group">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" ng-control="username" placeholder="username" autofocus>
+      </div>
 
-</div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" ng-control="email" placeholder="email">
+      </div>
 
-<!-- accounts form -->
-<form (submit)="submit($event, accountsForm.value)"
-      [ng-form-model]="accountsForm" novalidate>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" ng-control="password" placeholder="password">
+      </div>
+    </div>
+    <!-- accounts social -->
+    <div class="social-icons">
+      <div class="social-icon">
+        <label for="facebook"></label>
+        <i class=""></i>
+      </div>
+    </div>
 
-  <div class="input">
-    <label for="username">Username</label>
-    <input type="text" id="username" [ng-control]="username">
-  </div>
+    <!-- accounts submit -->
+    <button type="submit">▸</button>
 
-  <div class="input">
-    <label for="email">Email</label>
-    <input type="email" id="email" [ng-control]="email">
-  </div>
-
-  <div class="input">
-    <label for="password">Password</label>
-    <input type="password" id="password" [ng-control]="password">
-  </div>
-
-  <!-- accounts submit -->
-  <button type="submit">Add</button>
-</form>
+  </form>
+</section>

@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAEE,mBAAM;EACJ,WAAW,EAAE,IAAI;AAEnB,mBAAM;EACJ,KAAK,EAAE,GAAG;AAEZ,oBAAO;EACL,MAAM,EAAE,IAAI;AAEd,sBAAS;EACP,MAAM,EAAE,IAAI;AAEd,iBAAI;EACF,OAAO,EAAE,KAAK;EAEd,wBAAM;IACJ,MAAM,EAAE,IAAI;EAEd,wBAAM;IACJ,MAAM,EAAE,IAAI",
-"sources": ["accounts-ui.sass"],
-"names": [],
-"file": "accounts-ui.css"
-}

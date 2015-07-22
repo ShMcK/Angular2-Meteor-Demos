@@ -1,0 +1,5 @@
+{
+  "useIndex" : true,
+  "indexFilePath" : "main.scss",
+  "enableAutoprefixer": true
+}
