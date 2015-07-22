@@ -4,21 +4,18 @@
 
 Meteor began as an opinionated fullstack framework, but the community has expanded its flexibility. Don't want Mongo? Consider using [PostgreSQL](https://github.com/numtel/meteor-pg) or [Redis](https://github.com/meteor/redis-livedata). Now the frontend is flexing as well. Community built alternatives to Mongo's native Blaze are starting to gain some weight, notably [Angular-Meteor](hhttp://angular-meteor.com/) & [React-Meteor](https://github.com/reactjs/react-meteor). 
 
-But before you start flirting with an alternative to Blaze, you probably want to see a comparison; we'll take into account both **performance** & **coding style**. You can draw your own conclusions about the most elegant or powerful approach. I'll even throw in Angular2-Meteor as a bonus: it's not really a thing yet, but somehow it already works.
+But before you start flirting with an alternative to Blaze, you probably want to see a comparison; we'll take into account both **performance** & **coding style**. You can draw your own conclusions about the most elegant or powerful approach. We'll compare:
+
+* Blaze + Meteor
+* React-Meteor
+* Angular-Meteor
+* Angular2 + Meteor
 
 ## Performance Setup
 
 ##### Measure
 
-Performance was measured using the [cpu profile](https://developer.chrome.com/devtools/docs/cpu-profiling) in Chrome Dev Tools. Basically I followed these steps:
-
-* reloaded the page
-* chrome dev tools -> profile -> cpu profile: *record*
-* selected a number of items on the page & pressed run
-* viewed the event in the profile, and noted the run time
-* repeat 3 times & take the average 
-
-*Note: Angular's [Benchpress](https://github.com/angular/angular/blob/master/modules/benchpress/docs/index.md) would have been a great candidate over manual labor here. Unfortunately, Benchpress is still in development and could use some docs or samples.* 
+Using Angular's [Benchpress](https://github.com/angular/angular/blob/master/modules/benchpress/docs/index.md). Benchpress works by using [Protractor](https://angular.github.io/protractor/#/) via Selenium to carry out actions in the browser. Benchpress accesses the devtool profile analytics and records them in the console over multiple trials.
 
 ##### Method
 
@@ -114,7 +111,25 @@ Blaze cleanly separates the code by separating `events` such as a click, with th
 
 Blaze's performs quite consistently well. Rendering time increases proportionally based on the number of items.
 
-### 2. Angular-Meteor
+### 2. React-Meteor
+
+##### Setup
+
+Todo
+
+##### Template
+
+Todo
+
+##### Code
+
+Todo
+
+##### Performance
+
+Todo
+
+### 3. Angular-Meteor
 
 **Version**: Angular 1.4.2
 
@@ -169,7 +184,7 @@ No clear winner here. Angular 1.4 outperforms Blaze up until about 2000 rows (ap
 
 
 
-### 3. Angular 2 + Meteor
+### 4. Angular 2 + Meteor
 
 **Version**: Angular 2.0.0.alpha.31
 
@@ -227,13 +242,13 @@ Except Blaze components. They currently don't work inside of the bootstrapped An
 
 ## 3. Performance Comparison
 
-Angular 2 is much, much faster. How fast? See the results below. 
+Todo
 
 ## Results
 
-RESULTS HERE
+Todo
 
-RESULT IMAGE
+Graph
 
 ## Conclusion
 
@@ -241,5 +256,3 @@ CONCLUSION HERE
 
 
 
-
-TODO: REACT-METEOR ?
