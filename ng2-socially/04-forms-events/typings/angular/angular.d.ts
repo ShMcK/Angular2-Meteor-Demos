@@ -1022,3 +1022,8 @@ declare module "angular2/di" {
   var InjectableAnnotation: any;
   var DependencyAnnotation: any;
 }
+
+class Validators {
+  static required: any;
+  static compose(validators: List<Function>): Function;
+}
