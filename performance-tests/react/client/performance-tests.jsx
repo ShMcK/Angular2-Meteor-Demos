@@ -45,12 +45,12 @@ Table = React.createClass({
 });
 
 Counts = React.createClass({
-  getTasks() {
+  getCounts() {
     return [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
   },
-  renderTasks() {
-    return this.getTasks().map((task) => {
-      return (<button class="mdl-button" id="count-{task}" value="{task}">{task}</button>);
+  renderCounts() {
+    return this.getCounts().map((count) => {
+      return (<button class="mdl-button" id="count-{count}" value="{count}">{count}</button>);
     });
   },
   render() {
@@ -58,7 +58,7 @@ Counts = React.createClass({
       <div class="mdl-cell mdl-cell--10-col counts">
         <span class="title">Item Count:&nbsp;</span>
 
-        {this.renderTasks()}
+        {this.renderCounts()}
 
         <button id="run"
                 class="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">Run
