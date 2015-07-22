@@ -3,9 +3,9 @@ var benchpress = require('benchpress');
 var TEST = {
   // what you want to call the test
   id: 'test',
-  isAngular1: false,
+  isAngular1: true,
   // number of times the test runs
-  sampleSize: 4,
+  sampleSize: 3,
   address: 'http://localhost:3000/',
   // 10, 100, 500, 1000, 2000, 3000, 4000, 5000
   count: 100
