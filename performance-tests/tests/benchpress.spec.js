@@ -3,12 +3,12 @@ var benchpress = require('benchpress');
 var TEST = {
   // what you want to call the test
   id: 'test',
-  isAngular1: true,
+  isAngular1: false,
   // number of times the test runs
-  sampleSize: 3,
+  sampleSize: 5,
   address: 'http://localhost:3000/',
   // 10, 100, 500, 1000, 2000, 3000, 4000, 5000
-  count: 100
+  count: 500
 };
 
 // increase async time limit to 20 seconds

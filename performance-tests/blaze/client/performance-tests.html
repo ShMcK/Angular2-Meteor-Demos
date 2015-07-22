@@ -64,7 +64,7 @@
       <span class="title">Item Count:&nbsp;</span>
 
       {{#each counts}}
-        <button class="mdl-button" id="count" value="{{this}}">{{this}}</button>
+        <button class="mdl-button count-selector" id="count-{{this}}" value="{{this}}">{{this}}</button>
       {{/each}}
 
       <button id="run"

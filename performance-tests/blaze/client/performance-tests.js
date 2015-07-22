@@ -25,7 +25,7 @@ Template.count.helpers({
 });
 
 Template.count.events({
-  'click #count': function (e) {
+  'click .count-selector': function (e) {
     var value = $(e.currentTarget).val();
     Session.set('running', false);
     Session.set('limit', value);
