@@ -1,5 +1,5 @@
 ///<reference path="../typings/typings.d.ts"/>
-import {Component, View} from 'angular2/angular2';
+import {Component, View, NgFor} from 'angular2/angular2';
 import {formDirectives, Control, ControlGroup, Validators, NgFormControl} from 'angular2/angular2';
 import {AccountsUiService} from 'client/accounts-ui/accounts-ui.service';
 
@@ -9,7 +9,7 @@ import {AccountsUiService} from 'client/accounts-ui/accounts-ui.service';
 })
 @View({
   templateUrl: 'client/accounts-ui/components/register.ng.html',
-  directives: [formDirectives],
+  directives: [formDirectives, NgFor],
   styleUrls: ['client/accounts-ui/styles/accounts-ui.css']
 })
 export class AccountsRegister {
