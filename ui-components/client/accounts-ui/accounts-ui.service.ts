@@ -1,4 +1,4 @@
-///<reference path="accounts-ui.d.ts"/>
+///<reference path="typings/typings.d.ts"/>
 
 /**
  * Accounts Ui Service
@@ -8,6 +8,7 @@ export class AccountsUiService {
   options:IAccountOptions;
   credentials:IAccountCredentials;
   error:string;
+  routeTo: string;
 
   constructor() {
     this.credentials = {
@@ -19,9 +20,11 @@ export class AccountsUiService {
 
     this.options = {
       requestPermissions: ['email'],
-      loginStyle: 'popup' // popup | redirect
-      // more OAuth Options: http://docs.meteor.com/#/full/meteor_loginwithexternalservice
+      loginStyle: 'popup'
     };
+
+    // path to route to on login completion
+    this.routeTo = '';
   }
 
   /**

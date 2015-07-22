@@ -10,8 +10,9 @@ interface IAccountCredentials {
 
 /**
  * Options passed into OAuth requests
+ * http://docs.meteor.com/#/full/meteor_loginwithexternalservice
  */
 interface IAccountOptions {
   requestPermissions?: string[];
-  loginStyle: string;
+  loginStyle: string; // popup | redirect
 }

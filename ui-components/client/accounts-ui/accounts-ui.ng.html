@@ -1,6 +1,5 @@
-<section>
-
-  Accounts Ui
+<section class="accounts-ui">
+  ACCOUNTS
   <!-- https://github.com/ShMcK/Angular-Meteor-Boilerplate/blob/master/client/components/accounts/accounts.ng.html -->
 
 
@@ -10,6 +9,19 @@
   <!-- accounts error -->
 
   <!-- accounts form -->
+  <form (submit)="submit($event, accountsForm.value)" [ng-form-model]="accountsForm" novalidate>
+
+    <label for="username">Username</label>
+    <input type="text" id="username" ng-control="username">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" ng-control="email">
+
+    <label for="password">Password</label>
+    <input type="password" id="password" ng-control="password">
+
+    <button type="submit">Add</button>
+  </form>
 
   <!-- accounts submit -->
 
