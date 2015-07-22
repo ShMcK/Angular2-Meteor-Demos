@@ -21,11 +21,13 @@
         <input type="password" id="password" ng-control="password" placeholder="password">
       </div>
     </div>
+
     <!-- accounts social -->
     <div class="social-icons">
-      <div class="social-icon">
-        <label for="facebook"></label>
-        <i class=""></i>
+      <div class="social-icon" *ng-for="#s of socialChoices">
+        <label>{{s.name}}</label>
+        <a (click)="socialLogin(s.name)">{{s.name}}
+        </a>
       </div>
     </div>
 

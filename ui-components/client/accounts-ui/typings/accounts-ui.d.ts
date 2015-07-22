@@ -16,3 +16,8 @@ interface IAccountOptions {
   requestPermissions?: string[];
   loginStyle: string; // popup | redirect
 }
+
+interface ISocialChoices {
+  name: string;
+  classNames: string;
+}
