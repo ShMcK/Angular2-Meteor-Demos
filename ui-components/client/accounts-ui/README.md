@@ -16,3 +16,5 @@ Optional OAuth setups:
     meteor add accounts-meteor-developer
     meteor add accounts-meetup
     
+
+Edit views in `/client/accounts-ui/components/*.ng.html`

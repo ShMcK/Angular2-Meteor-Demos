@@ -1,0 +1,30 @@
+<h3 class="title">Sign up</h3>
+
+<!-- accounts social -->
+
+<div class="social">
+
+</div>
+
+<!-- accounts form -->
+<form (submit)="submit($event, accountsForm.value)"
+      [ng-form-model]="accountsForm" novalidate>
+
+  <div class="input">
+    <label for="username">Username</label>
+    <input type="text" id="username" [ng-control]="username">
+  </div>
+
+  <div class="input">
+    <label for="email">Email</label>
+    <input type="email" id="email" [ng-control]="email">
+  </div>
+
+  <div class="input">
+    <label for="password">Password</label>
+    <input type="password" id="password" [ng-control]="password">
+  </div>
+
+  <!-- accounts submit -->
+  <button type="submit">Add</button>
+</form>

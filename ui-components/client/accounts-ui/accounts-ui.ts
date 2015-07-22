@@ -1,8 +1,13 @@
 ///<reference path="typings/typings.d.ts"/>
-import {Component, View, bootstrap, NgIf, NgFor} from 'angular2/angular2';
+import {Component, View, bootstrap} from 'angular2/angular2';
+import {NgSwitch, NgSwitchDefault, NgSwitchWhen, NgIf} from 'angular2/angular2';
 import {formDirectives, Control, ControlGroup, Validators, NgFormControl} from 'angular2/angular2';
 import {AccountsUiService} from 'client/accounts-ui/accounts-ui.service';
-import {uiConfig} from 'client/accounts-ui/accounts-ui-config';
+
+// Components
+import {AccountsLogin} from 'client/accounts-ui/components/login';
+import {AccountsRegister} from 'client/accounts-ui/components/register';
+import {AccountsForgotPassword} from 'client/accounts-ui/components/forgot-password';
 
 @Component({
   selector: 'accounts-ui',
@@ -10,24 +15,24 @@ import {uiConfig} from 'client/accounts-ui/accounts-ui-config';
 })
 @View({
   templateUrl: 'client/accounts-ui/accounts-ui.ng.html',
-  directives: [formDirectives, NgIf, NgFor],
+  directives: [formDirectives, NgSwitch, NgSwitchWhen, NgSwitchDefault, NgIf,
+    AccountsLogin, AccountsRegister, AccountsForgotPassword],
   styleUrls: ['client/accounts-ui/styles/accounts-ui.css']
 })
 class AccountsUi {
   accountsForm:ControlGroup;
-  title:string;
-  current:{title: string; target:string; form:any;};
-  accountFields;
+  page:string;
 
-  constructor() { //private accounts:AccountsUiService
+  constructor() {
     // get one of three configurations: login, register, passwordReset
-    this.current = uiConfig.login;
 
-    console.log(this.current);
+    this.accountsForm = new ControlGroup({
+      username: new Control(''),
+      email: new Control('', Validators.required),
+      password: new Control('', Validators.required)
+    });
 
-    this.title = this.current.title;
-    this.accountsForm = new ControlGroup(this.current.form.controls);
-    this.accountFields = this.current.form.fields;
+    this.page = 'login';
   }
 
   /**
@@ -45,7 +50,7 @@ class AccountsUi {
     if (this.accountsForm.valid) {
 
       // Submit using Accounts-ui-service.ts
-      AccountsUiService[this.current.target](form);
+      //AccountsUiService[this.current.target](form);
 
       // reset fields to empty strings
       for (var key in form) {
@@ -55,9 +60,9 @@ class AccountsUi {
   }
 
   redirect(destination:string) {
-    // login / register / passwordReset
-    this.current = uiConfig[destination];
+    this.page = destination;
   }
+
 }
 
 bootstrap(AccountsUi);
