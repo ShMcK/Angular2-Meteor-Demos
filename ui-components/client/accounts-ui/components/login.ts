@@ -14,7 +14,7 @@ import {Inject} from 'angular2/angular2';
 })
 export class AccountsLogin {
   accountsForm:ControlGroup;
-  accounts;
+  accounts:AccountsService;
   message:IAccountsMessage;
 
   constructor(@Inject(AccountsService) accounts) { //
@@ -47,12 +47,15 @@ export class AccountsLogin {
 
     // Form is valid ?
     if (this.accountsForm.valid) {
+      // submit using accounts.service
       this.accounts.login(this.accountsForm.value);
 
       // reset fields to empty strings
-      for (var key in this.accountsForm.value) {
-        this.accountsForm.value[key] = '';
-      }
+      //for (var key in this.accountsForm.value) {
+      //  this.accountsForm.value[key] = '';
+      //}
+      this.accountsForm.controls.usernameOrEmail.updateValue('');
+      this.accountsForm.controls.password.updateValue('');
     }
   }
 }

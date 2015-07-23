@@ -140,6 +140,7 @@ export class AccountsService {
         content: successMessage,
         success: true
       };
+      console.log(successMessage);
     }
   }
 }

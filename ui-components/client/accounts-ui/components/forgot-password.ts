@@ -2,9 +2,11 @@
 import {Component, View, NgFor} from 'angular2/angular2';
 import {formDirectives, Control, ControlGroup, Validators, NgFormControl} from 'angular2/angular2';
 import {AccountsService} from 'client/accounts-ui/lib/accounts.service';
+import {Inject} from 'angular2/angular2';
 
 @Component({
-  selector: 'accounts-forgot-password'
+  selector: 'accounts-forgot-password',
+  viewInjector: [AccountsService]
 })
 @View({
   templateUrl: 'client/accounts-ui/components/forgot-password.ng.html',
@@ -12,9 +14,10 @@ import {AccountsService} from 'client/accounts-ui/lib/accounts.service';
 })
 export class AccountsForgotPassword {
   accountsForm:ControlGroup;
+  accounts:AccountsService
 
-  constructor() {
-
+  constructor(@Inject(AccountsService) accounts) {
+    this.accounts = accounts;
     this.accountsForm = new ControlGroup({
       email: new Control('', Validators.required)
     });
@@ -25,24 +28,17 @@ export class AccountsForgotPassword {
    * @param event {browser $event}
    * @param form {username, email, password}
    */
-  submit(event, form:IAccountCredentials) {
+  submit(event) {
     // prevent page reload on enter
     event.preventDefault();
 
-    console.log(form);
-
     // Form is valid ?
     if (this.accountsForm.valid) {
-
-      // Submit using Accounts-ui-service.ts
-      AccountsUiService.forgotPassword(form);
-
-      console.log(form);
+      // Submit using Accounts-service.ts
+      this.accounts.forgotPassword(this.accountsForm.value);
 
       // reset fields to empty strings
-      for (var key in form) {
-        form[key] = '';
-      }
+      this.accountsForm.controls.email.updateValue('');
     }
   }
 }
