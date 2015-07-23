@@ -3,9 +3,10 @@ import {Component, View, bootstrap} from 'angular2/angular2';
 import {NgSwitch, NgSwitchDefault, NgSwitchWhen, NgIf} from 'angular2/angular2';
 
 // Components
-import {AccountsLogin} from 'client/accounts-ui/components/login';
-import {AccountsRegister} from 'client/accounts-ui/components/register';
-import {AccountsForgotPassword} from 'client/accounts-ui/components/forgot-password';
+import {AccountsLogin} from 'client/accounts-ui/components/login/login';
+import {AccountsRegister} from 'client/accounts-ui/components/register/register';
+import {AccountsForgotPassword} from 'client/accounts-ui/components/forgot-password/forgot-password';
+import {AccountsProfile} from 'client/accounts-ui/components/profile/profile';
 
 @Component({
   selector: 'accounts-ui'
@@ -13,7 +14,7 @@ import {AccountsForgotPassword} from 'client/accounts-ui/components/forgot-passw
 @View({
   templateUrl: 'client/accounts-ui/accounts-ui.ng.html',
   directives: [NgSwitch, NgSwitchWhen, NgSwitchDefault, NgIf,
-    AccountsLogin, AccountsRegister, AccountsForgotPassword]
+    AccountsLogin, AccountsRegister, AccountsForgotPassword, AccountsProfile]
 })
 class AccountsUi {
   page:string;

@@ -1,28 +1,28 @@
-///<reference path="../typings/typings.d.ts"/>
+///<reference path="../../typings/typings.d.ts"/>
 import {Component, View, NgFor, NgIf} from 'angular2/angular2';
 import {formDirectives, Control, ControlGroup, Validators, NgFormControl} from 'angular2/angular2';
 import {AccountsService} from 'client/accounts-ui/lib/accounts.service';
+import {SubmitButton} from 'client/accounts-ui/components/submit-button';
 import {Inject} from 'angular2/angular2';
 
 @Component({
-  selector: 'accounts-register',
+  selector: 'accounts-login',
   viewInjector: [AccountsService]
 })
 @View({
-  templateUrl: 'client/accounts-ui/components/register.ng.html',
-  directives: [formDirectives, NgFor, NgIf]
+  templateUrl: 'client/accounts-ui/components/login/login.ng.html',
+  directives: [formDirectives, NgFor, NgIf, SubmitButton]
 })
-export class AccountsRegister {
+export class AccountsLogin {
   accountsForm:ControlGroup;
-  message:IAccountsMessage;
   accounts:AccountsService;
+  message:IAccountsMessage;
 
-  constructor(@Inject(AccountsService) accounts) { //
+  constructor(@Inject(AccountsService) accounts) {
     this.accounts = accounts;
     this.message = accounts.message;
     this.accountsForm = new ControlGroup({
-      username: new Control(''),
-      email: new Control('', Validators.required),
+      usernameOrEmail: new Control('', Validators.required),
       password: new Control('', Validators.required)
     });
   }
@@ -49,11 +49,13 @@ export class AccountsRegister {
     // Form is valid ?
     if (this.accountsForm.valid) {
       // submit using accounts.service
-      this.accounts.register(this.accountsForm.value);
+      this.accounts.login(this.accountsForm.value);
 
       // reset fields to empty strings
-      this.accountsForm.controls.username.updateValue('');
-      this.accountsForm.controls.email.updateValue('');
+      //for (var key in this.accountsForm.value) {
+      //  this.accountsForm.value[key] = '';
+      //}
+      this.accountsForm.controls.usernameOrEmail.updateValue('');
       this.accountsForm.controls.password.updateValue('');
     }
   }

@@ -4,13 +4,13 @@
  * Accounts Ui Service
  */
 export class AccountsService {
-  options;
+  options:IAccountsOptions;
   message:IAccountsMessage;
-  test:string;
+  processing:boolean;
 
   constructor() {
     this.message = null;
-    this.test = 'test';
+    this.processing = false;
 
     this.options = {
       requestPermissions: ['email'],
@@ -24,6 +24,7 @@ export class AccountsService {
    * Requires: accounts-password package
    */
   login(credentials) {
+    this.processing = true;
     Meteor.loginWithPassword(credentials.usernameOrEmail, credentials.password, (e) => {
       this.handler(e = null, 'Logged in');
     });
@@ -35,6 +36,7 @@ export class AccountsService {
    * @params options {username, email, password, profile}
    */
   register(credentials:IAccountCredentials) {
+    this.processing = true;
     //var validEmail = this.verifyEmail(this.credentials.email); // todo
     Accounts.createUser(credentials, (e) => {
       this.handler(e = null, 'New account created');
@@ -58,6 +60,7 @@ export class AccountsService {
    * @returns {Promise|Promise<T>}
    */
   loginWith(social) {
+    this.processing = true;
     switch (social) {
       case 'facebook':
         Meteor.loginWithFacebook(this.options, (e) => {
@@ -145,6 +148,7 @@ export class AccountsService {
         success: false
       };
       console.error(e);
+
     } else if (successMessage) {
       this.message = {
         content: successMessage,
@@ -152,5 +156,6 @@ export class AccountsService {
       };
       console.log(successMessage);
     }
+    this.processing = false;
   }
 }

@@ -1,6 +1,7 @@
-///<reference path="../typings/typings.d.ts"/>
+///<reference path="../../typings/typings.d.ts"/>
 import {Component, View, NgFor} from 'angular2/angular2';
 import {formDirectives, Control, ControlGroup, Validators, NgFormControl} from 'angular2/angular2';
+import {SubmitButton} from 'client/accounts-ui/components/submit-button';
 import {AccountsService} from 'client/accounts-ui/lib/accounts.service';
 import {Inject} from 'angular2/angular2';
 
@@ -9,8 +10,8 @@ import {Inject} from 'angular2/angular2';
   viewInjector: [AccountsService]
 })
 @View({
-  templateUrl: 'client/accounts-ui/components/forgot-password.ng.html',
-  directives: [formDirectives, NgFor]
+  templateUrl: 'client/accounts-ui/components/forgot-password/forgot-password.ng.html',
+  directives: [formDirectives, NgFor, SubmitButton]
 })
 export class AccountsForgotPassword {
   accountsForm:ControlGroup;
