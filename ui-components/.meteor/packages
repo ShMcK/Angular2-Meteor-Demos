@@ -7,12 +7,18 @@
 meteor-platform
 autopublish
 insecure
+
+# Angular 2
 shmck:angular2
 netanelgilad:angular2-typescript
 
+# Accounts
 accounts-password
 
 # Styles
 fourseven:scss
 reywood:bootstrap3-sass
 fortawesome:fontawesome
+accounts-facebook
+accounts-twitter
+accounts-google

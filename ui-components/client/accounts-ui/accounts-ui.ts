@@ -1,7 +1,6 @@
 ///<reference path="typings/typings.d.ts"/>
 import {Component, View, bootstrap} from 'angular2/angular2';
 import {NgSwitch, NgSwitchDefault, NgSwitchWhen, NgIf} from 'angular2/angular2';
-//import {AccountsService} from 'client/accounts-ui/accounts-ui.service';
 
 // Components
 import {AccountsLogin} from 'client/accounts-ui/components/login';
@@ -26,7 +25,6 @@ class AccountsUi {
   redirect(destination:string) {
     this.page = destination;
   }
-
 }
 
 bootstrap(AccountsUi);

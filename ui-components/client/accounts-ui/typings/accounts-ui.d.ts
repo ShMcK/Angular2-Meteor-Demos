@@ -21,3 +21,8 @@ interface ISocialChoices {
   name: string;
   classNames: string;
 }
+
+interface IAccountsMessage {
+  content: string;
+  success: boolean;
+}

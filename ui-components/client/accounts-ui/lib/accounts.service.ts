@@ -1,39 +1,32 @@
-///<reference path="typings/typings.d.ts"/>
+///<reference path="../typings/typings.d.ts"/>
 
 /**
  * Accounts Ui Service
  */
 export class AccountsService {
   options;
-  error:string;
-  routeTo: string;
-  test: string;
+  message:IAccountsMessage;
+  test:string;
 
   constructor() {
-    this.error = '';
+    this.message = null;
     this.test = 'test';
 
     this.options = {
       requestPermissions: ['email'],
       loginStyle: 'popup'
     };
-
-    // path to route to on login completion
-    this.routeTo = '';
   }
 
   /**
    * Login
    * Log the user in with a password.
    * Requires: accounts-password package
-   * @param user {username, email, id}
-   * @param password
    */
-  login(credentials:IAccountCredentials) {
-    Meteor.loginWithPassword(credentials.email, credentials.password)
-      .then((e) => {
-        this.handler(e);
-      });
+  login(credentials) {
+    Meteor.loginWithPassword(credentials.usernameOrEmail, credentials.password, (e) => {
+      this.handler(e = null, 'Logged in');
+    });
   }
 
   /**
@@ -43,10 +36,9 @@ export class AccountsService {
    */
   register(credentials:IAccountCredentials) {
     //var validEmail = this.verifyEmail(this.credentials.email); // todo
-    Accounts.createUser(credentials)
-      .then((e) => {
-        this.handler(e);
-      });
+    Accounts.createUser(credentials, (e) => {
+      this.handler(e = null, 'New account created');
+    });
   }
 
   /**
@@ -55,7 +47,7 @@ export class AccountsService {
   logout() {
     Meteor.logout()
       .then((e) => {
-        this.handler(e);
+        this.handler(e, 'Logged out');
       });
   }
 
@@ -65,15 +57,14 @@ export class AccountsService {
    * @returns {Promise|Promise<T>}
    */
   facebook() {
-    alert('facebook');
     Meteor.loginWithFacebook(this.options, (e) => {
-      this.handler(e);
+      this.handler(e, 'Logged in with Facebook');
     });
   }
 
   google() {
     Meteor.loginWithGoogle(this.options, (e) => {
-      this.handler(e);
+      this.handler(e, 'Logged in with Google+');
     });
   }
 
@@ -81,20 +72,18 @@ export class AccountsService {
     Meteor.loginWithTwitter({},
       // Must get official approval for emails from Twitter
       (e) => {
-        this.handler(e);
+        this.handler(e, 'Logged in with Twitter');
       });
   }
 
   /**
    * Request a forgot password email.
    * http://docs.meteor.com/#/full/accounts_forgotpassword
-   * @param options {email: string}
    */
   forgotPassword(credential:{email: string}) {
-    Accounts.forgotPassword(credential)
-      .then((e) => {
-        this.handler(e);
-      });
+    Accounts.forgotPassword(credential, (e) => {
+      this.handler(e, 'Forgotten password email sent');
+    });
   }
 
   /**
@@ -104,10 +93,9 @@ export class AccountsService {
    * @param newPassword
    */
   resetPassword(token:string, newPassword:string) {
-    Accounts.resetPassword(token, newPassword)
-      .then((e) => {
-        this.handler(e);
-      });
+    Accounts.resetPassword(token, newPassword, (e) => {
+      this.handler(e, 'Password has been reset');
+    });
   }
 
   /**
@@ -117,10 +105,9 @@ export class AccountsService {
    * @param newPassword
    */
   changePassword(oldPassword:string, newPassword:string) {
-    Accounts.changePassword(oldPassword, newPassword)
-      .then((e) => {
-        this.handler(e);
-      });
+    Accounts.changePassword(oldPassword, newPassword, (e) => {
+      this.handler(e, 'Password has been changed');
+    });
   }
 
   /**
@@ -138,15 +125,21 @@ export class AccountsService {
 
   /**
    * Internal: Success/Failure Handler
-   * @param e // error
+   * @param e
+   * @param successMessage: 'success!'
    */
-  private handler(e) {
+  handler(e, successMessage?:string) {
     if (e) {
-      // error
-      this.error = `Error: ${e}`;
-    } else {
-      // success
-      //TODO: Route to ___.
+      this.message = {
+        content: e.reason,
+        success: false
+      };
+      console.error(e);
+    } else if (successMessage) {
+      this.message = {
+        content: successMessage,
+        success: true
+      };
     }
   }
 }

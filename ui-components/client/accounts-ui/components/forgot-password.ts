@@ -1,7 +1,7 @@
 ///<reference path="../typings/typings.d.ts"/>
 import {Component, View, NgFor} from 'angular2/angular2';
 import {formDirectives, Control, ControlGroup, Validators, NgFormControl} from 'angular2/angular2';
-//import {AccountsUiService} from 'client/accounts-ui/accounts-ui.service';
+import {AccountsService} from 'client/accounts-ui/lib/accounts.service';
 
 @Component({
   selector: 'accounts-forgot-password'
