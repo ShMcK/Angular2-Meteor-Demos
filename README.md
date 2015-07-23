@@ -1,6 +1,12 @@
 #Angular2-Meteor-Demos (WIP)
+* NG2-SOCIALLY
+    Demo app paralleling the Angular-Meteor tutorial.
+    
+* NG2-ACCOUNTS-UI (WIP)
+    Accounts-ui component for Angular 2 using Meteor. 
 
 * CHAT APP (WIP)
+    Currently postponed step-by-step app.
     - 01 Setup
     - 02 Data Setup
     - 03 User Accounts 
