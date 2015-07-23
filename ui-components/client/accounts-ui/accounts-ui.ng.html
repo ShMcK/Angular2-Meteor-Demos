@@ -1,10 +1,6 @@
 <!-- login | register | forgot-password -->
 <section [ng-switch]="page" class="accounts-ui">
 
-  <div class="error" *ng-if="error">
-    {{error}}
-  </div>
-
   <template [ng-switch-when]="'login'">
     <accounts-login></accounts-login>
   </template>

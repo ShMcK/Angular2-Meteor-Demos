@@ -1,4 +1,4 @@
-<!-- accounts social -->
+<!-- accounts social | reusable -->
 <div class="social-links">
   <div class="social-links--content">
     <a (click)="socialLogin('facebook')" class="link--facebook" title="Facebook">
@@ -14,6 +14,11 @@
       <i class="fa fa-google"></i>
     </a>
   </div>
+</div>
+
+<!-- error / success message | reusable -->
+<div class="main-message" *ng-if="message" [class.error]="!message.success" [class.success]="message.success">
+  {{message.content}}
 </div>
 
 <section class="outer-form">

@@ -1,16 +1,15 @@
 ///<reference path="../typings/typings.d.ts"/>
 import {Component, View, NgFor} from 'angular2/angular2';
 import {formDirectives, Control, ControlGroup, Validators, NgFormControl} from 'angular2/angular2';
-import {AccountsUiService} from 'client/accounts-ui/accounts-ui.service';
+//import {AccountsUiService} from 'client/accounts-ui/accounts-ui.service';
 
 @Component({
   selector: 'accounts-register',
-  viewInjector: [AccountsUiService]
+  //viewInjector: [AccountsUiService]
 })
 @View({
   templateUrl: 'client/accounts-ui/components/register.ng.html',
-  directives: [formDirectives, NgFor],
-  styleUrls: ['client/accounts-ui/styles/accounts-ui.css']
+  directives: [formDirectives, NgFor]
 })
 export class AccountsRegister {
   accountsForm:ControlGroup;

@@ -1,14 +1,13 @@
 ///<reference path="typings/typings.d.ts"/>
-import {Injectable} from 'angular2/angular2';
 
 /**
  * Accounts Ui Service
  */
-@Injectable()
-export class AccountsUiService {
-  options:IAccountOptions;
+export class AccountsService {
+  options;
   error:string;
   routeTo: string;
+  test: string;
 
   constructor() {
     this.error = '';
