@@ -1,8 +1,7 @@
 ///<reference path="typings/typings.d.ts"/>
 import {Component, View, bootstrap} from 'angular2/angular2';
 import {NgSwitch, NgSwitchDefault, NgSwitchWhen, NgIf} from 'angular2/angular2';
-import {formDirectives, Control, ControlGroup, Validators, NgFormControl} from 'angular2/angular2';
-import {AccountsUiService} from 'client/accounts-ui/accounts-ui.service';
+//import {AccountsUiService} from 'client/accounts-ui/accounts-ui.service';
 
 // Components
 import {AccountsLogin} from 'client/accounts-ui/components/login';
@@ -14,7 +13,7 @@ import {AccountsForgotPassword} from 'client/accounts-ui/components/forgot-passw
 })
 @View({
   templateUrl: 'client/accounts-ui/accounts-ui.ng.html',
-  directives: [formDirectives, NgSwitch, NgSwitchWhen, NgSwitchDefault, NgIf,
+  directives: [NgSwitch, NgSwitchWhen, NgSwitchDefault, NgIf,
     AccountsLogin, AccountsRegister, AccountsForgotPassword],
   styleUrls: ['client/accounts-ui/styles/accounts-ui.css']
 })

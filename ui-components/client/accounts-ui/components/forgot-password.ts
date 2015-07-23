@@ -36,7 +36,7 @@ export class AccountsForgotPassword {
     if (this.accountsForm.valid) {
 
       // Submit using Accounts-ui-service.ts
-      AccountsUiService['forgotPassword'](form);
+      AccountsUiService.forgotPassword(form);
 
       console.log(form);
 

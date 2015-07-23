@@ -1,0 +1,20 @@
+.accounts-ui {
+  .error {
+
+  }
+  .redirects {
+    color: #919191;
+    padding: 10px 20px;
+
+    a {
+      color: #aaaaaa;
+      transition: all ease-in-out 200ms;
+      cursor: pointer;
+    }
+    a:hover {
+      color: #333333;
+      text-decoration: none;
+    }
+  }
+}
+

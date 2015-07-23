@@ -1,30 +1,3 @@
-/* accounts-ui.ng.html */
-.accounts-ui {
-  @extend .container;
-  @extend .text-center;
-  background: #efefef;
-}
-
-.accounts-ui {
-  .error {
-
-  }
-  .redirects {
-    color: #919191;
-    padding: 10px 20px;
-
-    a {
-      color: #aaaaaa;
-      transition: all ease-in-out 200ms;
-      cursor: pointer;
-    }
-    a:hover {
-      color: #333333;
-      text-decoration: none;
-    }
-  }
-}
-
 /* form */
 .accounts-ui {
 
@@ -46,19 +19,11 @@
     position: relative;
 
     .logo {
-      padding: 15px 0;
+      padding: 0 0 15px 0;
       font-size: 25px;
       color: #aaaaaa;
       font-weight: bold;
-    }
-
-    .social-icons {
-      display: inline-block;
-      .social-icon {
-        label {
-          @extend .sr-only;
-        }
-      }
+      text-align: center
     }
 
     .form-group {
@@ -120,3 +85,4 @@
     }
   }
 }
+

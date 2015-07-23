@@ -1,9 +1,27 @@
+<!-- accounts social -->
+<div class="social-links">
+  <div class="social-links--content">
+    <a (click)="socialLogin('facebook')" class="link--facebook" title="Facebook">
+      <span class="sr-only">Facebook</span>
+      <i class="fa fa-facebook"></i>
+    </a>
+    <a (click)="socialLogin('twitter')" class="link--twitter" title="Twitter">
+      <span class="sr-only">Twitter</span>
+      <i class="fa fa-twitter"></i>
+    </a>
+    <a (click)="socialLogin('google')" class="link--google" title="Google+">
+      <span class="sr-only">Google+</span>
+      <i class="fa fa-google"></i>
+    </a>
+  </div>
+</div>
+
 <section class="outer-form">
+
+  <h3 class="logo">Login</h3>
   <!-- accounts form -->
   <form (submit)="submit($event, accountsForm.value)"
         [ng-form-model]="accountsForm" novalidate>
-
-    <h3 class="logo">Login</h3>
 
     <div class="outer-form--group">
       <div class="form-group">
@@ -19,15 +37,6 @@
       <div class="form-group">
         <label for="password">Password</label>
         <input type="password" id="password" ng-control="password" placeholder="password">
-      </div>
-    </div>
-
-    <!-- accounts social -->
-    <div class="social-icons">
-      <div class="social-icon" *ng-for="#s of socialChoices">
-        <label>{{s.name}}</label>
-        <a (click)="socialLogin(s.name)">{{s.name}}
-        </a>
       </div>
     </div>
 

@@ -1,10 +1,11 @@
 ///<reference path="../typings/typings.d.ts"/>
 import {Component, View, NgFor} from 'angular2/angular2';
 import {formDirectives, Control, ControlGroup, Validators, NgFormControl} from 'angular2/angular2';
-import {AccountsUiService} from 'client/accounts-ui/accounts-ui.service';
+//import {AccountsUiService} from 'client/accounts-ui/accounts-ui.service';
 
 @Component({
   selector: 'accounts-login'
+  //viewInjector: [AccountsUiService]
 })
 @View({
   templateUrl: 'client/accounts-ui/components/login.ng.html',
@@ -15,14 +16,14 @@ export class AccountsLogin {
   accountsForm:ControlGroup;
   socialChoices;
 
-  constructor() {
-    this.socialChoices = [{
-      name: 'facebook',
-      classNames: 'fa fa-facebook-official'
-    }, {
-      name: 'twitter',
-      classNames: 'fa fa-twitter-official'
-    }];
+  constructor() { //public accounts: AccountsUiService
+    this.socialChoices = {
+      facebook: true,
+      twitter: true,
+      meetup: false
+    };
+
+    //console.log(this.accounts.test);
 
     this.accountsForm = new ControlGroup({
       username: new Control(''),
@@ -33,9 +34,10 @@ export class AccountsLogin {
 
   /**
    * Social Login
+   * @params social {'facebook', 'twitter', 'google'}
    */
-  socialLogin(social) {
-
+  socialLogin(social:string) {
+    //AccountsUiService[social]();
   }
 
   /**

@@ -1,9 +1,10 @@
 ///<reference path="typings/typings.d.ts"/>
+import {Injectable} from 'angular2/angular2';
 
 /**
  * Accounts Ui Service
  */
-
+@Injectable()
 export class AccountsUiService {
   options:IAccountOptions;
   error:string;
@@ -11,6 +12,7 @@ export class AccountsUiService {
 
   constructor() {
     this.error = '';
+    this.test = 'test';
 
     this.options = {
       requestPermissions: ['email'],
@@ -63,19 +65,20 @@ export class AccountsUiService {
    * Facebook, Twitter, Google, Github, Weibo, MeteorDevGroup, Meetup
    * @returns {Promise|Promise<T>}
    */
-  loginWithFacebook() {
+  facebook() {
+    alert('facebook');
     Meteor.loginWithFacebook(this.options, (e) => {
       this.handler(e);
     });
   }
 
-  loginWithGoogle() {
+  google() {
     Meteor.loginWithGoogle(this.options, (e) => {
       this.handler(e);
     });
   }
 
-  loginWithTwitter() {
+  twitter() {
     Meteor.loginWithTwitter({},
       // Must get official approval for emails from Twitter
       (e) => {

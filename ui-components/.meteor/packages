@@ -10,7 +10,9 @@ insecure
 shmck:angular2
 netanelgilad:angular2-typescript
 
-
 accounts-password
+
+# Styles
 fourseven:scss
 reywood:bootstrap3-sass
+fortawesome:fontawesome
