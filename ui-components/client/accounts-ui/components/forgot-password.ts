@@ -14,7 +14,7 @@ import {Inject} from 'angular2/angular2';
 })
 export class AccountsForgotPassword {
   accountsForm:ControlGroup;
-  accounts:AccountsService
+  accounts:AccountsService;
 
   constructor(@Inject(AccountsService) accounts) {
     this.accounts = accounts;

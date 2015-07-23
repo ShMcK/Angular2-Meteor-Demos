@@ -32,7 +32,7 @@ export class AccountsRegister {
    * @params social {'facebook', 'twitter', 'google'}
    */
   socialLogin(social:string) {
-    this.accounts[social]();
+    this.accounts.loginWith(social);
   }
 
   /**

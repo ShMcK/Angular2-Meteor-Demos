@@ -1,9 +1,27 @@
+<!-- accounts social | reusable -->
+<div class="social-links">
+  <div class="social-links--content">
+    <a (click)="socialLogin('facebook')" class="link--facebook" title="Facebook">
+      <span class="sr-only">Facebook</span>
+      <i class="fa fa-facebook"></i>
+    </a>
+    <a (click)="socialLogin('twitter')" class="link--twitter" title="Twitter">
+      <span class="sr-only">Twitter</span>
+      <i class="fa fa-twitter"></i>
+    </a>
+    <a (click)="socialLogin('google')" class="link--google" title="Google+">
+      <span class="sr-only">Google+</span>
+      <i class="fa fa-google"></i>
+    </a>
+  </div>
+</div>
+
+<h3 class="logo">Register</h3>
+
 <section class="outer-form">
   <!-- accounts form -->
   <form (submit)="submit($event)"
         [ng-form-model]="accountsForm" novalidate>
-
-    <h3 class="logo">Register</h3>
 
     <div class="outer-form--group">
       <div class="form-group">

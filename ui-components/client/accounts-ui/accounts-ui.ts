@@ -19,9 +19,24 @@ class AccountsUi {
   page:string;
 
   constructor() {
-    this.page = 'login';
+    this.page = null;
   }
 
+  /**
+   * Open form
+   * @param target {'login', 'register'}
+   */
+  open(target:string) {
+    this.page = target;
+
+    // open modal
+
+  }
+
+  /**
+   * Redirect form page
+   * @param destination {'login', 'register', 'forgotPassword'}
+   */
   redirect(destination:string) {
     this.page = destination;
   }

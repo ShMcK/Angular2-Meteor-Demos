@@ -2,20 +2,23 @@
   .social-links {
     margin: 10px auto 0 auto;
     max-width: 300px;
+    text-align: center;
+    display: block;
 
     .social-links--content {
       @extend .container;
       @include make-row();
+      //display: inline-block;
 
       a {
         @extend .btn;
         @extend .btn-primary;
-        @include make-xs-column(4);
+        @include make-xs-column(6);
         @include make-sm-column(1);
 
 
         margin: 5px;
-        width: 75%;
+        width: 100%;
         font-size: 250%;
         padding: 0;
       }

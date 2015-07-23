@@ -14,17 +14,17 @@
     padding: 10px 20px;
   }
 
+  .logo {
+    padding: 0 0 15px 0;
+    font-size: 25px;
+    color: #aaaaaa;
+    font-weight: bold;
+    text-align: center
+  }
+
   form {
     @extend .text-left;
     position: relative;
-
-    .logo {
-      padding: 0 0 15px 0;
-      font-size: 25px;
-      color: #aaaaaa;
-      font-weight: bold;
-      text-align: center
-    }
 
     .form-group {
       margin-bottom: 0;

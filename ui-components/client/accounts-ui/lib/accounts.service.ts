@@ -51,30 +51,40 @@ export class AccountsService {
       });
   }
 
+
   /**
    * Login with OAuth
    * Facebook, Twitter, Google, Github, Weibo, MeteorDevGroup, Meetup
    * @returns {Promise|Promise<T>}
    */
-  facebook() {
-    Meteor.loginWithFacebook(this.options, (e) => {
-      this.handler(e, 'Logged in with Facebook');
-    });
+  loginWith(social) {
+    switch (social) {
+      case 'facebook':
+        Meteor.loginWithFacebook(this.options, (e) => {
+          this.handler(e, 'Logged in with Facebook');
+        });
+        break;
+      case 'google':
+        Meteor.loginWithGoogle(this.options, (e) => {
+          this.handler(e, 'Logged in with Google+');
+        });
+        break;
+      case 'twitter':
+        Meteor.loginWithTwitter({},
+          // Must get official approval for emails from Twitter
+          (e) => {
+            this.handler(e, 'Logged in with Twitter');
+          });
+        break;
+      default:
+        this.handler({
+          message: 'Invalid OAuth provider'
+        });
+    }
   }
 
-  google() {
-    Meteor.loginWithGoogle(this.options, (e) => {
-      this.handler(e, 'Logged in with Google+');
-    });
-  }
+,
 
-  twitter() {
-    Meteor.loginWithTwitter({},
-      // Must get official approval for emails from Twitter
-      (e) => {
-        this.handler(e, 'Logged in with Twitter');
-      });
-  }
 
   /**
    * Request a forgot password email.
@@ -119,7 +129,7 @@ export class AccountsService {
     Accounts.verifyEmail(token)
       .then((e) => {
         this.handler(e);
-      })
+      });
   }
 
 
