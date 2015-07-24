@@ -6,7 +6,7 @@ Meteor.startup(function () {
 
     for (var i = 0; i < max + 1; i++) {
       Items.insert({
-       names: _.shuffle(names)
+        names: _.shuffle(names)
       });
     }
   }

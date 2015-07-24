@@ -5,7 +5,10 @@
 # but you can also edit it by hand.
 
 meteor-platform
-spectrum:material-design-lite
+
+# Angular 2
 shmck:angular2
 netanelgilad:angular2-typescript
-anti:fake
+
+# Styles
+spectrum:material-design-lite

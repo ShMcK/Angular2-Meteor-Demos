@@ -1,9 +1,18 @@
 angular.module('app')
-  .controller('AppCtrl', AppCtrl);
+  .directive('performanceTest', performanceTest);
 
-function AppCtrl($meteor) {
+function performanceTest () {
+  return {
+    templateUrl: 'client/performance-test.ng.html',
+    controller: performanceTestCtrl,
+    controllerAs: 'app'
+  };
+}
+
+function performanceTestCtrl($meteor) {
   $meteor.subscribe('items');
   var self = this;
+  self.numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   self.counts = [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
   self.count = 1;
 

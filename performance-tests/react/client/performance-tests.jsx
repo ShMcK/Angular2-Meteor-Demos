@@ -1,5 +1,4 @@
-Table = React.createClass({
-  templateName: "table",
+App = React.createClass({
   mixins: [ReactMeteor.Mixin],
   startMeteorSubscriptions: function () {
     // automatically wrapped in Tracker.autorun
@@ -8,89 +7,44 @@ Table = React.createClass({
   getMeteorState: function () {
     return {
       items: () => {
-        if (this.props.running) {
-          return Items.find({}, {limit: this.props.limit}).fetch()
+        if (this.state.running) {
+          return Items.find({}, {limit: this.state.limit}).fetch()
         } else {
           return [];
         }
       }
     }
   },
-  renderRows: function () {
-    return this.state.items().map((row, index) => {
-      return (<tr key={row._id}>
-        <td>{index + 1}</td>
-        <td style={{"color": row.color}}>&#9679;</td>
-        <td>{row.profile.name}</td>
-        <td>{row.profile.surname}</td>
-        <td>{row.profile.name} {row.profile.surname}</td>
-        <td>{row.username}</td>
-        <td>{row.profile.email}</td>
-        <td>{row.number}</td>
-        <td>{row.title}</td>
-        <td>{row.description}</td>
-      </tr>);
-    });
-  },
-  render: function () {
-    return (
-      <table className="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-        <thead>
-        <tr>
-          <th>Index</th>
-          <th className="mdl-data-table__cell--non-numeric">Color</th>
-          <th className="mdl-data-table__cell--non-numeric">Name</th>
-          <th className="mdl-data-table__cell--non-numeric">Surname</th>
-          <th className="mdl-data-table__cell--non-numeric">Full Name</th>
-          <th className="mdl-data-table__cell--non-numeric">Username</th>
-          <th className="mdl-data-table__cell--non-numeric">Email</th>
-          <th>Number</th>
-          <th className="mdl-data-table__cell--non-numeric">Title</th>
-          <th className="mdl-data-table__cell--non-numeric">Paragraph</th>
-        </tr>
-        </thead>
-
-        {this.renderRows()}
-
-      </table>);
-  }
-});
-
-Counts = React.createClass({
-  templateName: "counts",
-  getCounts: function () {
-    return [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
-  },
-  renderCounts: function () {
-    return this.getCounts().map((count) => {
-      return (<button key={count} onClick={()=>{this.props.changeLimit(count)}} className="mdl-button"
-                      id="count-{count}">{count}</button>);
-    });
-  },
-  render: function () {
-    return (<section className="mdl-grid">
-      <div className="mdl-cell mdl-cell--10-col counts">
-        <span className="title">Item Count:&nbsp;</span>
-
-        {this.renderCounts()}
-
-        <button id="run" onClick={this.props.run}
-                className="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">Run
-        </button>
-        <button id="reset" onClick={() => {this.props.changeLimit(0)}}
-                className="mdl-button mdl-button--accent mdl-js-button mdl-button--raised mdl-js-ripple-effect">Reset
-        </button>
-      </div>
-    </section>);
-  }
-});
-
-App = React.createClass({
   getInitialState: function () {
     return {
       limit: 1,
       running: false
     }
+  },
+  renderRows: function () {
+    return this.state.items().map((row) => {
+      var names = row.names.map((name, index) => {
+        return (<td key={index}>{{name}}</td>);
+      });
+      return (<tr key={row._id}>{names}</tr>);
+    });
+  },
+  getCounts: function () {
+    return [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
+  },
+  renderCounts: function () {
+    return this.getCounts().map((count) => {
+      return (<button key={count} onClick={()=>{this._changeLimit(count)}} className="mdl-button"
+                      id="count-{count}">{count}</button>);
+    });
+  },
+  getNumbers: function () {
+    return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  },
+  renderTableHeads: function () {
+    return this.getNumbers().map((number) => {
+      return (<th className="mdl-data-table__cell--non-numeric">{{number}}</th>);
+    })
   },
   _run: function () {
     this.setState((prevState, currentProps) => {
@@ -98,13 +52,41 @@ App = React.createClass({
     });
   },
   _changeLimit: function (newLimit) {
+    console.log(newLimit);
     this.setState({running: false, limit: newLimit});
   },
+  _findWaldo: function () {
+    console.log('find waldo!');
+  },
   render: function () {
-    return (<div>
-      <Counts changeLimit={this._changeLimit} run={this._run}/>
-      <Table limit={this.state.limit} running={this.state.running}/>
-    </div>);
+    return (<section className="pt">
+      <div className="pt__options">
+        <div className="pt__options--counts">
+          {this.renderCounts()}
+        </div>
+
+        <button id="run" onClick={this._run}
+                className="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">Run
+        </button>
+        <button id="reset" onClick={() => {this._changeLimit(0)}}
+                className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Reset
+        </button>
+        <button id="find-waldos" onClick={this._findWaldo} className="mdl-button mdl-button--accent mdl-button--raised">
+          Find
+          Waldos
+        </button>
+      </div>
+      <table className="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+        <thead>
+        <tr>
+          {this.renderTableHeads()}
+        </tr>
+        </thead>
+
+        {this.renderRows()}
+
+      </table>
+    </section>);
   }
 });
 

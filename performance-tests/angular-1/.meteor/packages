@@ -5,6 +5,9 @@
 # but you can also edit it by hand.
 
 meteor-platform
-spectrum:material-design-lite
+
+# Angular
 urigo:angular
-anti:fake
+
+#Styles
+spectrum:material-design-lite
