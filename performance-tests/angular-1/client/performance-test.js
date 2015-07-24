@@ -31,4 +31,7 @@ function performanceTestCtrl($meteor) {
     self.rows = null;
     self.count = 0;
   };
+  self.findWaldos = function () {
+    console.log('find waldos');
+  };
 }

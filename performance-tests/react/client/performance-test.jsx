@@ -1,7 +1,6 @@
 App = React.createClass({
   mixins: [ReactMeteor.Mixin],
   startMeteorSubscriptions: function () {
-    // automatically wrapped in Tracker.autorun
     Meteor.subscribe('items');
   },
   getMeteorState: function () {
@@ -55,7 +54,7 @@ App = React.createClass({
     console.log(newLimit);
     this.setState({running: false, limit: newLimit});
   },
-  _findWaldo: function () {
+  _findWaldos: function () {
     console.log('find waldo!');
   },
   render: function () {
@@ -71,7 +70,7 @@ App = React.createClass({
         <button id="reset" onClick={() => {this._changeLimit(0)}}
                 className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Reset
         </button>
-        <button id="find-waldos" onClick={this._findWaldo} className="mdl-button mdl-button--accent mdl-button--raised">
+        <button id="find-waldos" onClick={this._findWaldos} className="mdl-button mdl-button--accent mdl-button--raised">
           Find
           Waldos
         </button>

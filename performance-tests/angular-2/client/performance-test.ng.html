@@ -29,7 +29,7 @@
 
     <tbody id="rows">
     <tr *ng-for="#item of items; #i = index">
-      <td *ng-for="#name of item.names" [class.waldo]="isWaldo(name)">{{name}}</td>
+      <td *ng-for="#name of item.names">{{name}}</td>
     </tr>
     </tbody>
 

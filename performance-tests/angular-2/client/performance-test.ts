@@ -34,6 +34,10 @@ class PerformanceTests {
     this.items = null;
   }
 
+  findWaldos () {
+
+  }
+
   isWaldo(name) {
     return name == 'Waldo';
   }
