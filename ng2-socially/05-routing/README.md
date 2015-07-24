@@ -73,14 +73,12 @@ client/party-details/party-details.ts
     
     constructor(@Inject(RouteParams) routeParams:RouteParams) {
         this.params = routeParams.params;
-        }
         
-    onActivate() {
-        this.party = Parties.find(this.params.partyId).fetch()[0];
-        if (this.party) {
-          return true;
+        // better way to do this using LifeCycle hooks, see stage 06
+        Tracker.autorun(zone.bind(() => {
+           this.party = Parties.find(this.params.partyId).fetch()[0];
+           }));
         }
-      }
     
 client/party-details/party-details.ng.html
 

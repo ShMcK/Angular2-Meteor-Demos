@@ -1,40 +1,49 @@
 ///<reference path="../../typings/typings.d.ts"/>
-import {Component, View, NgFor, Inject} from 'angular2/angular2';
-import {formDirectives, NgControl, Validators, NgForm} from 'angular2/angular2';
+
+import {Component, View, Attribute, NgFor, Inject, NgModel} from 'angular2/angular2';
 import {routerDirectives, RouteParams} from 'angular2/router';
+
+class PartyModel {
+  name: string;
+  description: string;
+}
 
 @Component({
   selector: 'party-details'
 })
 @View({
-  templateUrl: 'client/party/party.ng.html',
-  directives: [NgFor, routerDirectives, formDirectives]
+  templateUrl: 'client/party-details/party-details.ng.html',
+  directives: [NgFor, routerDirectives]
 })
 export class PartyDetailsCmp {
   party:IParty;
+  params;
 
   constructor(@Inject(RouteParams) routeParams:RouteParams) {
-    Tracker.autorun(zone.bind(() => {
-      this.party = Parties.find(routeParams.params.partyId).fetch()[0];
-    }));
+    this.params = routeParams.params;
+    this.model = new PartyModel();
   }
 
   save() {
-    console.log(this.party);
   }
 
   reset() {
-    this.party = {
-      name: '',
-      description: ''
-    };
   }
 
   onActivate() {
-    console.log('canActivate hook');
+    this.party = Parties.find(this.params.partyId).fetch()[0];
+    if (this.party) {
+      return true;
+    }
   }
 
-  canDeactivate() {
+  onDeactivate() {
+    // is saved?
+    // yes: route
+    // no: alert('Save first?')
+
+    // or: autosave
+
     console.log('canDeactivate hook');
   }
 }

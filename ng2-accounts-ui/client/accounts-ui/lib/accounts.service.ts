@@ -102,8 +102,6 @@ export class AccountsService {
   /**
    * Reset the password for a user using a token received in email. Logs the user in afterwards.
    * http://docs.meteor.com/#/full/accounts_resetpassword
-   * @param token
-   * @param newPassword
    */
   resetPassword(token:string, newPassword:string) {
     Accounts.resetPassword(token, newPassword, (e) => {

@@ -16,16 +16,12 @@ export class PartyDetailsCmp {
 
   constructor(@Inject(RouteParams) routeParams:RouteParams) {
     this.params = routeParams.params;
-    //Tracker.autorun(zone.bind(() => {
-    //  this.party = Parties.find(this.params.partyId).fetch()[0];
-    //}));
+    console.log(routeParams);
 
-    // TODO: Refactor load into onActivate hook
-  }
-  onActivate() {
-    this.party = Parties.find(this.params.partyId).fetch()[0];
-    if (this.party) {
-      return true;
-    }
+    // better way to do this in next stage
+    // using Router Lifecycle Hooks
+    Tracker.autorun(zone.bind(() => {
+      this.party = Parties.find(this.params.partyId).fetch()[0];
+    }));
   }
 }

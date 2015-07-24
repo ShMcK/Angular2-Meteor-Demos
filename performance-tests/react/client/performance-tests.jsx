@@ -1,13 +1,29 @@
-Meteor.subscribe('items');
+var cx = React.addons.classSet;
 
 Table = React.createClass({
-  getRows() {
-    return Items.find({}, {limit: 10});
+  templateName: "table",
+  mixins: [ReactMeteor.Mixin],
+  startMeteorSubscriptions: function () {
+    // automatically wrapped in Tracker.autorun
+    Meteor.subscribe('items');
   },
-  renderRows() {
-    return this.getRows().map((row) => {
-      return (<tr>
-        <td style="color: {task.color}">&#9679;</td>
+  getMeteorState: function () {
+    return {
+      items: () => {
+        if (this.props.running) {
+          return Items.find({}, {limit: this.props.limit}).fetch()
+        } else {
+          return [];
+        }
+      }
+    }
+  },
+  renderRows: function () {
+    return this.state.items().map((row) => {
+      console.log(row);
+      return (<tr key={row._id}>
+        <td>Index</td>
+        <td style={{"color": row.color}}>&#9679;</td>
         <td>{row.profile.name}</td>
         <td>{row.profile.surname}</td>
         <td>{row.profile.name} {row.profile.surname}</td>
@@ -17,24 +33,23 @@ Table = React.createClass({
         <td>{row.title}</td>
         <td>{row.description}</td>
       </tr>);
-      // <td>{index}</td>
     });
   },
-  render() {
+  render: function () {
     return (
-      <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+      <table className="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
         <thead>
         <tr>
           <th>Index</th>
-          <th class="mdl-data-table__cell--non-numeric">Color</th>
-          <th class="mdl-data-table__cell--non-numeric">Name</th>
-          <th class="mdl-data-table__cell--non-numeric">Surname</th>
-          <th class="mdl-data-table__cell--non-numeric">Full Name</th>
-          <th class="mdl-data-table__cell--non-numeric">Username</th>
-          <th class="mdl-data-table__cell--non-numeric">Email</th>
+          <th className="mdl-data-table__cell--non-numeric">Color</th>
+          <th className="mdl-data-table__cell--non-numeric">Name</th>
+          <th className="mdl-data-table__cell--non-numeric">Surname</th>
+          <th className="mdl-data-table__cell--non-numeric">Full Name</th>
+          <th className="mdl-data-table__cell--non-numeric">Username</th>
+          <th className="mdl-data-table__cell--non-numeric">Email</th>
           <th>Number</th>
-          <th class="mdl-data-table__cell--non-numeric">Title</th>
-          <th class="mdl-data-table__cell--non-numeric">Paragraph</th>
+          <th className="mdl-data-table__cell--non-numeric">Title</th>
+          <th className="mdl-data-table__cell--non-numeric">Paragraph</th>
         </tr>
         </thead>
 
@@ -45,34 +60,58 @@ Table = React.createClass({
 });
 
 Counts = React.createClass({
-  getCounts() {
+  templateName: "counts",
+  getCounts: function () {
     return [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
   },
-  renderCounts() {
+  renderCounts: function () {
     return this.getCounts().map((count) => {
-      return (<button class="mdl-button" id="count-{count}" value="{count}">{count}</button>);
+      return (<button key={count} onClick={()=>{this.props.changeLimit(count)}} className="mdl-button"
+                      id="count-{count}">{count}</button>);
     });
   },
-  render() {
-    return (<section class="mdl-grid">
-      <div class="mdl-cell mdl-cell--10-col counts">
-        <span class="title">Item Count:&nbsp;</span>
+  render: function () {
+    return (<section className="mdl-grid">
+      <div className="mdl-cell mdl-cell--10-col counts">
+        <span className="title">Item Count:&nbsp;</span>
 
         {this.renderCounts()}
 
-        <button id="run"
-                class="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">Run
+        <button id="run" onClick={this.props.run}
+                className="mdl-button mdl-button--primary mdl-js-button mdl-button--raised mdl-js-ripple-effect">Run
         </button>
-        <button id="reset"
-                class="mdl-button mdl-button--accent mdl-js-button mdl-button--raised mdl-js-ripple-effect">Reset
+        <button id="reset" onClick={() => {this.props.changeLimit(0)}}
+                className="mdl-button mdl-button--accent mdl-js-button mdl-button--raised mdl-js-ripple-effect">Reset
         </button>
       </div>
     </section>);
   }
 });
 
+App = React.createClass({
+  getInitialState: function () {
+    return {
+      limit: 1,
+      running: false
+    }
+  },
+  _run: function () {
+    this.setState((prevState, currentProps) => {
+      return {running: true};
+    });
+  },
+  _changeLimit: function (newLimit) {
+    console.log(newLimit);
+    this.setState({running: false, limit: newLimit});
+  },
+  render: function () {
+    return (<div>
+      <Counts changeLimit={this._changeLimit} run={this._run}/>
+      <Table limit={this.state.limit} running={this.state.running}/>
+    </div>);
+  }
+});
 
 Meteor.startup(function () {
-  React.render(<Table />, document.getElementById("table-target"));
-  React.render(<Counts />, document.getElementById("counts-target"));
+  React.render(<App />, document.getElementById("app-target"));
 });
