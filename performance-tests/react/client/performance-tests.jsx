@@ -1,5 +1,3 @@
-var cx = React.addons.classSet;
-
 Table = React.createClass({
   templateName: "table",
   mixins: [ReactMeteor.Mixin],
@@ -19,15 +17,14 @@ Table = React.createClass({
     }
   },
   renderRows: function () {
-    return this.state.items().map((row) => {
-      console.log(row);
+    return this.state.items().map((row, index) => {
       return (<tr key={row._id}>
-        <td>Index</td>
+        <td>{index + 1}</td>
         <td style={{"color": row.color}}>&#9679;</td>
         <td>{row.profile.name}</td>
         <td>{row.profile.surname}</td>
         <td>{row.profile.name} {row.profile.surname}</td>
-        <td>{row.profile.username}</td>
+        <td>{row.username}</td>
         <td>{row.profile.email}</td>
         <td>{row.number}</td>
         <td>{row.title}</td>
@@ -101,7 +98,6 @@ App = React.createClass({
     });
   },
   _changeLimit: function (newLimit) {
-    console.log(newLimit);
     this.setState({running: false, limit: newLimit});
   },
   render: function () {

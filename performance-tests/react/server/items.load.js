@@ -1,5 +1,6 @@
 Factory.define('item', Items, {
-  profile: Fake.user(['name', 'surname', 'username', 'email']),
+  profile: Fake.user(['name', 'surname', 'email']),
+  username: Fake.word(6),
   title: Fake.sentence(5),
   description: Fake.paragraph([3]),
   color: Fake.color(),
