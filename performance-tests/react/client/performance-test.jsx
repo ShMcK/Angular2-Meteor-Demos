@@ -70,9 +70,9 @@ App = React.createClass({
         <button id="reset" onClick={() => {this._changeLimit(0)}}
                 className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Reset
         </button>
-        <button id="find-waldos" onClick={this._findWaldos} className="mdl-button mdl-button--accent mdl-button--raised">
-          Find
-          Waldos
+        <button id="find-waldos" onClick={this._findWaldos}
+                className="mdl-button mdl-button--accent mdl-button--raised">
+          Find Waldos
         </button>
       </div>
       <table className="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">

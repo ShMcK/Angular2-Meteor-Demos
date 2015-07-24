@@ -12,16 +12,18 @@ declare var Items:any;
   directives: [NgFor]
 })
 class PerformanceTests {
-  numbers: number[];
+  numbers:number[];
   items:any;
   counts:number[];
-  selectedCount: number;
+  selectedCount:number;
+  waldoFilter:boolean;
 
   constructor() {
     Meteor.subscribe('items');
     this.numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     this.counts = [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
     this.selectedCount = 1;
+    this.waldoFilter = false;
     this.run();
   }
 
@@ -32,14 +34,17 @@ class PerformanceTests {
   reset() {
     this.selectedCount = 0;
     this.items = null;
+    this.waldoFilter = false;
   }
 
-  findWaldos () {
-
+  findWaldos() {
+    this.waldoFilter = !this.waldoFilter;
   }
 
   isWaldo(name) {
-    return name == 'Waldo';
+    if (this.waldoFilter && name === 'Waldo') {
+      return true;
+    }
   }
 
   setCountValue(value) {
@@ -48,5 +53,5 @@ class PerformanceTests {
 }
 
 bootstrap(PerformanceTests, [
- // jitInjectables // performance increase
+  // jitInjectables // performance increase
 ]);

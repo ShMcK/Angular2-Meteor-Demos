@@ -1,7 +1,7 @@
 angular.module('app')
   .directive('performanceTest', performanceTest);
 
-function performanceTest () {
+function performanceTest() {
   return {
     templateUrl: 'client/performance-test.ng.html',
     controller: performanceTestCtrl,
@@ -14,6 +14,7 @@ function performanceTestCtrl($meteor) {
   var self = this;
   self.numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   self.counts = [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
+  self.waldoFilter = false;
   self.count = 1;
 
   self.runTest = function () {
@@ -30,8 +31,16 @@ function performanceTestCtrl($meteor) {
   self.reset = function () {
     self.rows = null;
     self.count = 0;
+    self.waldoFilter = false;
+  };
+
+  self.isWaldo = function (name) {
+    if (self.waldoFilter && name === 'Waldo') {
+      return true;
+    }
   };
   self.findWaldos = function () {
-    console.log('find waldos');
+    self.waldoFilter = !self.waldoFilter;
+    console.log(self.waldoFilter);
   };
 }
