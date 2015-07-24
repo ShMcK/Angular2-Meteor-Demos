@@ -1,26 +1,22 @@
 ///<reference path="../../typings/typings.d.ts"/>
-import {Component, View, NgFor} from 'angular2/angular2';
+import {Component, View, NgFor, Inject} from 'angular2/angular2';
 import {formDirectives, NgControl, Validators, NgForm} from 'angular2/angular2';
 import {routerDirectives, RouteParams} from 'angular2/router';
 
 @Component({
-  selector: 'party'
+  selector: 'party-details'
 })
 @View({
   templateUrl: 'client/party/party.ng.html',
   directives: [NgFor, routerDirectives, formDirectives]
 })
-export class PartyCmp {
-  party;
+export class PartyDetailsCmp {
+  party:IParty;
 
-  constructor() {
-    // get RouteParams
-    // in loading hook, load selected Party based on params
-
-    this.party = {name: '', description: ''};
-
-    //console.log(partyId);
-    //this.party = Parties.findOne(partyId);
+  constructor(@Inject(RouteParams) routeParams:RouteParams) {
+    Tracker.autorun(zone.bind(() => {
+      this.party = Parties.find(routeParams.params.partyId).fetch()[0];
+    }));
   }
 
   save() {
@@ -37,6 +33,7 @@ export class PartyCmp {
   onActivate() {
     console.log('canActivate hook');
   }
+
   canDeactivate() {
     console.log('canDeactivate hook');
   }

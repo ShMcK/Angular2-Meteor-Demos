@@ -4,7 +4,7 @@
 <main>
   <ul>
     <li *ng-for="#party of parties">
-      <a [router-link]="['/party', {partyId: party._id}]">{{party.name}}</a>
+      <a [router-link]="['/party-details', {partyId: party._id}]">{{party.name}}</a>
 
       <p>{{party.description}}</p>
     </li>

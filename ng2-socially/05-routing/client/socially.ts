@@ -4,7 +4,7 @@ import {routerInjectables, routerDirectives, Router, RouteConfig} from 'angular2
 import {LocationStrategy, Location, HashLocationStrategy } from 'angular2/router';
 // Components
 import {PartiesCmp} from 'client/parties/parties';
-import {PartyCmp} from 'client/party/party';
+import {PartyDetailsCmp} from 'client/party-details/party-details';
 
 @Component({
   selector: 'socially'
@@ -15,7 +15,7 @@ import {PartyCmp} from 'client/party/party';
 })
 @RouteConfig([
   {path: '/', as: 'parties', component: PartiesCmp},
-  {path: '/party/:partyId', as: 'party', component: PartyCmp}
+  {path: '/party/:partyId', as: 'party-details', component: PartyDetailsCmp}
 ])
 class Socially {}
 

@@ -5,6 +5,12 @@ Install latest router package.
     
 Divide app into components
 
+client/index.html
+
+    <head>
+        <base href="/">
+    </head>
+  
 client/socially.ts
 
     import {routerInjectables, routerDirectives, RouteConfig} from 'angular2/router';
@@ -55,7 +61,7 @@ client/parties/parties.ng.html
 DISCUSS LIFECYCLE EVENTS
     - use loading hook to load data with Meteor.object
     
-client/party/party-details.ts
+client/party-details/party-details.ts
 
     import {routerDirectives, RouteParams} from 'angular2/router';
     
@@ -65,9 +71,21 @@ client/party/party-details.ts
     })
     
     
-client/party/party.ng.html
+    constructor(@Inject(RouteParams) routeParams:RouteParams) {
+        this.params = routeParams.params;
+        }
+        
+    onActivate() {
+        this.party = Parties.find(this.params.partyId).fetch()[0];
+        if (this.party) {
+          return true;
+        }
+      }
+    
+client/party-details/party-details.ng.html
 
-    LOAD PARTY FROM ROUTE PARAMS
-    
-    DISPLAY PARTY DATA
-    
+    <header>
+        <h2>{{party.name}}</h2>
+ 
+        <p>{{party.description}}</p>
+    </header>
