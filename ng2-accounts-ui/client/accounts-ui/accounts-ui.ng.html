@@ -25,7 +25,8 @@
 
     <p *ng-if="page !== 'register'">New user? <a (click)="redirect('register')">Create new account</a></p>
 
-    <p *ng-if="page !== 'passwordReset'">Forgot your password? <a (click)="redirect('forgotPassword')">Send reset</a></p>
+    <p *ng-if="page !== 'forgotPassword'">Forgot your password? <a (click)="redirect('forgotPassword')">Click here</a>
+    </p>
   </div>
 
 </section>

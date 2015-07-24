@@ -1,0 +1,16 @@
+.tabs {
+  @extend .nav;
+  @extend .nav-tabs;
+  li.active {
+    @extend .active;
+  }
+  content {
+    @extend .tab-content;
+  }
+}
+
+.tab {
+  @extend .tab-pane;
+  @extend .active;
+  @extend .in;
+}
