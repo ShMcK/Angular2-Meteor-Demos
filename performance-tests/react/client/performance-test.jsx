@@ -17,13 +17,18 @@ App = React.createClass({
   getInitialState: function () {
     return {
       limit: 1,
-      running: false
+      running: false,
+      waldoFilter: false
     }
   },
   renderRows: function () {
     return this.state.items().map((row) => {
       var names = row.names.map((name, index) => {
-        return (<td key={index}>{{name}}</td>);
+        var classString;
+        if (this.state.waldoFilter && name == 'Waldo') {
+          classString = 'waldo'
+        }
+        return (<td key={index} className={classString}>{{name}}</td>);
       });
       return (<tr key={row._id}>{names}</tr>);
     });
@@ -51,11 +56,18 @@ App = React.createClass({
     });
   },
   _changeLimit: function (newLimit) {
-    console.log(newLimit);
     this.setState({running: false, limit: newLimit});
+    // reset
+    if (newLimit === 0) {
+      this.setState((prevState, currentProps) => {
+        return {waldoFilter: false};
+      })
+    }
   },
   _findWaldos: function () {
-    console.log('find waldo!');
+    this.setState((prevState, currentProps) => {
+      return {waldoFilter: !prevState.waldoFilter};
+    })
   },
   render: function () {
     return (<section className="pt">

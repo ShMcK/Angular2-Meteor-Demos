@@ -1,18 +1,13 @@
 Session.setDefault('limit', 1);
 Session.setDefault('running', false);
+Session.setDefault('waldoFilter', false);
 Meteor.subscribe('items');
 
 Template.performanceTest.helpers({
   'rows': function () {
     if (Session.get('running')) {
-      return Items.find({}, {limit: parseInt(Session.get('limit'))})
-        // add index value
-      .map(function (item, index) {
-          item.index = index + 1;
-          return item;
-        });
+      return Items.find({}, {limit: parseInt(Session.get('limit'))});
     } else {
-      // not running, empty list
       return null;
     }
   },
@@ -21,6 +16,11 @@ Template.performanceTest.helpers({
   },
   'counts': function () {
     return [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
+  },
+  'isWaldo': function () {
+    if (Session.get('waldoFilter') && this == 'waldo') {
+      return {class: 'waldo'};
+    }
   }
 });
 
@@ -34,11 +34,12 @@ Template.performanceTest.events({
   'click #reset': function () {
     Session.set('limit', 0);
     Session.set('running', false);
+    Session.set('waldoFilter', false);
   },
   'click #run': function () {
     Session.set('running', true);
   },
-  '.click #find-waldos':function () {
-    console.log('get waldos');
+  '.click #find-waldos': function () {
+    Session.set('waldoFilter', !Session.get('waldoFilter'));
   }
 });

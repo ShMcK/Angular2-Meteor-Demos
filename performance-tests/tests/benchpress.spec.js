@@ -26,28 +26,37 @@ var runner = new benchpress.Runner([
 
 describe('Perf', function () {
 
-  it('generates rows', function (done) {
+  it('paints the DOM with rows', function (done) {
 
-    if (TEST.isAngular1) {
-      browser.ignoreSynchronization = false;
-    } else {
-      browser.ignoreSynchronization = true;
-    }
-
+    browser.ignoreSynchronization = TEST.isAngular1;
     browser.get(TEST.address);
 
     runner.sample({
-      id: TEST.id,
+      id: 'load-rows',
       prepare: function () {
-        // clear previous data
         return $('#reset').click();
       },
       execute: function () {
-        // select number to test
         $('#count-' + TEST.count).click();
-        // run test
         return $('#run').click();
       }
     }).then(done, done.fail);
+  });
+
+  it('re-paints the rows', function (done) {
+    browser.ignoreSynchronization = TEST.isAngular1;
+    browser.get(TEST.address);
+    runner.sample({
+      id: 'find-waldos',
+      prepare: function () {
+        $('#reset').click();
+        $('#count-' + TEST.count).click();
+        return $('#run').click();
+      },
+      execute: function () {
+        return $('#find-waldos').click();
+      }
+    }).then(done, done.fail);
+
   });
 });
