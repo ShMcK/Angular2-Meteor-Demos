@@ -1,4 +1,3 @@
-<!-- todo -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,7 +8,7 @@
 </head>
 <body>
 
-<h2>Repainting Times</h2>
+<h2>Page Loading Times</h2>
 <canvas id="renderChart" width="600" height="400"></canvas>
 
 <!--<script src="settings.js"></script>-->
@@ -75,57 +74,27 @@
     datasetStrokeWidth: 2,
     datasetStroke: true,
 
+
+
     legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
   };
 
   var data = {
-    labels: ["10", "100", "500", "1000", "2000", "3000", "4000", "5000"],
+    labels: ["Blaze", "React", "Angular 1.4", "Angular 2 alpha"],
     datasets: [
       {
         label: "Blaze",
-        fillColor: "rgba(" + colors.blaze + ",0.2)",
-        strokeColor: "rgba(" + colors.blaze + ",1)",
-        pointColor: "rgba(" + colors.blaze + ",1)",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(" + colors.blaze + ",1)",
-        data: [9, 37, 209, 560, 830, 1100, 1220, 1520]
-      },
-      {
-        label: "React",
-        fillColor: "rgba(" + colors.react + ",0.2)",
-        strokeColor: "rgba(" + colors.react + ",1)",
-        pointColor: "rgba(" + colors.react + ",1)",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(" + colors.react + ",1)",
-        data: [16, 57, 186, 376, 1150, 1380, 1490, 1810]
-      },
-      {
-        label: "Angular 1.4.2",
-        fillColor: "rgba(" + colors.angular + ",0.2)",
-        strokeColor: "rgba(" + colors.angular + ",1)",
-        pointColor: "rgba(" + colors.angular + ",1)",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(" + colors.angular + ",1)",
-        data: [5, 28, 95, 144, 536, 2360, 3950, 4670]
-      },
-      {
-        label: "Angular 2.0.0-alpha-32",
-        fillColor: "rgba(" + colors.angular2 + ", 0.2)",
-        strokeColor: "rgba(" + colors.angular2 + ", 1)",
-        pointColor: "rgba(" + colors.angular2 + ", 1)",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(" + colors.angular2 + ", 1)",
-        data: [2, 4, 13, 22, 38, 62, 71, 93]
+        fillColor: ["rgba(" + colors.blaze + ",0.2)", "rgba(" + colors.react + ",0.2)", "rgba(" + colors.angular + ",0.2)", "rgba(" + colors.angular2 + ", 0.2)"],
+        strokeColor: ["rgba(" + colors.blaze + ",1)", "rgba(" + colors.react + ",1)", "rgba(" + colors.angular + ",1)", "rgba(" + colors.angular2 + ", 1)"],
+        highlightFill: "#fff",
+        highlightStroke: ["rgba(" + colors.blaze + ",1)", "rgba(" + colors.react + ",1)", "rgba(" + colors.angular + ",1)", "rgba(" + colors.angular2 + ", 1)"],
+        data: [896, 1053, 1215, 1325]
       }
     ]
   };
 
   var ctx = document.getElementById("renderChart").getContext("2d");
-  var renderChart = new Chart(ctx).Line(data, Chart.defaults.global);
+  var renderChart = new Chart(ctx).Bar(data,{responsive: true});
 </script>
 </body>
 </html>

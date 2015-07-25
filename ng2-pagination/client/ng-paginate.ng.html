@@ -1,0 +1,25 @@
+<!-- search -->
+
+<content></content>
+
+{{pages.length}}
+
+
+<!-- pagination -->
+<ul>
+  <li (click)="selectPage(1)">
+    <button [disabled]="currentPage === 1">&lt;&lt;</button>
+  </li>
+  <li (click)="selectPage(page -1)">
+    <button [disabled]="currentPage === 1">&lt;</button>
+  </li>
+  <li *ng-for="#page of pages">
+    <button (click)="selectPage(page)">{{page}}</button>
+  </li>
+  <li (click)="selectPage(currentPage + 1)">
+    <button [disabled]="currentPage === pages.length">&gt;</button>
+  </li>
+  <li (click)="selectPage(pages.length)">
+    <button [disabled]="currentPage === pages.length">&gt;&gt;</button>
+  </li>
+</ul>
