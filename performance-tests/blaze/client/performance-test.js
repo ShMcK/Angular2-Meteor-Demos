@@ -18,7 +18,7 @@ Template.performanceTest.helpers({
     return [10, 100, 500, 1000, 2000, 3000, 4000, 5000];
   },
   'isWaldo': function () {
-    if (Session.get('waldoFilter') && this == 'waldo') {
+    if (Session.get('waldoFilter') && this == 'Waldo') {
       return {class: 'waldo'};
     }
   }
@@ -39,7 +39,8 @@ Template.performanceTest.events({
   'click #run': function () {
     Session.set('running', true);
   },
-  '.click #find-waldos': function () {
+  'click #find-waldos': function () {
     Session.set('waldoFilter', !Session.get('waldoFilter'));
+    console.log(Session.get('waldoFilter'));
   }
 });
