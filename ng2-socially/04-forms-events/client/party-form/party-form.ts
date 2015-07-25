@@ -35,6 +35,7 @@ export class PartyForm {
     // validate
     if (this.partyForm.valid) {
       // add to Parties (insecure version, use methods instead)
+      // We will use method calls later in part 14
       Parties.insert({
         name: party.name,
         description: party.description

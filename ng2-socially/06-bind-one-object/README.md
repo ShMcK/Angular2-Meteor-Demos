@@ -24,3 +24,5 @@ client/party/party-details.ts TODO: load data onActivate, save data on canDeacti
             console.log('canDeactivate hook');
           }
     }
+
+Events ?
