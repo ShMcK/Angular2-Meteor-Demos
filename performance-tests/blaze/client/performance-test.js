@@ -41,6 +41,5 @@ Template.performanceTest.events({
   },
   'click #find-waldos': function () {
     Session.set('waldoFilter', !Session.get('waldoFilter'));
-    console.log(Session.get('waldoFilter'));
   }
 });
