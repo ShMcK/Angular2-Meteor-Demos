@@ -11,11 +11,12 @@ import {formDirectives, Control, ControlGroup, Validators} from 'angular2/angula
 })
 // Model-driven form
 export class PartyForm {
-  partyForm:ControlGroup;
+  partyForm:ControlGroup<IParty>;
 
   constructor() {
 
     // for longer Forms, consider using FormBuilder
+    // https://github.com/angular/angular/blob/master/modules/angular2/src/forms/form_builder.ts
     this.partyForm = new ControlGroup({
       name: new Control('', Validators.required),
       description: new Control('', Validators.required)

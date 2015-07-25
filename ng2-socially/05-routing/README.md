@@ -128,5 +128,5 @@ Location Strategy Notes
      * - `/my/app/user/123/` **is not** normalized
      
      
-     * HTML5LocationStrategy
-     * HashLocationStrategy
+     * HTML5LocationStrategy /
+     * HashLocationStrategy /#/
