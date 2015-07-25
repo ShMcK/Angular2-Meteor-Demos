@@ -13,15 +13,24 @@ client/index.html
   
 client/socially.ts
 
-    import {routerInjectables, routerDirectives, RouteConfig} from 'angular2/router';
+    // inject router dependencies
+    import {routerInjectables, routerDirectives, RouteConfig} from 'angular2/router'; 
     
     @Component({
       selector: 'socially'
     })
     @View({
       templateUrl: 'client/socially.ng.html',
+      // routerDirectives include <router-outlet>, [router-link] & [router-params]
       directives: [routerDirectives, PartiesCmp]
     })
+    
+    // configure your routes.
+    // 'path': url
+    // 'as': optional alias
+    // 'component': link to component class name
+    // 'loader': optional
+    // 'redirectTo': optional
     @RouteConfig([
       {path: '/', as: 'parties', component: PartiesCmp},
       {path: '/party/:partyId', as: 'party', component: PartyCmp}
@@ -54,12 +63,31 @@ client/parties/parties.ts
     
 client/parties/parties.ng.html
 
+     * https://github.com/angular/angular/blob/master/modules/angular2/src/router/router_link.ts
+     * RouterLink expects the value to be an array of route names, followed by the params
+     * for that level of routing. For instance `['/team', {teamId: 1}, 'user', {userId: 2}]`
+     * means that we want to generate a link for the `team` route with params `{teamId: 1}`,
+     * and with a child route `user` with params `{userId: 2}`.
+
+     * The first route name should be prepended with `/`, `./`, or `../`.
+     * If the route begins with `/`, the router will look up the route from the root of the app.
+     * If the route begins with `./`, the router will instead look in the current component's
+     * children for the route. And if the route begins with `../`, the router will look at the
+     * current component's parent.
+     */
+
      <a [router-link]="['/party', {partyId: party._id}]">{{party.name}}</a>
 
      
          
 DISCUSS LIFECYCLE EVENTS
-    - use loading hook to load data with Meteor.object
+        
+      canActivate,
+      canReuse,
+      canDeactivate,
+      onActivate,
+      onReuse,
+      onDeactivate
     
 client/party-details/party-details.ts
 
@@ -87,3 +115,18 @@ client/party-details/party-details.ng.html
  
         <p>{{party.description}}</p>
     </header>
+
+
+Location Strategy Notes
+
+     * https://github.com/angular/angular/blob/master/modules/angular2/src/router/location.ts
+     * Responsible for normalizing the URL against the application's base href.
+     * A normalized URL is absolute from the URL host, includes the application's base href, and has no
+     * trailing slash:
+     * - `/my/app/user/123` is normalized
+     * - `my/app/user/123` **is not** normalized
+     * - `/my/app/user/123/` **is not** normalized
+     
+     
+     * HTML5LocationStrategy
+     * HashLocationStrategy
