@@ -1,7 +1,6 @@
 <template name="tutorial.step_00.html">
   {{#markdown}}
-
-    Let's start building our Meteor-Angular socially app.
+    Let's start building our Meteor Angular 2 Socially app.
 
     In this step, you will:
 
@@ -44,7 +43,7 @@
 
     We are going to add our own files for this tutorial. So let's start by deleting the following files:
 
-    socially.css	socially.html	socially.js
+    socially.css	  socially.html    socially.js
 
     Now we can start building our app.
     First, let's create a new `index.html` file and place this code inside. Then run the app again:
@@ -55,9 +54,7 @@
     <p>Nothing here</p>
     </body>
 
-
     As you can see, there is no html tag, no head tag, very simple.
-
 
     The reason for this is the way Meteor structures and serves files to the client.
 
@@ -68,18 +65,14 @@
     Then it will search for all the HTML files containing `HEAD` or `BODY` tags and concatenate their content into the main file.
 
 
-
     So in our case, Meteor found our `index.html` file, found the `BODY` tag inside and added it's content to the `BODY` tag of the main generated file.
 
     > (right-click -> inspect element on the page to see the generated file)
 
 
-
     Now it's time to add Angular 2 to our stack!
 
     Now first things first, let's add the Angular 2 package to Meteor (we will discuss more about Meteor packages later in this tutorial)
-
-
 
     Back in the command line, launch this command:
 
@@ -103,10 +96,10 @@
     __`index.ng.html`:__
 
     <body>
-      <script>System.import('socially')</script>
+    <script>System.import('app')</script>
     </body>
 
-    Here we're telling System.js to load `socially.js`, which is created from `socially.ts`.
+    Here we're telling System.js to load `app.js`, which is created from our `app.ts` file.
 
     That's it! Now we can use the Angular 2 power in our Meteor app.
 
@@ -116,29 +109,26 @@
 
     Then move the `p` tag into it:
 
-    __`socially.ng.html`:__
+    __`index.ng.html`:__
 
     <p>Nothing here</p>
 
-
-
-    We'll create a root component tag called `socially`, which will load `index.ng.html` in the view. Now let's include that component into our main `index.html` file:
+    We'll create a root component tag called `app`, which will load `index.ng.html` in the view. Now let's include that component into our main `index.html` file:
 
     __`index.html`:__
 
     <body>
-      <socially></socially>
-      <script>System.import('socially.ts')</script>
+    <app></app>
+    <script>System.import('app')</script>
     </body>
 
     But if you load this in your browser, **you won't see anything**. That's because we still need to **create the actual Angular 2 component**, which we'll do next.
-
 
     # Angular 2 Component
 
     Angular 2 code is structured like a tree of components inside of each other. So let's create our root component which other components will stem out of.
 
-    Create a new `socially.ts` file.
+    Create a new `app.ts` file.
 
     Now you can see another example of Meteor's power and simplicity - no need to include this file anywhere. Meteor will take care of it by going through all the files in the folder and including them automatically.
 
@@ -147,7 +137,7 @@
 
     There are a few ways to tell Meteor to run code only on the client/server/phone side, let's start with the simplest way - [Meteor.isClient](http://docs.meteor.com/#/full/meteor_isserver) variable.
 
-    __`socially.ts`:__
+    __`app.ts`:__
 
     if (Meteor.isClient) {
 
@@ -157,20 +147,20 @@
 
     Let's continue defining our Angular 2 application module.
 
-    __`socially.ts`:__
+    __`app.ts`:__
 
     if (Meteor.isClient) {
-      import {Component, View, bootstrap} from 'angular2/angular2';
+    import {Component, View, bootstrap} from 'angular2/angular2';
 
-      @Component({
-        selector: 'socially'
-      })
-      @View({
-        templateUrl: "socially.ng.html"
-      })
-      class Socially {}
+    @Component({
+    selector: 'app'
+    })
+    @View({
+    templateUrl: "index.ng.html"
+    })
+    class Socially {}
 
-      bootstrap(Socially);
+    bootstrap(Socially);
     }
 
     First we're importing the dependencies we need from `angular2/angular2`. This is not a folder and file in your directory, but referring to an alias provided to System.js.
@@ -179,7 +169,7 @@
 
     Basically Annotations allow us to elegantly add metadata to classes. Just consider it pretty syntax for now.
 
-    Notice the Component Selector matches the `<socially>` tag we provided in index.html, and View templateUrl points to the view file.
+    Notice the Component Selector matches the `<app>` tag we provided in index.html, and View templateUrl points to the view file.
 
     The class, Socially, inherits from @Component and @View.
 
@@ -189,7 +179,7 @@
 
     $ meteor
 
-    Everything is the same, so now inside our `socially.ng.html` let's use Angular:
+    Everything is the same, so now inside our `index.ng.html` let's use Angular:
 
     <p>Nothing here {{dstache}} 'yet' + '!' }}</p>
 
@@ -206,7 +196,5 @@
 
     # Summary
     Now let's go to [step 1](/tutorial/step_01) and add some content to our application.
-
-
   {{/markdown}}
 </template>
