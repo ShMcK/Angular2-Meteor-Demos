@@ -10,7 +10,7 @@ class PartyModel {
 }
 
 @Component({
-  selector: 'party-details'
+  selector: 'party-details',
 })
 @View({
   templateUrl: 'client/party-details/party-details.ng.html',
