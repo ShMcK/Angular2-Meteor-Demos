@@ -1,6 +1,6 @@
 ///<reference path="../../typings/typings.d.ts"/>
 
-import {Component, View, Attribute, NgFor, Inject} from 'angular2/angular2';
+import {Component, View, Attribute, Inject} from 'angular2/angular2';
 import {routerDirectives, RouteParams} from 'angular2/router';
 
 @Component({
@@ -8,7 +8,7 @@ import {routerDirectives, RouteParams} from 'angular2/router';
 })
 @View({
   templateUrl: 'client/party-details/party-details.ng.html',
-  directives: [NgFor, routerDirectives]
+  directives: [routerDirectives]
 })
 export class PartyDetailsCmp {
   party:IParty;

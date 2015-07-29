@@ -21,6 +21,6 @@ class Socially {}
 
 bootstrap(Socially, [
   routerInjectables,
-  bind(LocationStrategy).toClass(HashLocationStrategy) // for hashbang routes (/#/)
-  //alternative: bind(LocationStrategy).toClass(HTML5LocationStrategy)
+  bind(LocationStrategy).toClass(HashLocationStrategy)
+  //hashbang alternative: bind(LocationStrategy).toClass(HTML5LocationStrategy)
 ]);
