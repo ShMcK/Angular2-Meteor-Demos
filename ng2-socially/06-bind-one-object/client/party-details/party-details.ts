@@ -1,6 +1,7 @@
 ///<reference path="../../typings/typings.d.ts"/>
 
-import {Component, View, Attribute, NgFor, Inject, NgModel} from 'angular2/angular2';
+import {Component, View, Attribute, NgFor, Inject} from 'angular2/angular2';
+import {formDirectives} from 'angular2/angular2';
 import {routerDirectives, RouteParams} from 'angular2/router';
 
 class PartyModel {
@@ -13,7 +14,7 @@ class PartyModel {
 })
 @View({
   templateUrl: 'client/party-details/party-details.ng.html',
-  directives: [NgFor, routerDirectives]
+  directives: [NgFor, formDirectives, routerDirectives]
 })
 export class PartyDetailsCmp {
   party:IParty;
@@ -21,10 +22,10 @@ export class PartyDetailsCmp {
 
   constructor(@Inject(RouteParams) routeParams:RouteParams) {
     this.params = routeParams.params;
-    this.model = new PartyModel();
   }
 
   save() {
+    console.log(this.party);
   }
 
   reset() {
