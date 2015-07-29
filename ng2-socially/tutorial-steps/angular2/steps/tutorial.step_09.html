@@ -218,12 +218,19 @@ __`client/party-details/party-details.ts`:__
       templateUrl: 'client/party-details/party-details.ng.html',
       directives: [formDirectives, routerDirectives, NgFor]
     })
+    export class PartyDetails {
+     ...
+      onActivate() {
+        this.users = Meteor.users;
+      ...
+      }
+    }
 
 __`client/party-details/party-details.ng.html`:__
 
     <ul>
       Users:
-      <li *ng-for="user of users">
+      <li *ng-for="#user of users">
         <div>{{dstache}} user.emails[0].address }}</div>
       </li>
     </ul>
