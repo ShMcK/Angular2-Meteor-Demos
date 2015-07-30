@@ -1,5 +1,4 @@
-<ng-paginate [per-page]="10" [current-page]="1" [count]="100">
-
+<ng-paginate [per-page]="p.perPage" [current-page]="p.currentPage" [count]="itemCount">
   <ul>
     <li *ng-for="#item of items">
       <p>{{item.word}}: {{item.sentence}}</p>

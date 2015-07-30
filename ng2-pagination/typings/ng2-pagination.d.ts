@@ -1,0 +1,3 @@
+module Ng2Paginate {
+
+}

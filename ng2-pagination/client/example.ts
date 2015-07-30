@@ -1,16 +1,11 @@
 import {Component, View, bootstrap, NgFor} from 'angular2/angular2';
-import {NgPaginate} from 'client/ng-paginate';
-
-interface IItem {
-  word: string;
-  sentence: string;
-}
+import {NgPaginate} from 'client/lib/ng-paginate';
 
 @Component({
-  selector: 'pagination-test'
+  selector: 'pagination-example'
 })
 @View({
-  templateUrl: 'client/pagination-test.ng.html',
+  templateUrl: 'client/example.ng.html',
   directives: [NgFor, NgPaginate]
 })
 class PaginationTest {

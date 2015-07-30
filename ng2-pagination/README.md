@@ -2,4 +2,5 @@
 
 Pagination component built in Angular 2.
  
+** WIP: currently not working **
  

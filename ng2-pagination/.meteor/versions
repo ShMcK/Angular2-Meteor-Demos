@@ -1,5 +1,4 @@
 anti:fake@0.4.1
-autopublish@1.0.3
 autoupdate@1.2.1
 base64@1.0.3
 binary-heap@1.0.3
@@ -17,7 +16,6 @@ html-tools@1.0.4
 htmljs@1.0.4
 http@1.1.0
 id-map@1.0.3
-insecure@1.0.3
 jquery@1.11.3_2
 json@1.0.3
 launch-screen@1.0.2
@@ -43,7 +41,7 @@ shmck:angular2@0.1.0
 spacebars@1.0.6
 spacebars-compiler@1.0.6
 templating@1.1.1
-tmeasday:publish-counts@0.4.0
+tmeasday:publish-counts@0.5.1
 tracker@1.0.7
 ui@1.0.6
 underscore@1.0.3
