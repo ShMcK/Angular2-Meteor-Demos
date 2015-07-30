@@ -4,9 +4,13 @@
 
     Demo app paralleling the Angular-Meteor tutorial.
     
+    Official moved to [Ng2-Socially Repo](https://github.com/ShMcK/NG2-Socially)
+    
 * NG2-ACCOUNTS-UI (WIP)
 
     Accounts-ui component for Angular 2 using Meteor. 
+    
+    Move to [Ng2-Accounts-ui Repo](https://github.com/ShMcK/NG2-Accounts-Ui)
 
 * CHAT APP (WIP)
 
