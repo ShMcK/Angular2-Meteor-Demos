@@ -3,9 +3,9 @@ import {Component, View, NgFor} from 'angular2/angular2';
 @Component({
   selector: 'ng-paginate',
   properties: [
-    'perPage',
-    'currentPage',
-    'count:count'
+    'perPage: perPage',
+    'currentPage: currentPage',
+    'count: count'
   ]
 })
 @View({
