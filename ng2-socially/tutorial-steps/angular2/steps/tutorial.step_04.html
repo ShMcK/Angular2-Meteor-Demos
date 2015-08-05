@@ -60,7 +60,7 @@ __`client/index.ng.html`:__
 
 And finally let your Socially Component know it should import and use the `parties-form` component.
 
-__`client/app.ts`:__
+__`client/app.ng.ts`:__
 
       import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
       import {PartiesForm} from 'client/parties-form/parties-form';
@@ -241,9 +241,9 @@ Here again, we are binding an event to the class context and passing in the part
 
 Let's go into the class and add that function.
 
-Add the function inside the Socially class in `app.ts`:
+Add the function inside the Socially class in `app.ng.ts`:
 
-__`client/app.ts`:__
+__`client/app.ng.ts`:__
 
     constructor() {...}
     remove(party){
@@ -254,7 +254,7 @@ The Mongo Collection Parties has a function called 'remove'. We search for the r
 
 And this is how the class should now look:
 
-__`client/app.ts`:__
+__`client/app.ng.ts`:__
 
     class Socially {
       constructor() {

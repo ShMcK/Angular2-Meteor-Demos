@@ -48,7 +48,7 @@ Now that we've created the collection, our client needs to subscribe to it's cha
 
 To bind them we will simply reference the parties in the constructor, then call fetch to retrieve them.
 
-__`client/app.ts`:__
+__`client/app.ng.ts`:__
 
     constructor() {
       this.parties = Parties.find().fetch();
@@ -58,7 +58,7 @@ But what happens if the parties data changes on the server-side? How can we tell
 
 For now, we can use Meteor [Tracker](https://www.meteor.com/tracker), a reactive wrapper that we will run data when a change occurs. We will bind it to Angular's change detection system, [Zone.js](https://github.com/angular/zone.js).
 
-__`client/app.ts`:__
+__`client/app.ng.ts`:__
 
     Tracker.autorun(zone.bind(() => {
       this.parties = Parties.find().fetch();
@@ -66,9 +66,9 @@ __`client/app.ts`:__
 
 The fat arrow syntax `=>` is also from ES2015, and tells the function to run in it's parents context. In other words, it tells `this` to be the context of the class Socially.
 
-Our `app.ts` file should now look like this:
+Our `app.ng.ts` file should now look like this:
 
-__`client/app.ts`:__
+__`client/app.ng.ts`:__
 
     import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
 

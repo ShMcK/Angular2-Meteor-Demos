@@ -117,9 +117,9 @@ __`index.ng.html`:__
       <script>System.import('client/app')</script>
     </body>
 
-Here we're telling System.js to load `app.js`, which is compiled from our `app.ts` file.
+Here we're telling System.js to load `app.js`, which is compiled from our `app.ng.ts` file.
 
-Once we've created our `app.ts` file we can use Angular 2 in our Meteor app.
+Once we've created our `app.ng.ts` file we can use Angular 2 in our Meteor app.
 
 ## Root Component
 
@@ -140,13 +140,13 @@ But if you load this in your browser, **you won't see anything**. That's because
 
 Angular 2 code is structured like a tree of components inside of each other. So let's create our root component which other components will stem out of.
 
-Create a new `app.ts` file inside of the `client` folder.
+Create a new `app.ng.ts` file inside of the `client` folder.
 
 Now you can see another example of Meteor's power and simplicity - no need to include this file anywhere. Meteor will take care of it by going through all the files in the folder and including them automatically.
 
 Let's continue defining our Angular 2 application module.
 
-__`app.ts`:__
+__`app.ng.ts`:__
 
     import {Component, View, bootstrap} from 'angular2/angular2';
 
@@ -188,9 +188,9 @@ Then move the `p` tag into it:
 
     <p>Nothing here</p>
 
-Change your template in `app.ts` to target `index.ng.html`.
+Change your template in `app.ng.ts` to target `index.ng.html`.
 
-__`client/app.ts`:__
+__`client/app.ng.ts`:__
 
     @View({
       // template: "<p>Hello World!</p>"

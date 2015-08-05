@@ -20,7 +20,7 @@ Type in the command line:
 
 Let's import and add the package dependencies.
 
-__`client/app.ts`:__
+__`client/app.ng.ts`:__
 
     import {Component, View, bootstrap} from 'angular2/angular2';
     import {routerInjectables, routerDirectives, Router, RouteConfig} from 'angular2/router';
@@ -100,9 +100,9 @@ __`client/parties-list/parties-list.ts`:__
 
 Move the `index.ng.html` file into the parties-list folder and rename it `parties-list.ng.html`.
 
-`app.ts` should be looking a lot cleaner now.
+`app.ng.ts` should be looking a lot cleaner now.
 
-__`client/app.ts`:__
+__`client/app.ng.ts`:__
 
     import {Component, View, bind, bootstrap} from 'angular2/angular2';
     import {routerInjectables, routerDirectives, Router, RouteConfig} from 'angular2/router';
@@ -181,7 +181,7 @@ __`client/party-details/party-details.ng.html`:__
 
 Let's configure our routes. This is how we map url paths to components.
 
-__`client/app.ts`:__
+__`client/app.ng.ts`:__
 
     import {PartiesList} from 'client/parties-list/parties-list';
     import {PartyDetails} from 'client/party-details/party-details';
