@@ -1,4 +1,4 @@
-import {Component, View, Attribute} from 'angular2/angular2';
+import {Component, View, Parent} from 'angular2/angular2';
 
 @Component({
   selector: 'example',
@@ -7,16 +7,22 @@ import {Component, View, Attribute} from 'angular2/angular2';
 @View({
   template: `
     <p>Test: {{test}}</p>
-    <!-- result: attribute passsed to component -->
+    <!-- result: attribute passed to component -->
     <p>Hyphenated: {{hyphenatedTest}}</p>
     <!-- result: hyphenated attribute passed to component -->
     <p>Aliased: {{alias}}</p>
     <!-- result: attribute passed to component then aliased -->
+
+    <button (click)="attributeCheck()">What is the value of 'this.test'?</button>
+    <!-- result: attribute passed to component -->
   `
 })
 export class Example {
-  constructor(@Attribute('test') test:string) {
+  test:string;
+  constructor() {
      console.log(this.test); // result: undefined
-     console.log(test); // result: null
+  }
+  attributeCheck() {
+    alert(this.test);
   }
 }

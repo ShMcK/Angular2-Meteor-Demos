@@ -12,8 +12,11 @@ import {Example} from 'client/example';
   directives: [Example]
 })
 class App {
+  someAttr:string;
+  someHyphenatedAttr:string;
+  someAlias:string;
   constructor() {
-    this.someAttr = "attribute passsed to component";
+    this.someAttr = "attribute passed to component";
     this.someHyphenatedAttr = "hyphenated attribute passed to component";
     this.someAlias = "attribute passed to component then aliased";
   }
