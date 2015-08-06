@@ -11,30 +11,22 @@ import {NgPaginate} from 'client/lib/ng-paginate';
 class PaginationTest {
   items:IItem[];
   itemCount:number;
-  p:{
-    perPage: number;
-    currentPage: number;
-  };
+  perPage:number;
+  currentPage:number;
+  count:number;
 
   constructor() {
     Meteor.subscribe('items');
-
     Tracker.autorun(zone.bind(() => {
       this.items = Items.find().fetch();
     }));
-
-
     Tracker.autorun(zone.bind(() => {
       this.itemCount = Counts.get('numberOfItems');
     }));
-
-    this.p = {
-      perPage: 10,
-      currentPage: 1
-    };
-
+    this.perPage = 10;
+    this.currentPage = 1;
+    this.count = 101;
   }
-
 }
 
 bootstrap(PaginationTest);

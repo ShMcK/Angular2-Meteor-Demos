@@ -19,25 +19,33 @@ export class NgPaginate {
   pages:string[];
 
   constructor() {
-    console.log(this.count, this.perPage, this.currentPage);
-    //if (this.count > 0) {
-    //  var numPages = Math.ceil(this.count / this.perPage);
-    //  this.pages = arrayifyNumbers(numPages);
-    //} else {
-    //  throw 'Count is 0. No items.'
-    //}
-    //
-    //function arrayifyNumbers(number) {
-    //  var list = [];
-    //  for (var i = 1; i <= number; i++) {
-    //    list.push(i);
-    //  }
-    //  return list;
-    //}
+
+  }
+
+  onInit() {
+    this.perPage = this.perPage | 10;
+    this.currentPage = this.currentPage | 1;
+    // get number of pages
+    if (this.count > 0) {
+      var numPages = Math.ceil(this.count / this.perPage);
+      this.pages = this.arrayifyNumbers(numPages);
+    } else {
+      throw 'Count is 0. No items.'
+    }
+  }
+
+  /**
+   * Provides an array for pagination
+   */
+  arrayifyNumbers(number) {
+    var list = [];
+    for (var i = 1; i <= number; i++) {
+      list.push(i);
+    }
+    return list;
   }
 
   selectPage(page:number) {
-
     this.currentPage = page;
     console.log(this.currentPage);
   }
